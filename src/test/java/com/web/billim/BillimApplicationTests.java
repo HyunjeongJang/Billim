@@ -1,4 +1,4 @@
-package com.example.billim;
+package com.web.billim;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

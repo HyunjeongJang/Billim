@@ -1,4 +1,4 @@
-package com.example.billim;
+package com.web.billim;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
