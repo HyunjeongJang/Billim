@@ -10,3 +10,11 @@ spring:
     username: admin
     password: admin123
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
