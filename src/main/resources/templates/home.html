@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+    <div th:replace="/common/header.html :: test1"></div>
 </head>
 <body>
-
+<div th:include="/common/header.html :: test2"></div>
 <div>
+
     <br><br><br><br>
     <h1>하이하이하이</h1>
 </div>
