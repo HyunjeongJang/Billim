@@ -2841,7 +2841,8 @@ body.is-touch .tiles article .content {
     margin: 0 0 2.5em 0;
     text-decoration: none;
     text-transform: uppercase;
-    display: inline-block;
+    display: block;
+    text-align: center;
 }
 
 #header .logo > * {
