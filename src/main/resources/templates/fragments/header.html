@@ -1,7 +1,51 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       th:fragment="HeaderFragment">
+
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/noscript.css}" rel="stylesheet">
+
+
 <div style="border: solid 1px yellow">
-    <h1>Header 영역입니다.</h1>
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <span class="symbol"><img src="images/logo.svg" alt=""/></span><span class="title">Phantom</span>
+            </a>
+
+            <!-- Nav -->
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="generic.html">Ipsum veroeros</a></li>
+            <li><a href="generic.html">Tempus etiam</a></li>
+            <li><a href="generic.html">Consequat dolor</a></li>
+            <li><a href="elements.html">Elements</a></li>
+        </ul>
+    </nav>
+
+    <!-- Scripts -->
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/browser.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/breakpoints.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/util.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+
+
+
 </div>
 </html>
