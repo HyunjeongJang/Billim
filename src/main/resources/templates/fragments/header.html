@@ -14,20 +14,20 @@
                     <span></span>
 
                     <ul class="menu_list" id="menu">
-<!--                        <a href="#">-->
-<!--                            <li>카테고리</li>-->
-<!--                        </a>-->
-                        <a href="#">
-                            <li>생활용품</li>
+                        <a href="/product/total">
+                            <li>전체상품</li>
                         </a>
                         <a href="#">
-                            <li>의류잡화</li>
+                            <li style="font-size: 110%">생활용품</li>
                         </a>
                         <a href="#">
-                            <li>운동용품</li>
+                            <li style="font-size: 110%">의류잡화</li>
+                        </a>
+                        <a href="#">
+                            <li style="font-size: 110%">운동용품</li>
                         </a>
                         <a href="#" target="_blank">
-                            <li>전자제품</li>
+                            <li style="font-size: 110%">전자제품</li>
                         </a>
 
                         <hr>
@@ -49,14 +49,14 @@
         </div>
 
         <div id="header_2">
-            <a href="" class="logo">
-                <span class="symbol"><img th:src="@{images/billim1.png}" width="100px"></span>
+            <a th:href="@{/}" class="logo">
+                <span class="symbol"><img th:src="@{/images/billim1.png}" width="100px"></span>
             </a>
         </div>
 
         <div id="header_3">
             <div class="login">
-                <a th:href="@{/memberEnroll}">
+                <a th:href="@{/member/signup}">
                     로그인
                 </a>
             </div>
