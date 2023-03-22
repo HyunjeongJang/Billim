@@ -13,23 +13,25 @@
 </script>
 
 <style>
-    /*
- * Made by Erik Terwan
- * 24th of November 2015
- * MIT License
- *
- *
- * If you are thinking of using this in
- * production code, beware of the browser
- * prefixes.
- */
+
+
+    #header { height : 20%; }
+
+    #header>div, #content>div {
+        height : 100%;
+        float : left;
+    }
+
+    #header_1 { width : 20%; }
+    #header_2 { width : 65%; }
+    #header_3 { width : 15%; }
+
+
 
     body
     {
         margin: 0;
         padding: 0;
-
-        /* make it look decent enough */
         background: #ffffff;
         color: #cdcdcd;
         font-family: "Avenir Next", "Avenir", sans-serif;
@@ -79,9 +81,6 @@
         -webkit-touch-callout: none;
     }
 
-    /*
-     * Just a quick hamburger
-     */
     #menuToggle span
     {
         display: block;
@@ -112,10 +111,7 @@
         transform-origin: 0% 100%;
     }
 
-    /*
-     * Transform all the slices of hamburger
-     * into a crossmark.
-     */
+
     #menuToggle input:checked ~ span
     {
         opacity: 1;
@@ -123,27 +119,19 @@
         background: #232323;
     }
 
-    /*
-     * But let's hide the middle one.
-     */
+
     #menuToggle input:checked ~ span:nth-last-child(3)
     {
         opacity: 0;
         transform: rotate(0deg) scale(0.2, 0.2);
     }
 
-    /*
-     * Ohyeah and the last one should go the other direction
-     */
+
     #menuToggle input:checked ~ span:nth-last-child(2)
     {
         transform: rotate(-45deg) translate(0, -1px);
     }
 
-    /*
-     * Make this absolute positioned
-     * at the top left of the screen
-     */
     #menu
     {
         position: absolute;
@@ -179,55 +167,37 @@
 </style>
 
 <div>
-    <!-- Header -->
-    <header id="header">
-        <h1>영역테스트</h1>
 
-        <!-- Logo -->
-        <a href="" class="logo">
-            <span class="symbol"><img th:src="@{images/billim1.png}" width="100px"></span>
-        </a>
+    <div id="header">
+        <div id="header_1">
 
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox" />
 
-    </header>
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
+                    <ul id="menu">
+                        <a href="#"><li>Home</li></a>
+                        <a href="#"><li>About</li></a>
+                        <a href="#"><li>Info</li></a>
+                        <a href="#"><li>Contact</li></a>
+                        <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+                    </ul>
+                </div>
+            </nav>
 
-
-    <!--    Made by Erik Terwan    -->
-    <!--   24th of November 2015   -->
-    <!--        MIT License        -->
-    <nav role="navigation">
-        <div id="menuToggle">
-            <!--
-            A fake / hidden checkbox is used as click reciever,
-            so you can use the :checked selector on it.
-            -->
-            <input type="checkbox" />
-
-            <!--
-            Some spans to act as a hamburger.
-
-            They are acting like a real hamburger,
-            not that McDonalds stuff.
-            -->
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <!--
-            Too bad the menu has to be inside of the button
-            but hey, it's pure CSS magic.
-            -->
-            <ul id="menu">
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>About</li></a>
-                <a href="#"><li>Info</li></a>
-                <a href="#"><li>Contact</li></a>
-                <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
-            </ul>
         </div>
-    </nav>
+        <div id="header_2">
+            <h1>테스트</h1>
+        </div>
+        <div id="header_3">
+            <h1>테스트</h1>
 
+        </div>
+    </div>
 
 
 
