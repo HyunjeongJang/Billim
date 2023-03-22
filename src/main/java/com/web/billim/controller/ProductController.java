@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequiredArgsConstructor
-public class MemberController {
+public class ProductController {
 
-    @GetMapping("/member/signup")
-    public String memberSignUp(){
-        return "pages/member_signup";
+    @GetMapping("/product/total")
+    public String productTotal(){
+        return "pages/product_total";
     }
-
-
 }
