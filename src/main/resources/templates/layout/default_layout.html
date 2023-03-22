@@ -4,14 +4,13 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/default_layout.js}"></script>
     <link th:href="@{/css/default_layout.css}" rel="stylesheet">
     <body>
         <th:block th:replace="fragments/header.html :: HeaderFragment"></th:block>
         <th:block layout:fragment="content"></th:block>
         <th:block th:replace="fragments/footer.html :: FooterFragment"></th:block>
-
-        <!-- Scripts -->
-<!--        <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>-->
     </body>
 
 </html>
