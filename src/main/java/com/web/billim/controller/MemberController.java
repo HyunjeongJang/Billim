@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class MemberController {
 
-    @GetMapping("/memberEnroll")
+    @GetMapping("/member/signUp")
     public String memberEnroll(){
-        return "page/memberSignUp";
+        return "pages/memberSignUp";
     }
 
 
