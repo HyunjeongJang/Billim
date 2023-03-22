@@ -1,11 +1,12 @@
-div{
-    box-sizing:border-box;
+div {
+    box-sizing: border-box;
     border: 1px solid red;
 }
 
+/* header */
 
 #header {
-    height: 150px;
+    height: 120px;
 }
 
 #header > div {
@@ -26,16 +27,6 @@ div{
 #header_3 {
     width: 25%;
 }
-
-
-body {
-    margin: 0;
-    padding: 0;
-    background: #ffffff;
-    color: #000000;
-    /*font-family: "Avenir Next", "Avenir", sans-serif;*/
-}
-
 
 #menuToggle {
     display: block;
@@ -146,7 +137,30 @@ body {
 }
 
 .login {
+    width: 100%;
     text-align: right;
     margin-right: 10%;
-    padding-top: 20px;
+    padding-top: 40px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #000000;
+    /*font-family: "Avenir Next", "Avenir", sans-serif;*/
+}
+
+
+/* footer */
+
+#footer {
+    height: 120px;
+    color: #cccccc;
+    padding-top: 40px;
+}
+
+.copyright {
+    list-style-type: none;
 }
