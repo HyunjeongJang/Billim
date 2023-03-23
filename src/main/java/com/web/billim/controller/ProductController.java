@@ -10,6 +10,6 @@ public class ProductController {
 
     @GetMapping("/product/total")
     public String productTotal(){
-        return "pages/product_total";
+        return "pages/product/product_total";
     }
 }
