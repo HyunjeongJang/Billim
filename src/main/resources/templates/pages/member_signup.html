@@ -4,8 +4,9 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default_layout}">
 <div layout:fragment="content">
-    <div class="content" style="text-align: center">
-        <h1>회원가입</h1>
-    </div>
+    <th:block th:replace="pages/signup_content.html :: testPage"></th:block>
+</div>
+<div layout:fragment="content_js">
+    <th:block th:replace="pages/signup_script.html :: testJs"></th:block>
 </div>
 </html>
