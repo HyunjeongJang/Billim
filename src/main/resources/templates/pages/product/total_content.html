@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
 
-</body>
+<div layout:fragment="content">
+    <link th:href="@{/css/product_total.css}" rel="stylesheet">
+    <div class="content" style="text-align: center">
+
+        <div id="category_nav">
+            <a th:href="@{/}" id="product_goods">
+                <span class="category_image"><img th:src="@{/images/product_goods.png}" width="100px"></span>
+            </a>
+            <a th:href="@{/}" id="product_electronic">
+                <span class="category_image"><img th:src="@{/images/product_electronic.png}" width="100px"></span>
+            </a>
+            <a th:href="@{/}" id="product_funiture">
+                <span class="category_image"><img th:src="@{/images/product_furniture.png}" width="100px"></span>
+            </a>
+        </div>
+
+        <h1>전체상품</h1>
+        <h1>전체상품</h1>
+        <h1>전체상품</h1><h1>전체상품</h1>
+        <h1>전체상품</h1><h1>전체상품</h1>
+        <h1>전체상품</h1><h1>전체상품</h1><h1>전체상품</h1><h1>전체상품</h1><h1>전체상품</h1>
+        <h1>전체상품</h1><h1>전체상품</h1><h1>전체상품</h1><h1>전체상품</h1><h1>전체상품</h1><h1>전체상품</h1>
+        <h1>전체상품</h1><h1>전체상품</h1>
+
+    </div>
+</div>
+
+<div layout:fragment="content_js">
+    <th:block th:replace="pages/product/total_script.html :: total_script"></th:block>
+</div>
+
 </html>

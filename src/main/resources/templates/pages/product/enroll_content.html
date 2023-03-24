@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
+
+<div layout:fragment="content">
+
+    <div class="content" style="text-align: center" th:fragment="testPage">
+        <h1>상품 등록</h1>
+        <form method="post" th:action="@{/productEnroll}">
+            <div>
+                대여 상품명 :
+                <input type="text" id="title" class="form-control" required>
+            </div>
+            <hr>
+            <div>
+                상품 설명 :
+                <input type="text" id="content" class="form-control" required>
+            </div>
+            <hr>
+            <div>
+                거래방법
+            </div>
+            <hr>
+            <div>
+                대여요금
+                <input type="text" class="form-control" required>
+            </div>
+            <hr>
+            <div>
+                지역
+                <input type="text" class="form-control" required>
+            </div>
+            <hr>
+            <div>
+                <input type="text" id="" placeholder="">
+            </div>
+            <hr>
+            <button>상품등록</button>
+        </form>
+    </div>
+
+</div>
+</html>
