@@ -6,38 +6,80 @@
 
 <div layout:fragment="content">
 
-    <div class="content" style="text-align: center" th:fragment="testPage">
+    <style>
+
+        .content {
+            text-align: center;
+        }
+        .table_text {
+            text-align : left;
+            font-weight: bold;
+            padding : 10px 0px 10px 60px;
+        }
+
+        .table_input {
+            text-align: left;
+            font-weight: bold;
+        }
+
+
+        /*input {*/
+        /*    border:none;*/
+        /*}*/
+
+        /**,*:focus,*:hover{outline:none;}*/
+    </style>
+
+    <div class="content" th:fragment="">
         <h1>상품 등록</h1>
         <form method="post" th:action="@{/productEnroll}">
-            <div>
-                대여 상품명 :
-                <input type="text" id="title" class="form-control" required>
-            </div>
-            <hr>
-            <div>
-                상품 설명 :
-                <input type="text" id="content" class="form-control" required>
-            </div>
-            <hr>
-            <div>
-                거래방법
-            </div>
-            <hr>
-            <div>
-                대여요금
-                <input type="text" class="form-control" required>
-            </div>
-            <hr>
-            <div>
-                지역
-                <input type="text" class="form-control" required>
-            </div>
-            <hr>
-            <div>
-                <input type="text" id="" placeholder="">
-            </div>
-            <hr>
-            <button>상품등록</button>
+            <table th:align="center" th:width="500px">
+                <tr>
+                    <td class="table_text">대여 상품명</td>
+                    <td class="table_input"><input type="text" id="title" class="form-control" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><hr></td>
+                </tr>
+                <tr>
+                    <td class="table_text">상품 설명</td>
+                    <td class="table_input"><input type="text" id="content" class="form-control" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><hr></td>
+                </tr>
+                <tr>
+                    <td class="table_text">거래 방법</td>
+                    <td class="table_input">
+                        <input type="checkbox"> 직거래
+                        <input type="checkbox"> 택배
+                    </td>
+                </tr>
+                <tr>
+                <td colspan="2"><hr></td>
+                </tr>
+                <tr>
+                    <td class="table_text">대여 요금</td>
+                    <td class="table_input"><input type="text" id="" class="form-control" required> 원 (/일)</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><hr></td>
+                </tr>
+
+<!--                <tr>-->
+<!--                    <td>지역 :</td>-->
+<!--&lt;!&ndash;                    <td><input type="text" id="title" required></td>&ndash;&gt;-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <hr>-->
+<!--                </tr>-->
+            </table>
+
+
+
+
+            <button>취소</button>
+            <button class="btn btn-dark">상품등록</button>
         </form>
     </div>
 

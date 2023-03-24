@@ -12,4 +12,14 @@ public class ProductController {
     public String productTotal(){
         return "pages/product/total_content";
     }
+
+    @GetMapping("/myPage/sales")
+    public String myPageSalesManagement(){
+        return "pages/product/myPage_sales_content";
+    }
+
+    @GetMapping("/product/enroll")
+    public String productEnroll(){
+        return "pages/product/enroll_content";
+    }
 }
