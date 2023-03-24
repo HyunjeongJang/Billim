@@ -10,39 +10,31 @@
         <h1>상품 등록</h1>
         <form method="post" th:action="@{/productEnroll}">
             <div>
-                대여 제품명 :
-                <input type="text" name="" class="form-control" required>
+                대여 상품명 :
+                <input type="text" id="title" class="form-control" required>
             </div>
             <hr>
             <div>
-
-                <input type="password" name="password" class="form-control" required>
+                상품 설명 :
+                <input type="text" id="content" class="form-control" required>
             </div>
             <hr>
             <div>
-                이름(실명)
-                <input type="text" name="name" class="form-control" required>
+                거래방법
             </div>
             <hr>
             <div>
-                닉네임
-                <input type="text" name="nickName" class="form-control" required>
+                대여요금
+                <input type="text" class="form-control" required>
             </div>
             <hr>
             <div>
-                이메일
-                <input type="text" name="email_1" class="form-control" required>
+                지역
+                <input type="text" class="form-control" required>
             </div>
             <hr>
             <div>
-                주소
-                <input type="text" id="sample4_postcode" placeholder="우편번호">
-                <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-                <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-                <span id="guide" style="color:#999;display:none"></span>
-                <input type="text" id="sample4_detailAddress" placeholder="상세주소">
-                <input type="text" id="sample4_extraAddress" placeholder="참고항목">
+                <input type="text" id="" placeholder="">
             </div>
             <hr>
             <button>상품등록</button>
