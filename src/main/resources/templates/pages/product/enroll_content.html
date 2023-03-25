@@ -59,10 +59,42 @@
                     <td class="table_input">
                         <input type="file" class="form-control" onchange="readURL(this);" required>
                     </td>
-                    <td><img id="preview" th:width="50px"/></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="table_text"></td>
+                    <td class="table_input">
+                        <input type="file" class="form-control" onchange="readURL(this);" required>
+                    </td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td colspan="3">&nbsp;</td>
+                    <td class="table_text"></td>
+                    <td class="table_input">
+                        <input type="file" class="form-control" onchange="readURL(this);" required>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="table_text"></td>
+                    <td class="table_input">
+                        <input type="file" class="form-control" onchange="readURL(this);" required>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="table_text"></td>
+                    <td class="table_input">
+                        <input type="file" class="form-control" onchange="readURL(this);" required>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="table_text">미리보기</td>
+                    <td><div><img id="preview" th:width="100px"/></div></td>
+                    <td></td>
                 </tr>
             </table>
             <br>
@@ -74,7 +106,6 @@
 
 
     <script>
-
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -86,6 +117,7 @@
                 document.getElementById('preview').src = "";
             }
 
+
             if (input.files && input.files[0].size > (10 * 1024 * 1024)) {
                 Swal.fire({
                     icon: 'warning',
@@ -94,12 +126,9 @@
                 input.value = null;
             }
         }
-
     </script>
 
 
 </div>
-
-
 
 </html>

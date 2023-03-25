@@ -161,7 +161,7 @@ a {
     color: #d5d5d5;
 }
 
-/* body */
+/* content */
 
 body {
     margin: 0;
@@ -171,6 +171,15 @@ body {
     /*font-family: "Avenir Next", "Avenir", sans-serif;*/
 }
 
+
+.content {
+    padding-top: 15px;
+    text-align: center;
+}
+
+a {
+    color: black;
+}
 
 /* footer */
 
