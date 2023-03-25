@@ -3,12 +3,12 @@
 /*    border: 1px solid red;*/
 /*}*/
 
-@font-face {
-    font-family: 'S-CoreDream-3Light';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+/*@font-face {*/
+/*    font-family: 'S-CoreDream-3Light';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
 
 a {
     text-decoration: none;
@@ -175,7 +175,8 @@ body {
     padding: 0;
     background: #ffffff;
     color: #000000;
-    font-family: 'S-CoreDream-3Light', sans-serif;
+    font-family: 'SCoreDream', sans-serif;
+    /*font-family: 'S-CoreDream-3Light', sans-serif;*/
 }
 
 
