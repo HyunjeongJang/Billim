@@ -5,83 +5,101 @@
       layout:decorate="~{layout/default_layout}">
 
 <div layout:fragment="content">
-
-    <style>
-
-        .content {
-            text-align: center;
-        }
-        .table_text {
-            text-align : left;
-            font-weight: bold;
-            padding : 10px 0px 10px 60px;
-        }
-
-        .table_input {
-            text-align: left;
-            font-weight: bold;
-        }
-
-
-        /*input {*/
-        /*    border:none;*/
-        /*}*/
-
-        /**,*:focus,*:hover{outline:none;}*/
-    </style>
+    <link th:href="@{/css/product_enroll.css}" rel="stylesheet">
 
     <div class="content" th:fragment="">
-        <h1>상품 등록</h1>
+        <div class="subject">
+            <h2>상품 등록</h2>
+            <span class="symbol"><img th:src="@{/images/product_enroll.png}" width="40px"> 대여할 상품을 등록해 주세요!</span>
+        </div>
+
         <form method="post" th:action="@{/productEnroll}">
-            <table th:align="center" th:width="500px">
+            <table th:align="center">
                 <tr>
                     <td class="table_text">대여 상품명</td>
-                    <td class="table_input"><input type="text" id="title" class="form-control" required></td>
+                    <td class="table_input"><input type="text" id="title" class="form-control" required ></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><hr></td>
+                    <td colspan="3"><hr></td>
+                </tr>
+
+                <tr>
+                    <td class="table_text">대여 요금</td>
+                    <td class="table_input"><input type="number" id="" class="form-control" required></td>
+                    <td class="table_last">원(/일)</td>
                 </tr>
                 <tr>
-                    <td class="table_text">상품 설명</td>
-                    <td class="table_input"><input type="text" id="content" class="form-control" required></td>
+                    <td colspan="3"><hr></td>
                 </tr>
-                <tr>
-                    <td colspan="2"><hr></td>
-                </tr>
+
                 <tr>
                     <td class="table_text">거래 방법</td>
                     <td class="table_input">
-                        <input type="checkbox"> 직거래
-                        <input type="checkbox"> 택배
+                        <input type="checkbox" value="direct"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" value="delivery"> &nbsp;택배
                     </td>
+                    <td></td>
                 </tr>
                 <tr>
-                <td colspan="2"><hr></td>
-                </tr>
-                <tr>
-                    <td class="table_text">대여 요금</td>
-                    <td class="table_input"><input type="text" id="" class="form-control" required> 원 (/일)</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><hr></td>
+                <td colspan="3"><hr></td>
                 </tr>
 
-<!--                <tr>-->
-<!--                    <td>지역 :</td>-->
-<!--&lt;!&ndash;                    <td><input type="text" id="title" required></td>&ndash;&gt;-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <hr>-->
-<!--                </tr>-->
+                <tr>
+                    <td class="table_text">상품 설명</td>
+                    <td><textarea name="" id="product_content" rows="15" class="form-control" style="padding-left: 20px" required></textarea></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><hr></td>
+                </tr>
+
+                <tr>
+                    <td class="table_text">상품 사진</td>
+                    <td class="table_input">
+                        <input type="file" class="form-control" onchange="readURL(this);" required>
+                    </td>
+                    <td><img id="preview" th:width="50px"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">&nbsp;</td>
+                </tr>
             </table>
+            <br>
 
-
-
-
-            <button>취소</button>
-            <button class="btn btn-dark">상품등록</button>
+            <button class="btn btn-secondary" type="reset">취소</button>&nbsp;
+            <button class="btn btn-dark" type="submit">상품등록</button>
         </form>
     </div>
 
+
+    <script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                document.getElementById('preview').src = "";
+            }
+
+            if (input.files && input.files[0].size > (10 * 1024 * 1024)) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '파일 크기는 10mb 를 넘길 수 없습니다.'
+                });
+                input.value = null;
+            }
+        }
+
+    </script>
+
+
 </div>
+
+
+
 </html>
