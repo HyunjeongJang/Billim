@@ -181,12 +181,19 @@ a {
     color: black;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* footer */
 
 #footer {
-    height: 120px;
+    padding-top: 60px;
+    height: 150px;
     color: #cccccc;
-    padding-top: 30px;
+    text-align: center;
 }
 
 .copyright {
