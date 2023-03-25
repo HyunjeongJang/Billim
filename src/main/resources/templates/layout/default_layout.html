@@ -2,17 +2,17 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <title>Title</title>
-    <meta charset="UTF-8">
-    <th:block th:replace="fragments/config.html :: configFragment"></th:block>
-    <th:block layout:fragment="content_css"></th:block>
+    <head>
+        <title>Title</title>
+        <meta charset="UTF-8">
+        <th:block th:replace="fragments/config.html :: configFragment"></th:block>
+        <th:block layout:fragment="content_css"></th:block>
+    </head>
+    <th:block th:replace="fragments/header.html :: HeaderFragment"></th:block>
+    <th:block th:replace="fragments/nav.html :: NavFragment"></th:block>
+    <body>
+        <th:block layout:fragment="content"></th:block>
+    </body>
     <th:block layout:fragment="content_js"></th:block>
-</head>
-<th:block th:replace="fragments/header.html :: HeaderFragment"></th:block>
-<th:block th:replace="fragments/nav.html :: NavFragment"></th:block>
-<body>
-<th:block layout:fragment="content"></th:block>
-</body>
-<th:block th:replace="fragments/footer.html :: FooterFragment"></th:block>
+    <th:block th:replace="fragments/footer.html :: FooterFragment"></th:block>
 </html>
