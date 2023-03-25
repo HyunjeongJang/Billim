@@ -3,6 +3,13 @@
 /*    border: 1px solid red;*/
 /*}*/
 
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 a {
     text-decoration: none;
 }
@@ -45,7 +52,7 @@ a {
     z-index: 1;
     -webkit-user-select: none;
     user-select: none;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 #menuToggle a {
@@ -168,7 +175,7 @@ body {
     padding: 0;
     background: #ffffff;
     color: #000000;
-    /*font-family: "Avenir Next", "Avenir", sans-serif;*/
+    font-family: 'S-CoreDream-3Light', sans-serif;
 }
 
 
