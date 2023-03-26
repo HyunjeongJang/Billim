@@ -157,7 +157,7 @@
 
         function memberIdCheck(){
             const memberId = $("#memberId").val();
-            return check(memberId,getIdCheck,"아이디를 다시 입력해 주세요",$("#idCheck"));
+            return check(memberId,getIdCheck,"아이디를 다시 입력해 주세요.",$("#idCheck"));
         }
         function passwordCheck(){
             const password =  $("#password").val();
@@ -165,7 +165,7 @@
         };
         function password2Check(){
             const password2 = $("#password2").val();
-            // pw 와 pw2비교
+            // if()
             return true;
         }
         function usernameCheck(){
@@ -195,15 +195,7 @@
             span.text("");
             return true;
         }
-
-
-
-
-
     </script>
-
-
-
 
     <th:block th:replace="pages/member/signup_script.html :: testJs"></th:block>
 </th:block>
