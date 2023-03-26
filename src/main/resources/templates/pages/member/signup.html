@@ -129,7 +129,7 @@
         </form>
     </div>
 </div>
-<th:block layout:fragment="content_js">
+<th:block layout:fragment="contentJs">
     <script th:inline="javascript">
 
         const getIdCheck = RegExp(/^[a-zA-Z0-9]{4,14}$/);
@@ -197,5 +197,5 @@
         }
     </script>
 
-    <th:block th:replace="pages/member/signupScript.html :: testJs"></th:block>
+    <th:block th:replace="pages/member/signupScript.html :: signupScript"></th:block>
 </th:block>
