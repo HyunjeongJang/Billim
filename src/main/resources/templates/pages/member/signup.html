@@ -2,8 +2,8 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/default_layout}">
-<style layout:fragment="content_css">
+      layout:decorate="~{layout/defaultLayout}">
+<style layout:fragment="contentCss">
     /*hr {*/
     /*    width: 50%;*/
     /*    background-color: dimgray;*/
@@ -129,7 +129,7 @@
         </form>
     </div>
 </div>
-<th:block layout:fragment="content_js">
+<th:block layout:fragment="contentJs">
     <script th:inline="javascript">
 
         const getIdCheck = RegExp(/^[a-zA-Z0-9]{4,14}$/);
@@ -157,7 +157,7 @@
 
         function memberIdCheck(){
             const memberId = $("#memberId").val();
-            return check(memberId,getIdCheck,"아이디를 다시 입력해 주세요.",$("#idCheck"));
+            return check(memberId,getIdCheck,"아이디를 다시 입력해 주세요",$("#idCheck"));
         }
         function passwordCheck(){
             const password =  $("#password").val();
@@ -165,7 +165,7 @@
         };
         function password2Check(){
             const password2 = $("#password2").val();
-            // if()
+            // pw 와 pw2비교
             return true;
         }
         function usernameCheck(){
@@ -197,5 +197,5 @@
         }
     </script>
 
-    <th:block th:replace="pages/member/signup_script.html :: testJs"></th:block>
+    <th:block th:replace="pages/member/signupScript.html :: signupScript"></th:block>
 </th:block>

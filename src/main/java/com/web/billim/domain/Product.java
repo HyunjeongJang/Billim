@@ -1,8 +1,8 @@
 package com.web.billim.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.web.billim.dto.request.ProductRegisterRequest;
+import com.web.billim.type.TradeMethod;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -11,18 +11,22 @@ import java.sql.Timestamp;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "product")
-public class Product {
+@Builder
+@Getter
+public class Product extends JpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private int product_id;
+    private int productId;
 
-    private int category_id;
+    private int categoryId;
 
-    private int member_id;
+    @JoinColumn(name = "member_id", referencedColumnName = "member_id")
+    @ManyToOne
+    private Member member;
 
-    private String product_name;
+    private String productName;
 
     private String detail;
 
@@ -30,10 +34,19 @@ public class Product {
 
     private String area;
 
-    private Timestamp created_at;
+    @Enumerated(EnumType.STRING)
+    private TradeMethod tradeMethod;
 
-    private Timestamp updated_at;
-
-    private String trade_method;
+    public static Product generateNewProduct(ProductRegisterRequest request) {
+        return Product.builder()
+                .categoryId(request.getCategoryId())
+                .member(request.getMember())
+                .productName(request.getName())
+                .detail(request.getDetail())
+                .price(request.getPrice())
+                .area(request.getArea())
+                .tradeMethod(request.getTradeMethod())
+                .build();
+    }
 
 }

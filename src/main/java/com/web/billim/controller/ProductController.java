@@ -12,17 +12,17 @@ public class ProductController {
 
     @GetMapping("/product/total")
     public String productTotal(){
-        return "pages/product/total_content";
+        return "pages/product/productList";
     }
 
     @GetMapping("/myPage/sales")
     public String myPageSalesManagement(){
-        return "pages/product/myPage_sales_content";
+        return "pages/myPage/mySalesList";
     }
 
     @GetMapping("/product/enroll")
     public String productEnroll(){
-        return "pages/product/enroll_content";
+        return "pages/product/productEnroll";
     }
 
 }
