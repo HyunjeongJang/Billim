@@ -1,7 +1,7 @@
 package com.web.billim.service;
 
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
-@Transactional
+@Service
 public class MemberService {
 }

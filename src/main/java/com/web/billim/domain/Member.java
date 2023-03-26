@@ -32,8 +32,5 @@ public class Member {
 
     private String grade;
 
-    private Timestamp created_at;
-
-    private Timestamp updated_at;
 
 }
