@@ -10,7 +10,7 @@ public class MemberController {
 
     @GetMapping("/member/signup")
     public String memberSignUp(){
-        return "pages/member/signup_content";
+        return "pages/member/signup";
     }
 
 

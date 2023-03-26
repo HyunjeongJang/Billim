@@ -1,5 +1,6 @@
 package com.web.billim.domain;
 
+import com.web.billim.dto.request.ProductRegisterRequest;
 import com.web.billim.type.TradeMethod;
 import lombok.*;
 
@@ -35,5 +36,17 @@ public class Product extends JpaEntity {
 
     @Enumerated(EnumType.STRING)
     private TradeMethod tradeMethod;
+
+    public static Product generateNewProduct(ProductRegisterRequest request) {
+        return Product.builder()
+                .categoryId(request.getCategoryId())
+                .member(request.getMember())
+                .productName(request.getName())
+                .detail(request.getDetail())
+                .price(request.getPrice())
+                .area(request.getArea())
+                .tradeMethod(request.getTradeMethod())
+                .build();
+    }
 
 }

@@ -2,8 +2,8 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/default_layout}">
-<style layout:fragment="content_css">
+      layout:decorate="~{layout/defaultLayout}">
+<style layout:fragment="contentCss">
     /*hr {*/
     /*    width: 50%;*/
     /*    background-color: dimgray;*/
@@ -197,5 +197,5 @@
         }
     </script>
 
-    <th:block th:replace="pages/member/signup_script.html :: testJs"></th:block>
+    <th:block th:replace="pages/member/signupScript.html :: testJs"></th:block>
 </th:block>
