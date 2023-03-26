@@ -2,32 +2,32 @@ DROP TABLE IF EXISTS `member`;
 
 CREATE TABLE `member`
 (
-    `member_id`  int                                 NOT NULL COMMENT '회원번호',
-    `id`         varchar(100)                        NOT NULL COMMENT '회원ID',
-    `password`   varchar(200)                        NOT NULL COMMENT '비밀번호',
-    `name`       varchar(100)                        NOT NULL COMMENT '회원이름',
-    `nickname`   varchar(100)                        NOT NULL COMMENT '닉네임',
-    `address`    varchar(100)                        NOT NULL COMMENT '회원주소',
-    `email`      varchar(200)                        NOT NULL COMMENT '회원이메일',
-    `grade`      varchar(10)                         NOT NULL COMMENT '회원등급',
-    `created_at` timestamp default current_timestamp NOT NULL COMMENT '가입일자',
-    `updated_at` timestamp default current_timestamp on update NOT NULL COMMENT '접속일자'
+    `member_id`  int                                                             NOT NULL COMMENT '회원번호',
+    `id`         varchar(100)                                                    NOT NULL COMMENT '회원ID',
+    `password`   varchar(200)                                                    NOT NULL COMMENT '비밀번호',
+    `name`       varchar(100)                                                    NOT NULL COMMENT '회원이름',
+    `nickname`   varchar(100)                                                    NOT NULL COMMENT '닉네임',
+    `address`    varchar(100)                                                    NOT NULL COMMENT '회원주소',
+    `email`      varchar(200)                                                    NOT NULL COMMENT '회원이메일',
+    `grade`      varchar(10)                                                     NOT NULL COMMENT '회원등급',
+    `created_at` timestamp default current_timestamp                             NOT NULL COMMENT '가입일자',
+    `updated_at` timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '접속일자'
 );
 
 DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product`
 (
-    `product_id`   int                                 NOT NULL COMMENT '상품번호',
-    `category_id`  int                                 NOT NULL COMMENT '카테고리번호',
-    `member_id`    int                                 NOT NULL COMMENT '판매회원번호',
-    `product_name` varchar(100)                        NOT NULL COMMENT '상품명',
-    `detail`       varchar(3000)                       NOT NULL COMMENT '상품설명',
-    `price`        int                                 NOT NULL COMMENT '대여요금',
-    `area`         varchar(100)                        NOT NULL COMMENT '거래지역',
-    `created_at`   timestamp default current_timestamp NOT NULL COMMENT '등록일자',
-    `updated_at`   timestamp default current_timestamp on update NOT NULL COMMENT '수정일자',
-    `trade_method` varchar(10)                         NOT NULL COMMENT '거래방법'
+    `product_id`   int                                                             NOT NULL COMMENT '상품번호',
+    `category_id`  int                                                             NOT NULL COMMENT '카테고리번호',
+    `member_id`    int                                                             NOT NULL COMMENT '판매회원번호',
+    `product_name` varchar(100)                                                    NOT NULL COMMENT '상품명',
+    `detail`       varchar(3000)                                                   NOT NULL COMMENT '상품설명',
+    `price`        int                                                             NOT NULL COMMENT '대여요금',
+    `area`         varchar(100)                                                    NOT NULL COMMENT '거래지역',
+    `created_at`   timestamp default current_timestamp                             NOT NULL COMMENT '등록일자',
+    `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자',
+    `trade_method` varchar(10)                                                     NOT NULL COMMENT '거래방법'
 );
 
 DROP TABLE IF EXISTS `product_category`;
@@ -101,12 +101,12 @@ DROP TABLE IF EXISTS `saved_point`;
 
 CREATE TABLE `saved_point`
 (
-    `point_no`   int                                 NOT NULL COMMENT '적립금번호',
-    `member_no`  int                                 NOT NULL COMMENT '회원번호',
-    `amount`     int                                 NOT NULL COMMENT '적립금액',
-    `expired_at` timestamp                           NOT NULL COMMENT '소멸일자',
-    `created_at` timestamp default current_timestamp NOT NULL COMMENT '적립일자',
-    `updated_at` timestamp default current_timestamp on update NOT NULL COMMENT '사용일자'
+    `point_no`   int                                                             NOT NULL COMMENT '적립금번호',
+    `member_no`  int                                                             NOT NULL COMMENT '회원번호',
+    `amount`     int                                                             NOT NULL COMMENT '적립금액',
+    `expired_at` timestamp                                                       NOT NULL COMMENT '소멸일자',
+    `created_at` timestamp default current_timestamp                             NOT NULL COMMENT '적립일자',
+    `updated_at` timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '사용일자'
 );
 
 DROP TABLE IF EXISTS `coupon_issue`;
@@ -125,11 +125,11 @@ DROP TABLE IF EXISTS `chat_room`;
 
 CREATE TABLE `chat_room`
 (
-    `chat_room_id` int                                 NOT NULL COMMENT '채팅방번호',
-    `product_id`   int                                 NOT NULL COMMENT '상품번호',
-    `member_id`    int                                 NOT NULL COMMENT '구매회원번호',
-    `created_at`   timestamp default current_timestamp NOT NULL COMMENT '생성일자',
-    `updated_at`   timestamp default current_timestamp on update NOT NULL COMMENT '업데이트일자'
+    `chat_room_id` int                                                             NOT NULL COMMENT '채팅방번호',
+    `product_id`   int                                                             NOT NULL COMMENT '상품번호',
+    `member_id`    int                                                             NOT NULL COMMENT '구매회원번호',
+    `created_at`   timestamp default current_timestamp                             NOT NULL COMMENT '생성일자',
+    `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
 
 DROP TABLE IF EXISTS `notification`;
@@ -161,14 +161,14 @@ DROP TABLE IF EXISTS `review`;
 
 CREATE TABLE `review`
 (
-    `review_id`   int                                 NOT NULL COMMENT '리뷰번호',
-    `product_id`  int                                 NOT NULL COMMENT '상품번호',
-    `member_id`   int                                 NOT NULL COMMENT '구매회원번호',
-    `content`     varchar(1000)                       NOT NULL COMMENT '리뷰내용',
-    `star_rating` int                                 NOT NULL COMMENT '별점',
-    `created_at`  timestamp default current_timestamp NOT NULL COMMENT '작성일자',
-    `updated_at`  timestamp default current_timestamp on update NOT NULL COMMENT '업데이트일자',
-    `status`      varchar(10)                         NOT NULL COMMENT '삭제여부'
+    `review_id`   int                                                             NOT NULL COMMENT '리뷰번호',
+    `product_id`  int                                                             NOT NULL COMMENT '상품번호',
+    `member_id`   int                                                             NOT NULL COMMENT '구매회원번호',
+    `content`     varchar(1000)                                                   NOT NULL COMMENT '리뷰내용',
+    `star_rating` int                                                             NOT NULL COMMENT '별점',
+    `created_at`  timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
+    `updated_at`  timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자',
+    `status`      varchar(10)                                                     NOT NULL COMMENT '삭제여부'
 );
 
 DROP TABLE IF EXISTS `image_product`;
