@@ -12,10 +12,10 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-//    public Product register(ProductRegisterRequest request) {
-//        // 1. 이미지 저장
-//        // 2. Product 정보 데이터베이스에 저장 & 반환
-//        return productRepository.create(Product.generateNewProduct(request));
-//    }
+    public Product register(ProductRegisterRequest request) {
+        // 1. 이미지 저장
+        // 2. Product 정보 데이터베이스에 저장 & 반환
+        return productRepository.save(Product.generateNewProduct(request));
+    }
 
 }

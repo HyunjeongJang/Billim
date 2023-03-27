@@ -11,70 +11,89 @@
     <div class="content" th:fragment="">
         <div class="subject">
             <h2>상품 등록</h2>
-<!--            <span class="symbol"><img th:src="@{/images/product_enroll.png}" width="40px"> 대여할 상품을 등록해 주세요!</span>-->
+            <!--            <span class="symbol"><img th:src="@{/images/product_enroll.png}" width="40px"> 대여할 상품을 등록해 주세요!</span>-->
         </div>
 
-        <form method="post" th:action="@{/productEnroll}">
-            <table th:align="center">
-                <tr>
-                    <td class="table_text">대여 상품명</td>
-                    <td class="table_input"><input type="text" id="title" class="form-control" required ></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="3"><hr></td>
-                </tr>
-
-                <tr>
-                    <td class="table_text">대여 요금</td>
-                    <td class="table_input"><input type="number" id="" class="form-control" required></td>
-                    <td class="table_last">원(/일)</td>
-                </tr>
-                <tr>
-                    <td colspan="3"><hr></td>
-                </tr>
-
-                <tr>
-                    <td class="table_text">거래 방법</td>
-                    <td class="table_input">
-                        <input type="checkbox" value="direct"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" value="delivery"> &nbsp;택배
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
+        <table th:align="center">
+            <tr>
+                <td class="table_text">대여 상품명</td>
+                <td class="table_input"><input type="text" id="title" class="form-control" required ></td>
+                <td></td>
+            </tr>
+            <tr>
                 <td colspan="3"><hr></td>
-                </tr>
+            </tr>
 
-                <tr>
-                    <td class="table_text">상품 설명</td>
-                    <td><textarea name="" id="product_content" rows="15" class="form-control" style="padding-left: 20px" required></textarea></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="3"><hr></td>
-                </tr>
+            <tr>
+                <td class="table_text">대여 요금</td>
+                <td class="table_input"><input type="number" id="price" class="form-control" required></td>
+                <td class="table_last">원(/일)</td>
+            </tr>
+            <tr>
+                <td colspan="3"><hr></td>
+            </tr>
 
-                <tr>
-                    <td class="table_text">상품 사진</td>
-                    <td class="table_input">
-                        <div id='image_preview' class="filebox">
-                            <input type='file' id='btnAtt' multiple='multiple' class="form-control upload-hidden" onchange="readURL(this);" />
-                            <div id='att_zone'
-                                 data-placeholder='이미지를 첨부 하시려면 파일 선택 버튼을 클릭하거나 드래그 앤 드랍 하세요'></div>
-                        </div>
-                    </td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td class="table_text">거래 방법</td>
+                <td class="table_input">
+                    <input type="checkbox" name="trade_method" value="direct"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" name="trade_method" value="delivery"> &nbsp;택배
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3"><hr></td>
+            </tr>
 
+            <tr>
+                <td class="table_text">상품 설명</td>
+                <td><textarea name="" id="product_content" rows="15" class="form-control" style="padding-left: 20px" required></textarea></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3"><hr></td>
+            </tr>
 
+            <tr>
+                <td class="table_text">상품 사진</td>
+                <td class="table_input">
+                    <div id='image_preview' class="filebox">
+                        <input type='file' id='btnAtt' multiple='multiple' class="form-control upload-hidden" onchange="readURL(this);" />
+                        <div id='att_zone'
+                             data-placeholder='이미지를 첨부 하시려면 파일 선택 버튼을 클릭하거나 드래그 앤 드랍 하세요'></div>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
 
-            </table>
-            <br>
+        </table>
+        <br>
 
-            <button class="btn btn-secondary" type="reset">취소</button>&nbsp;
-            <button class="btn btn-dark" type="submit">상품등록</button>
-        </form>
+        <button class="btn btn-secondary" type="reset">취소</button>&nbsp;
+        <button class="btn btn-dark" type="button" onclick="register()">상품등록</button>
+        <script>
+            function register() {
+                var trade_methods = [];
+                console.log($('input:checkbox[name=trade_method]:checked'))
+                console.log(trade_methods)
+                $.ajax({
+                    url: 'http://localhost:8080/product', // TODO
+                    method: 'POST',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: JSON.stringify({
+                        categoryId: 1, // TODO
+                        name: $('#title').val(),
+                        detail: $('#product_content').val(),
+                        price: $('#price').val(),
+                        area: '서울시', // TODO
+                        tradeMethod: 'direct'.toUpperCase()
+                    }),
+                    error: function (error) {
+                        alert(error['responseJSON'].message)
+                    }
+                });
+            }
+        </script>
     </div>
 </div>
 

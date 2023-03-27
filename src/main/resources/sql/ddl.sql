@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `member`;
 
 CREATE TABLE `member`
 (
-    `member_id`  int                                                             NOT NULL COMMENT '회원번호',
+    `member_id`  int primary key auto_increment COMMENT '회원번호',
     `id`         varchar(100)                                                    NOT NULL COMMENT '회원ID',
     `password`   varchar(200)                                                    NOT NULL COMMENT '비밀번호',
     `name`       varchar(100)                                                    NOT NULL COMMENT '회원이름',
@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product`
 (
-    `product_id`   int                                                             NOT NULL COMMENT '상품번호',
+    `product_id`   int primary key auto_increment COMMENT '상품번호',
     `category_id`  int                                                             NOT NULL COMMENT '카테고리번호',
     `member_id`    int                                                             NOT NULL COMMENT '판매회원번호',
     `product_name` varchar(100)                                                    NOT NULL COMMENT '상품명',
@@ -27,7 +27,7 @@ CREATE TABLE `product`
     `area`         varchar(100)                                                    NOT NULL COMMENT '거래지역',
     `created_at`   timestamp default current_timestamp                             NOT NULL COMMENT '등록일자',
     `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자',
-    `trade_method` varchar(10)                                                     NOT NULL COMMENT '거래방법'
+    `trade_method` varchar(30)                                                     NOT NULL COMMENT '거래방법'
 );
 
 DROP TABLE IF EXISTS `product_category`;
@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS `attachment`;
 
 CREATE TABLE `attachment`
 (
-    `file_id`    int                                 NOT NULL COMMENT '파일번호',
+    `file_id`    int primary key auto_increment COMMENT '파일번호',
     `member_id`  int                                 NOT NULL COMMENT '업로더번호',
     `file_name`  varchar(200)                        NOT NULL COMMENT '파일이름',
     `created_at` timestamp default current_timestamp NOT NULL COMMENT '생성일자'
@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `interest_list`;
 
 CREATE TABLE `interest_list`
 (
-    `interest_id` int NOT NULL COMMENT '관심상품번호',
+    `interest_id` int primary key auto_increment COMMENT '관심상품번호',
     `product_id`  int NOT NULL COMMENT '상품번호',
     `member_id`   int NOT NULL COMMENT '회원번호'
 );
@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `order`
 (
-    `share_id`    int                                 NOT NULL COMMENT '대여번호',
+    `share_id`    int primary key auto_increment COMMENT '대여번호',
     `product_id`  int                                 NOT NULL COMMENT '상품번호',
     `member_id`   int                                 NOT NULL COMMENT '구매회원번호',
     `status`      varchar(10)                         NOT NULL COMMENT '대여상태',
@@ -86,7 +86,7 @@ DROP TABLE IF EXISTS `payment`;
 
 CREATE TABLE `payment`
 (
-    `payment_id`   int                                 NOT NULL COMMENT '결제번호',
+    `payment_id`   int primary key auto_increment COMMENT '결제번호',
     `share_id`     int                                 NOT NULL COMMENT '대여번호',
     `coupon_id`    int                                 NULL COMMENT '쿠폰번호',
     `point`        int                                 NULL COMMENT '적립금',
@@ -101,7 +101,7 @@ DROP TABLE IF EXISTS `saved_point`;
 
 CREATE TABLE `saved_point`
 (
-    `point_no`   int                                                             NOT NULL COMMENT '적립금번호',
+    `point_no`   int primary key auto_increment COMMENT '적립금번호',
     `member_no`  int                                                             NOT NULL COMMENT '회원번호',
     `amount`     int                                                             NOT NULL COMMENT '적립금액',
     `expired_at` timestamp                                                       NOT NULL COMMENT '소멸일자',
@@ -113,7 +113,7 @@ DROP TABLE IF EXISTS `coupon_issue`;
 
 CREATE TABLE `coupon_issue`
 (
-    `issue_id`   int         NOT NULL COMMENT '쿠폰번호',
+    `issue_id`   int primary key auto_increment COMMENT '쿠폰번호',
     `member_id`  int         NOT NULL COMMENT '회원번호',
     `coupon_id`  int         NOT NULL COMMENT '쿠폰 번호',
     `created_at` timestamp   NOT NULL COMMENT '생성일자',
@@ -125,7 +125,7 @@ DROP TABLE IF EXISTS `chat_room`;
 
 CREATE TABLE `chat_room`
 (
-    `chat_room_id` int                                                             NOT NULL COMMENT '채팅방번호',
+    `chat_room_id` int primary key auto_increment COMMENT '채팅방번호',
     `product_id`   int                                                             NOT NULL COMMENT '상품번호',
     `member_id`    int                                                             NOT NULL COMMENT '구매회원번호',
     `created_at`   timestamp default current_timestamp                             NOT NULL COMMENT '생성일자',
@@ -136,7 +136,7 @@ DROP TABLE IF EXISTS `notification`;
 
 CREATE TABLE `notification`
 (
-    `notify_id`  int                                 NOT NULL COMMENT '알림번호',
+    `notify_id`  int primary key auto_increment COMMENT '알림번호',
     `member_id`  int                                 NOT NULL COMMENT '수신회원번호',
     `type`       varchar(50)                         NOT NULL COMMENT '알림타입',
     `is_read`    boolean                             NOT NULL COMMENT '읽음여부',
@@ -149,7 +149,7 @@ DROP TABLE IF EXISTS `chat_message`;
 
 CREATE TABLE `chat_message`
 (
-    `message_id`   int                                 NOT NULL COMMENT '메세지번호',
+    `message_id`   int primary key auto_increment COMMENT '메세지번호',
     `chat_room_id` int                                 NOT NULL COMMENT '채팅방번호',
     `member_id`    int                                 NOT NULL COMMENT '발신회원번호',
     `message`      varchar(2000)                       NOT NULL COMMENT '채팅메세지',
@@ -161,7 +161,7 @@ DROP TABLE IF EXISTS `review`;
 
 CREATE TABLE `review`
 (
-    `review_id`   int                                                             NOT NULL COMMENT '리뷰번호',
+    `review_id`   int primary key auto_increment COMMENT '리뷰번호',
     `product_id`  int                                                             NOT NULL COMMENT '상품번호',
     `member_id`   int                                                             NOT NULL COMMENT '구매회원번호',
     `content`     varchar(1000)                                                   NOT NULL COMMENT '리뷰내용',
@@ -199,7 +199,7 @@ DROP TABLE IF EXISTS `coupon`;
 
 CREATE TABLE `coupon`
 (
-    `coupon_id`  int          NOT NULL COMMENT '쿠폰 번호',
+    `coupon_id`  int primary key auto_increment COMMENT '쿠폰 번호',
     `name`       varchar(200) NOT NULL COMMENT '쿠폰이름',
     `rate`       int          NOT NULL COMMENT '차감률',
     `limit_date` int          NOT NULL COMMENT '유효기간'
@@ -213,101 +213,5 @@ CREATE TABLE `image_profile`
     `member_id` int NOT NULL COMMENT '회원번호'
 );
 
-ALTER TABLE `member`
-    ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (
-                                            `member_id`
-        );
 
-ALTER TABLE `product`
-    ADD CONSTRAINT `PK_PRODUCT` PRIMARY KEY (
-                                             `product_id`
-        );
-
-ALTER TABLE `product_category`
-    ADD CONSTRAINT `PK_PRODUCT_CATEGORY` PRIMARY KEY (
-                                                      `category_id`
-        );
-
-ALTER TABLE `attachment`
-    ADD CONSTRAINT `PK_ATTACHMENT` PRIMARY KEY (
-                                                `file_id`
-        );
-
-ALTER TABLE `interest_list`
-    ADD CONSTRAINT `PK_INTEREST_LIST` PRIMARY KEY (
-                                                   `interest_id`
-        );
-
-ALTER TABLE `block`
-    ADD CONSTRAINT `PK_BLOCK` PRIMARY KEY (
-                                           `member_id`
-        );
-
-ALTER TABLE `order`
-    ADD CONSTRAINT `PK_ORDER` PRIMARY KEY (
-                                           `share_id`
-        );
-
-ALTER TABLE `payment`
-    ADD CONSTRAINT `PK_PAYMENT` PRIMARY KEY (
-                                             `payment_id`
-        );
-
-ALTER TABLE `saved_point`
-    ADD CONSTRAINT `PK_SAVED_POINT` PRIMARY KEY (
-                                                 `point_no`
-        );
-
-ALTER TABLE `coupon_issue`
-    ADD CONSTRAINT `PK_COUPON_ISSUE` PRIMARY KEY (
-                                                  `issue_id`
-        );
-
-ALTER TABLE `chat_room`
-    ADD CONSTRAINT `PK_CHAT_ROOM` PRIMARY KEY (
-                                               `chat_room_id`
-        );
-
-ALTER TABLE `notification`
-    ADD CONSTRAINT `PK_NOTIFICATION` PRIMARY KEY (
-                                                  `notify_id`
-        );
-
-ALTER TABLE `chat_message`
-    ADD CONSTRAINT `PK_CHAT_MESSAGE` PRIMARY KEY (
-                                                  `message_id`
-        );
-
-ALTER TABLE `review`
-    ADD CONSTRAINT `PK_REVIEW` PRIMARY KEY (
-                                            `review_id`
-        );
-
-ALTER TABLE `image_product`
-    ADD CONSTRAINT `PK_IMAGE_PRODUCT` PRIMARY KEY (
-                                                   `file_id`,
-                                                   `product_id`
-        );
-
-ALTER TABLE `image_chat`
-    ADD CONSTRAINT `PK_IMAGE_CHAT` PRIMARY KEY (
-                                                `file_id`,
-                                                `message_id`
-        );
-
-ALTER TABLE `saved_point_rate`
-    ADD CONSTRAINT `PK_SAVED_POINT_RATE` PRIMARY KEY (
-                                                      `grade`
-        );
-
-ALTER TABLE `coupon`
-    ADD CONSTRAINT `PK_COUPON` PRIMARY KEY (
-                                            `coupon_id`
-        );
-
-ALTER TABLE `image_profile`
-    ADD CONSTRAINT `PK_IMAGE_PROFILE` PRIMARY KEY (
-                                                   `file_id`,
-                                                   `member_id`
-        );
 
