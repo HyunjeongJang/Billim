@@ -4,6 +4,7 @@ import com.web.billim.domain.Product;
 import com.web.billim.dto.request.ProductRegisterRequest;
 import com.web.billim.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -12,8 +12,5 @@ import javax.persistence.PersistenceContext;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Integer> {
     boolean existsByNickname(String nickname);
-
-
-
-
+    boolean existsByUserId(String userId);
 }

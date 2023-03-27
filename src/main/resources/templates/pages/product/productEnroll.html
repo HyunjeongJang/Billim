@@ -36,8 +36,8 @@
             <tr>
                 <td class="table_text">거래 방법</td>
                 <td class="table_input">
-                    <input type="checkbox" name="trade_method" value="direct"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" name="trade_method" value="delivery"> &nbsp;택배
+                    <input type="checkbox" class="trade_method" name="trade_method" value="direct"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" class="trade_method" name="trade_method" value="delivery"> &nbsp;택배
                 </td>
                 <td></td>
             </tr>
@@ -87,9 +87,14 @@
                         price: $('#price').val(),
                         area: '서울시', // TODO
                         tradeMethod: 'direct'.toUpperCase()
+                        // tradeMethod: $('.trade_method').checked().val().toUpperCase()
                     }),
                     error: function (error) {
-                        alert(error['responseJSON'].message)
+                        // alert(error['responseJSON'].message)
+                        Swal.fire({
+                            icon: 'warning',
+                            title: error['responseJSON'].message
+                        });
                     }
                 });
             }

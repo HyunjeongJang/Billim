@@ -20,7 +20,7 @@ public class Member extends JpaEntity {
     @Column(name = "member_id")
     private int memberId;
 
-    private String id;
+    private String userId;
 
     private String password;
 

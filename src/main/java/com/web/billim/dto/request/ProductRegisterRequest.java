@@ -1,6 +1,7 @@
 package com.web.billim.dto.request;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
@@ -18,16 +19,17 @@ public class ProductRegisterRequest {
 
 	private int categoryId;
 	private Member member;
+
 	@NotEmpty
 	private String name;
+
 	@NotEmpty
 	private String detail;
+
 	@Min(0)
 	private int price;
-
 	private String area;
 	private TradeMethod tradeMethod;
-
 	public void setRegisterMember(Member member) {
 		this.member = member;
 	}
