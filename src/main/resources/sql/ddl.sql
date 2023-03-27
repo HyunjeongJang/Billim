@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `member`;
 
 CREATE TABLE `member`
 (
-    `member_id`  int                                                             NOT NULL COMMENT '회원번호',
+    `member_id`  int primary key auto_increment                                      COMMENT '회원번호',
     `id`         varchar(100)                                                    NOT NULL COMMENT '회원ID',
     `password`   varchar(200)                                                    NOT NULL COMMENT '비밀번호',
     `name`       varchar(100)                                                    NOT NULL COMMENT '회원이름',
@@ -213,10 +213,7 @@ CREATE TABLE `image_profile`
     `member_id` int NOT NULL COMMENT '회원번호'
 );
 
-ALTER TABLE `member`
-    ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (
-                                            `member_id`
-        );
+
 
 ALTER TABLE `product`
     ADD CONSTRAINT `PK_PRODUCT` PRIMARY KEY (

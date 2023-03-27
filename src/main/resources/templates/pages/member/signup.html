@@ -35,7 +35,7 @@
 <div layout:fragment="content">
     <div class="content" style="text-align: center" th:fragment="testPage">
         <h1>회원가입</h1>
-        <form method="post" th:action="@{/signUp}">
+        <form method="post" th:action="@{/member/signup}" modelAttribut="MemberSignupRequest">
             <table th:align="center" >
                 <tr>
                     <td class="table_text">
@@ -44,7 +44,7 @@
                     <td class="table_input">
                         <input type="text" id="memberId" name="id" class="form-control"/>
                     </td>
-                    <td ><span id="idCheck"></span></td>
+                    <td ><span id="idCheck" th:text="${valid_id}"></span></td>
                 </tr>
                 <tr><td colspan="3"><hr></td></tr>
                 <tr>
@@ -54,14 +54,14 @@
                     <td class="table_input">
                         <input type="password" id="password" name="password" class="form-control"/>
                     </td>
-                    <td ><span id="pwCheck"></span></td>
+                    <td ><span id="pwCheck" th:text="${valid_password}"></span></td>
                 </tr>
                 <tr>
                     <td class="table_text">
                         비밀번호 재입력
                     </td>
                     <td class="table_input">
-                        <input type="password" id="password2" name="password" class="form-control"  required/>
+                        <input type="password" id="password2" class="form-control"/>
                     </td>
                     <td ><span id="pw2Check"></span></td>
                 </tr>
@@ -71,9 +71,9 @@
                         이름(실명)
                     </td>
                     <td class="table_input">
-                        <input type="text" id="username" name="name" class="form-control" required>
+                        <input type="text" id="username" name="name" class="form-control">
                     </td>
-                    <td ><span id="nameCheck"></span></td>
+                    <td ><span id="nameCheck" th:text="${valid_name}"></span></td>
                 </tr>
                 <tr><td colspan="3"><hr></td></tr>
                 <tr>
@@ -81,9 +81,9 @@
                         닉네임
                     </td>
                     <td class="table_input">
-                        <input type="text" id="nickName" name="nickName" class="form-control" required>
+                        <input type="text" id="nickName" name="nickname" class="form-control">
                     </td>
-                    <td ><span id="nickNameCheck"></span></td>
+                    <td ><span id="nickNameCheck" th:text="${valid_nickname}"></span></td>
                 </tr>
                 <tr><td colspan="3"><hr></td></tr>
                 <tr>
@@ -91,9 +91,9 @@
                         이메일
                     </td>
                     <td  class="table_input">
-                        <input type="text" id="email" name="email_1" class="form-control" required>
+                        <input type="text" id="email" name="email" class="form-control">
                     </td>
-                    <td></td>
+                    <td><span id="emailCheck" th:text="${valid_email}"></span> </td>
                 </tr>
                 <tr><td colspan="3"><hr></td></tr>
                 <tr>
@@ -109,16 +109,17 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td class="table_input"><input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소"></td>
-                    <td><input type="text" class="form-control" id="sample4_jibunAddress" placeholder="지번주소"></td>
+                    <td class="table_input"><input type="text" name="address" id="sample4_roadAddress" class="form-control" placeholder="도로명주소"></td>
+<!--                    <td><input type="text" class="form-control" id="sample4_jibunAddress" placeholder="지번주소"></td>-->
+                    <td></td>
                 </tr>
                 <tr>
                     <td><span id="guide" style="color:#999;display:none"></span></td>
                     <td class="table_input">
-                        <input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
+                        <input type="text" id="sample4_detailAddress" name="address" class="form-control" placeholder="상세주소">
                     </td>
                     <td>
-                        <input type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목">
+                        <input type="text" id="sample4_extraAddress" name="address" class="form-control" placeholder="참고항목">
                     </td>
                 </tr>
                 <tr><td colspan="3"><hr></td></tr>
@@ -130,72 +131,5 @@
     </div>
 </div>
 <th:block layout:fragment="contentJs">
-    <script th:inline="javascript">
-
-        const getIdCheck = RegExp(/^[a-zA-Z0-9]{4,14}$/);
-        // [허용문자], {최소문자길이, 최대 문자길이}
-        const getPwCheck = RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
-        // 숫자가 먼저오고 뒤에 특수문자가 옴 or 특수문자가 먼저오고 숫자가 옴 2가지 방법으로 제약 사항 설정
-        const getNameCheck = RegExp(/^[가-힣]+$/);
-        const getNickNameCheck = RegExp(/^[가-힣]+$/);
-        // 한글만 허용
-
-        let chk1 = false, chk2 = false, chk3 = false, chk4 = false;
-
-        $("#memberId").focusout(function () {
-            if (memberIdCheck() == false) {
-                return false;
-            }
-            // $.ajax("/member/id_check?memberId=" + $("#memberId").val())
-            //     .done(()=>$("#idCheck").text("사용 가능한 아이디 입니다.").attr("class", "success"))
-            //     .fail(()=>$("#idCheck").text("사용 중인 아이디입니다.").attr("class", "fail"));
-        });
-        $("#password").focusout(passwordCheck);
-        $("#password2").focusout(password2Check);
-        $("#username").focusout(usernameCheck);
-        $("#nickName").focusout(nickNameCheck);
-
-        function memberIdCheck(){
-            const memberId = $("#memberId").val();
-            return check(memberId,getIdCheck,"아이디를 다시 입력해 주세요",$("#idCheck"));
-        }
-        function passwordCheck(){
-            const password =  $("#password").val();
-            return check(password,getPwCheck,"비밀번호를 다시 입력해 주세요.",$("#pwCheck"));
-        };
-        function password2Check(){
-            const password2 = $("#password2").val();
-            // pw 와 pw2비교
-            return true;
-        }
-        function usernameCheck(){
-            const username = $("#username").val();
-            return check(username,getNameCheck,"한글로 입력해주세요.",$("#nameCheck"));
-        }
-        function nickNameCheck(){
-            const nickName = $("#nickName").val();
-            return check(nickName,getNickNameCheck,"한글로 입력해주세요.",$("#nickNameCheck"));
-            return true;
-        }
-
-
-        function check(value, pattern, message, span) {
-            // 입력 안 함
-            if (value == "") {
-                span.text("필수 입력입니다.").attr('class', 'fail');
-                return false;
-            }
-            // 패턴 체크
-            if (pattern.test(value)==false) {
-                span.text(message).attr('class','fail');
-                console.log(value);
-                console.log(pattern.test(value));
-                return false;
-            }
-            span.text("");
-            return true;
-        }
-    </script>
-
     <th:block th:replace="pages/member/signupScript.html :: signupScript"></th:block>
 </th:block>
