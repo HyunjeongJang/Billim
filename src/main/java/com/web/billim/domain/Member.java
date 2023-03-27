@@ -1,6 +1,8 @@
 package com.web.billim.domain;
 
+import com.web.billim.type.MemberGrade;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -30,7 +32,9 @@ public class Member extends JpaEntity {
 
     private String email;
 
-    private String grade;
+    @Enumerated(EnumType.STRING)
+    private MemberGrade grade;
+
 
 
 }
