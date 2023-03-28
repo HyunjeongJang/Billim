@@ -25,6 +25,21 @@
             </tr>
 
             <tr>
+                <td class="table_text">카테고리</td>
+                <td class="table_input">
+                    <select id="category" class="form-control" th:field="*{categoryList}">
+                        <option value="">카테고리 선택</option>
+                        <option th:each="category : ${categoryList}" th:value="${category.getCategoryId()}"
+                                th:text="${category.getCategoryName()}" ></option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3"><hr></td>
+            </tr>
+
+            <tr>
                 <td class="table_text">대여 요금</td>
                 <td class="table_input"><input type="number" id="price" class="form-control" required></td>
                 <td class="table_last">원(/일)</td>
@@ -68,29 +83,26 @@
 
         </table>
         <br>
-
         <button class="btn btn-secondary" type="reset">취소</button>&nbsp;
         <button class="btn btn-dark" type="button" onclick="register()">상품등록</button>
+
         <script>
             function register() {
                 var trade_methods = [];
                 console.log($('input:checkbox[name=trade_method]:checked'))
                 console.log(trade_methods)
                 $.ajax({
-                    url: 'http://localhost:8080/product', // TODO
+                    url: 'http://localhost:8080/product/enroll', // TODO
                     method: 'POST',
                     contentType: 'application/json; charset=UTF-8',
                     data: JSON.stringify({
-                        categoryId: 1, // TODO
+                        categoryId: $('#category').val(),
                         name: $('#title').val(),
                         detail: $('#product_content').val(),
                         price: $('#price').val(),
-                        area: '서울시', // TODO
                         tradeMethod: 'direct'.toUpperCase()
-                        // tradeMethod: $('.trade_method').checked().val().toUpperCase()
                     }),
                     error: function (error) {
-                        // alert(error['responseJSON'].message)
                         Swal.fire({
                             icon: 'warning',
                             title: error['responseJSON'].message

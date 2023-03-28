@@ -18,8 +18,6 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-
-
     public Map<String, String> validateHandling(BindingResult bindingResult) {
         Map<String, String> validatorResult = new HashMap<>();
 

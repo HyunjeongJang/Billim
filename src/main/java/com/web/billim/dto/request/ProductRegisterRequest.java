@@ -28,7 +28,7 @@ public class ProductRegisterRequest {
 
 	@Min(0)
 	private int price;
-	private String area;
+
 	private TradeMethod tradeMethod;
 	public void setRegisterMember(Member member) {
 		this.member = member;

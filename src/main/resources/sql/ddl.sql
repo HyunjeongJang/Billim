@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS `member`;
 CREATE TABLE `member`
 (
     `member_id`  int primary key auto_increment COMMENT '회원번호',
-    `user_id`         varchar(100)                                                    NOT NULL COMMENT '회원ID',
+    `user_id`    varchar(100)                                                    NOT NULL COMMENT '회원ID',
     `password`   varchar(200)                                                    NOT NULL COMMENT '비밀번호',
     `name`       varchar(100)                                                    NOT NULL COMMENT '회원이름',
     `nickname`   varchar(100)                                                    NOT NULL COMMENT '닉네임',

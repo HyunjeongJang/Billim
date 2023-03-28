@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+
+<div layout:fragment="content">
+    <link th:href="@{/css/.css}" rel="stylesheet">
+    <div class="content" th:fragment="">
+
+
+
+    </div>
+</div>
+<th:block layout:fragment="contentJs">
+    <th:block th:replace="pages/product/productDetailScript.html :: productDetailScript"></th:block>
+</th:block>
+
+</html>

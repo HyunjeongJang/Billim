@@ -1,7 +1,11 @@
 package com.web.billim.repository;
 
 import com.web.billim.domain.Product;
+import com.web.billim.domain.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ProductCategoryRepository extends JpaRepository<Product, Long> {
+@Repository
+public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long> {
+
 }

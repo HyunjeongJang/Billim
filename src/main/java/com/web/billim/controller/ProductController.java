@@ -2,18 +2,18 @@ package com.web.billim.controller;
 
 import com.web.billim.domain.Member;
 import com.web.billim.domain.Product;
+import com.web.billim.domain.ProductCategory;
 import com.web.billim.dto.request.ProductRegisterRequest;
 import com.web.billim.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -23,27 +23,48 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/product/total")
-    public String productTotal(){
+    public String productTotal(Model model) {
+        List<Product> productList = productService.findAllProduct();
+        model.addAttribute("productList", productList);
         return "pages/product/productList";
     }
 
+    @GetMapping("/product/detail")
+    public String productDetail(@RequestParam int productId) {
+
+        return "pages/product/productDetail";
+    }
+
+
+
     @GetMapping("/myPage/sales")
-    public String myPageSalesManagement(){
+    public String myPageSalesManagement() {
         return "pages/myPage/mySalesList";
     }
 
-    @GetMapping("/product/enroll")
-    public String productEnroll(){
+    @GetMapping("/product/enrollPage")
+    public String productEnroll(Model model) {
+        List<ProductCategory> categoryList = productService.categoryList();
+        model.addAttribute("categoryList", categoryList);
         return "pages/product/productEnroll";
     }
 
-    @PostMapping( "/product")
+    @PostMapping("/product/enroll")
     @ResponseBody
     public ResponseEntity<Product> registerProduct(@Valid @RequestBody ProductRegisterRequest req) {
         Member testMember = Member.builder().memberId(1).build();
-
         req.setRegisterMember(testMember);
+
         return ResponseEntity.ok(productService.register(req));
     }
+
+//    @PostMapping("/product/enroll")
+//    public String registerProduct(@Valid ProductRegisterRequest req) {
+//        Member testMember = Member.builder().memberId(1).build();
+//        req.setRegisterMember(testMember);
+//        productService.register(req);
+//        return "pages/myPage/mySalesList";
+//    }
+
 
 }

@@ -22,6 +22,10 @@ public class Product extends JpaEntity {
 
     private int categoryId;
 
+//    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+//    @ManyToOne
+//    private ProductCategory productCategory;
+
     @JoinColumn(name = "member_id", referencedColumnName = "member_id")
     @ManyToOne
     private Member member;
@@ -31,8 +35,6 @@ public class Product extends JpaEntity {
     private String detail;
 
     private int price;
-
-    private String area;
 
     @Enumerated(EnumType.STRING)
     private TradeMethod tradeMethod;
@@ -44,7 +46,6 @@ public class Product extends JpaEntity {
                 .productName(request.getName())
                 .detail(request.getDetail())
                 .price(request.getPrice())
-                .area(request.getArea())
                 .tradeMethod(request.getTradeMethod())
                 .build();
     }

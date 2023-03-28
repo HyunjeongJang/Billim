@@ -13,9 +13,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     // @Query("SELECT p FROM Product p WHERE p.area = :area") // 복잡한 건 직접 짠다. N + 1 문제 -> Fetch Join -> 직접 쿼리
     // List<Product> findAllByArea(String area);
     // 내가 만든 메소드 이름으로 쿼리가 만들어진다.
+    // Spring Data -> Repository
+    // 추상 메소드를 만들어 놓으면 -> 그거에 맞는 구현체(쿼리 포함)를 직접 만들어줌.
 
 }
 
-// Spring Data -> Repository
-// 추상 메소드를 만들어 놓으면 -> 그거에 맞는 구현체(쿼리 포함)를 직접 만들어줌.
+
 
