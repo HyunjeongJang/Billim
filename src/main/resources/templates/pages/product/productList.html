@@ -25,7 +25,7 @@
 
         <div>
             <div th:each="product : ${productList}">
-                <div th:text="${product.productName}"></div>
+                <div th:text="${product.productName}" th:value="${product.productId}" onclick=""></div>
             </div>
         </div>
 

@@ -29,8 +29,11 @@ public class ProductController {
         return "pages/product/productList";
     }
 
-    @GetMapping("/product/detail")
-    public String productDetail(@RequestParam int productId) {
+    @GetMapping("/product/detail/{productId}")
+    public String productDetail(@PathVariable("productId") int productId, Model model) {
+
+        List<Product> productList = productService.findProductDetail(productId);
+        model.addAttribute("productList", productList);
 
         return "pages/product/productDetail";
     }
@@ -42,7 +45,7 @@ public class ProductController {
         return "pages/myPage/mySalesList";
     }
 
-    @GetMapping("/product/enrollPage")
+    @GetMapping("/product/enrollForm")
     public String productEnroll(Model model) {
         List<ProductCategory> categoryList = productService.categoryList();
         model.addAttribute("categoryList", categoryList);

@@ -31,6 +31,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public List<Product> findProductDetail(int productId) {
+        return productRepository.findAll();
+    }
+
 
 
 

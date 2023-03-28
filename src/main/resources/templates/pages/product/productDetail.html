@@ -8,6 +8,12 @@
     <link th:href="@{/css/.css}" rel="stylesheet">
     <div class="content" th:fragment="">
 
+        <div>
+            <div th:each="product : ${productList}">
+                <div th:text="${product.productName}"></div>
+            </div>
+        </div>
+
 
 
     </div>
