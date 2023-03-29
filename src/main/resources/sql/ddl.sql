@@ -24,7 +24,6 @@ CREATE TABLE `product`
     `product_name` varchar(100)                                                    NOT NULL COMMENT '상품명',
     `detail`       varchar(3000)                                                   NOT NULL COMMENT '상품설명',
     `price`        int                                                             NOT NULL COMMENT '대여요금',
-    `area`         varchar(100)                                                    NOT NULL COMMENT '거래지역',
     `created_at`   timestamp default current_timestamp                             NOT NULL COMMENT '등록일자',
     `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자',
     `trade_method` varchar(30)                                                     NOT NULL COMMENT '거래방법'
