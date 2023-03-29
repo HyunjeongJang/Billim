@@ -4,6 +4,7 @@ import com.web.billim.dto.request.MemberSignupRequest;
 import com.web.billim.service.MemberService;
 import com.web.billim.validation.CheckIdValidator;
 import com.web.billim.validation.CheckNickNameValidator;
+import com.web.billim.validation.CheckPasswordValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,13 @@ public class MemberController {
     private final MemberService memberService;
     private final CheckIdValidator checkIdValidator;
     private final CheckNickNameValidator checkNickNameValidator;
+    private final CheckPasswordValidator checkPasswordValidator;
 
     @InitBinder
     public void validatorBinder(WebDataBinder binder){
         binder.addValidators(checkIdValidator);
         binder.addValidators(checkNickNameValidator);
+        binder.addValidators(checkPasswordValidator);
     }
 
     @GetMapping("/member/signup")
