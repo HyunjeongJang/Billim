@@ -2,3 +2,55 @@
     width: 100%;
 }
 
+.category_image {
+    padding-right: 20px;
+    width: 50px;
+}
+
+
+
+.search-area {
+    padding-left: 20%;
+}
+
+.isStatusOnInput {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+
+}
+
+*,*:focus,*:hover{outline:none;}
+
+
+
+.product-list{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.product-info{
+    width: 300px;
+    text-align: center;
+    height: 380px;
+    transition: all 0.3s linear;
+    margin: 15px 15px;
+    padding-top: 10px;
+    border-radius: 20px;
+}
+
+.product-image{
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+/*.product-info:hover{*/
+/*    transform: scale(1.05);*/
+/*}*/

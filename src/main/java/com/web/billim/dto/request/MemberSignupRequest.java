@@ -45,7 +45,6 @@ public class MemberSignupRequest {
                         .email(email)
                         .grade(MemberGrade.BRONZE)
                         .build();
-
         return member;
     }
 

@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 public class CheckNickNameValidator extends AbstractValidator<MemberSignupRequest>{
 
     private final MemberRepository memberRepository;
+
     @Override
     protected void doValidate(MemberSignupRequest dto, Errors errors) {
         if(memberRepository.existsByNickname(dto.toEntity().getNickname())){

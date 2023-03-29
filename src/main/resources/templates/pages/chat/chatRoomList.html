@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+
+<div layout:fragment="content">
+
+    <link th:href="@{/css/chatRoomList.css}" rel="stylesheet">
+
+
+
+    <div class="container">
+        <div id="chat_left">
+            <div class="chatSelect">
+                <img src="https://cdn-icons-png.flaticon.com/512/1910/1910995.png">
+                <p>1:1 문의 내역</p>
+            </div>
+            <div class="preChatList" >
+                <th:forEach items="" var="chattingList">
+                    <div class="preChat" >
+                        <div class="photo"><img src=""/></div>
+                        <div class="desc-contact">
+                            <input type="hidden" class="roomNo" value="" id="">
+                            <p class="name" id="nickName">닉네임</p>
+                            <p class="${chattingList.roomNo}_message message">최근 메세지</p>
+                        </div>
+                        <div class="chat_alert">
+                            <div class="${chattingList.roomNo}_date date date">시간</div>
+
+<!--                            <th:if test="${chattingList.read eq 'N'}">-->
+<!--                                <div class="${chattingList.roomNo}_new new" style="display: block">NEW</div>-->
+<!--                            </th:if>-->
+<!--                            <th:if test="${chattingList.read eq 'Y'}">-->
+<!--                                <div class="${chattingList.roomNo}_new new" style="display: none">NEW</div>-->
+<!--                            </th:if>-->
+                        </div>
+                    </div>
+                </th:forEach>
+
+
+            </div>
+        </div>
+
+        <div id="middle">
+
+        </div>
+
+
+        <div id="chat_right">
+            <div class="basicImage">
+                <img src="https://cdn-icons-png.flaticon.com/512/4495/4495254.png">
+                <div> 대화 내역이 없습니다.</div>
+                <div>대화 목록에서 상대를 선택하고 메시지를 주고받을 수 있어요
+                    지금 바로 시작해 보세요!</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+</div>
+</html>

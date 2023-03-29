@@ -1,0 +1,35 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="HeaderFragment" id="myPageHeader">
+    <div class="header-top">
+        <div id="header_1">
+        </div>
+
+        <div id="header_2">
+            <a th:href="@{/}" class="logo">
+                <span class="symbol"><img th:src="@{/images/common/billim_logo_1.png}" width="100px"></span>
+            </a>
+        </div>
+
+        <div id="header_3">
+            <div class="login">
+                <div class="login-after">
+                    <span>메세지</span>
+                    <span><a href="/member/myPage">마이페이지</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-bottom">
+        프로필사진
+        등급
+        적립금
+        쿠폰
+        후기
+    </div>
+
+
+</header>
+</html>
+

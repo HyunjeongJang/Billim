@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+
+<div layout:fragment="content">
+
+    <div id="chat_contents_ajax">
+        <div class="header-chat">
+            <div class="name" id="titleName"></div>
+        </div>
+        <div class="chat">
+            <div class="messages-chat">
+                <th:forEach items="" var="chattingMessageList">
+                    <th:choose>
+                        <th:when test="">
+                            <div class="response">
+                                <span class="text">메세지</span>
+                            </div>
+                        </th:when>
+                        <th:otherwise>
+                            <div class="request">
+                                <span class=" text">메세지</span>
+                            </div>
+                        </th:otherwise>
+                    </th:choose>
+                </th:forEach>
+            </div>
+        </div>
+        <div class="footer-chat">
+            <input id="chat-input" type="text"/>
+            <input id="roomNo-send" type="hidden">
+            <div id="sendMessage" onclick="send();"><i class="fa-solid fa-paper-plane"></i></div>
+        </div>
+    </div>
+</div>
+</html>

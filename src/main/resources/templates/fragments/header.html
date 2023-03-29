@@ -12,9 +12,13 @@
 
     <div id="header_3">
         <div class="login">
-            <a th:href="@{/member/signup}">
-                로그인
+            <a th:href="@{/member/login}">
+                <span class="login-before">로그인</span>
             </a>
+            <div class="login-after">
+                <span><a href="/chat/myChatRoom">메세지</a></span>
+                <span><a href="/member/myPage">마이페이지</a></span>
+            </div>
         </div>
     </div>
 </header>

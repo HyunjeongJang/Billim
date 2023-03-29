@@ -37,6 +37,11 @@ public class MemberController {
         binder.addValidators(checkPasswordValidator);
     }
 
+    @GetMapping("/member/login")
+    public String memberLogin(){
+        return "pages/member/login";
+    }
+
     @GetMapping("/member/signup")
     public String memberSignUp(){
         return "pages/member/signup";
@@ -58,6 +63,13 @@ public class MemberController {
         }
         memberService.singUp(memberSignupRequest);
 
-        return "pages/home";}
+        return "pages/home";
+    }
+
+    @GetMapping("/member/myPage")
+    public String myPage() {
+        return "pages/myPage/myPurchaseList";
+    }
+
 
 }

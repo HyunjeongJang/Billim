@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+
+<div layout:fragment="content">
+
+    <style>
+        .login_input {
+            width: 300px;
+        }
+
+        .login_area {
+            padding-bottom: 25px;
+        }
+
+        .login_button {
+            width: 300px;
+        }
+
+        .search_id {
+            text-align: right;
+        }
+
+    </style>
+
+
+    <div class="content">
+        <table th:align="center" width="300px">
+            <tr>
+                <td>
+                    <div class="login_area"><input class="form-control login_input" type="text" placeholder="아이디"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="login_area"><input class="form-control login_input" type="password" placeholder="비밀번호">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="login_area">
+                        <button class="btn btn-light login_button">로그인</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="login_area">
+                        <a href="/member/signup">
+                            <button class="btn btn-dark login_button">회원가입</button>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="search_id"><span>아이디</span> | <span>비밀번호 찾기</span></td>
+            </tr>
+        </table>
+
+
+    </div>
+
+</div>
+</html>

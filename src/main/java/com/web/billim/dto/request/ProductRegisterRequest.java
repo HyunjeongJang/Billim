@@ -21,11 +21,14 @@ public class ProductRegisterRequest {
 	private Member member;
 
 	@NotEmpty
+//	@NotEmpty(message = "대여 상품명은 필수 항목입니다.")
 	private String name;
 
 	@NotEmpty
+//	@NotEmpty(message = "상품 설명은 필수 항목입니다.")
 	private String detail;
 
+//	@NotEmpty(message = "금액은 필수항목입니다. 100원 이상 입력해 주세요.")
 	@Min(100)
 	private int price;
 
