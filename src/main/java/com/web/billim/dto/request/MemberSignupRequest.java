@@ -4,12 +4,12 @@ import com.web.billim.domain.Member;
 import com.web.billim.type.MemberGrade;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 
 @Getter
+@Setter
 @Builder
 public class MemberSignupRequest {
 
@@ -17,8 +17,12 @@ public class MemberSignupRequest {
     @Pattern(regexp = "^[a-z0-9]{4,20}$", message = "아이디는 영어 소문자와 숫자만 사용하여 4~20자리여야 합니다.")
     private String userId;
     @NotBlank(message = "비밀번호는 필수 입력값입니다.")
-//    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,16}$", message = "비밀번호는 8~16자리수여야 합니다. 영문 대소문자, 숫자, 특수문자를 1개 이상 포함해야 합니다.")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}", message = "비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.")
     private String password;
+
+    @NotBlank(message = "비밀번호는 필수 입력입니다.")
+    private String password2;
+
     @NotBlank(message = "이름은 필수 입력값입니다.")
     @Pattern(regexp = "^[가-힣]+$" , message = "한글로 입력해 주세요.")
     private String name;

@@ -61,9 +61,9 @@
                         비밀번호 재입력
                     </td>
                     <td class="table_input">
-                        <input type="password" id="password2" class="form-control"/>
+                        <input type="password" id="password2" name="password2" class="form-control"/>
                     </td>
-                    <td ><span id="pw2Check"></span></td>
+                    <td ><span id="pw2Check" th:text="${valid_password2}"></span></td>
                 </tr>
                 <tr><td colspan="3"><hr></td></tr>
                 <tr>
@@ -93,6 +93,7 @@
                     <td  class="table_input">
                         <input type="text" id="email" name="email" class="form-control">
                     </td>
+<!--                    <td><input type="button" th:value="인증하기"></td>-->
                     <td><span id="emailCheck" th:text="${valid_email}"></span> </td>
                 </tr>
                 <tr><td colspan="3"><hr></td></tr>
@@ -124,7 +125,7 @@
                 </tr>
                 <tr><td colspan="3"><hr></td></tr>
                 <tr>
-                    <td><button class="btn btn-dark">회원가입</button></td>
+                    <td><button type="submit" class="btn btn-dark">회원가입</button></td>
                 </tr>
             </table>
         </form>
