@@ -41,7 +41,7 @@
 
             <tr>
                 <td class="table_text">대여 요금</td>
-                <td class="table_input"><input type="number" id="price" class="form-control" required></td>
+                <td class="table_input"><input type="number" id="price" class="form-control" min="100" required></td>
                 <td class="table_last">원(/일)</td>
             </tr>
             <tr>
@@ -92,7 +92,7 @@
                 console.log($('input:checkbox[name=trade_method]:checked'))
                 console.log(trade_methods)
                 $.ajax({
-                    url: 'http://localhost:8080/product/enroll', // TODO
+                    url: '@{/product/enroll}',
                     method: 'POST',
                     contentType: 'application/json; charset=UTF-8',
                     data: JSON.stringify({
@@ -100,7 +100,7 @@
                         name: $('#title').val(),
                         detail: $('#product_content').val(),
                         price: $('#price').val(),
-                        tradeMethod: 'direct'.toUpperCase()
+                        tradeMethod: 'direct'.toUpperCase() // TODO
                     }),
                     error: function (error) {
                         Swal.fire({

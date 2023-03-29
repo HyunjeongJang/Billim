@@ -5,6 +5,7 @@ import com.web.billim.service.MemberService;
 import com.web.billim.validation.CheckIdValidator;
 import com.web.billim.validation.CheckNickNameValidator;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +18,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.util.Map;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
 
     @Autowired
     private final MemberService memberService;
-
     private final CheckIdValidator checkIdValidator;
     private final CheckNickNameValidator checkNickNameValidator;
 
@@ -40,8 +41,8 @@ public class MemberController {
 
     @PostMapping("/member/signup")
     public String memberSingUpProc(@Valid MemberSignupRequest memberSignupRequest,
-                               BindingResult bindingResult,
-                               Model model
+                                   BindingResult bindingResult,
+                                   Model model
     ){
         if(bindingResult.hasErrors()){
             model.addAttribute("memberDto",memberSignupRequest);

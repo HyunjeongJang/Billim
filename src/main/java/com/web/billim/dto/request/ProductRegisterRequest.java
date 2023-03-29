@@ -26,7 +26,7 @@ public class ProductRegisterRequest {
 	@NotEmpty
 	private String detail;
 
-	@Min(0)
+	@Min(100)
 	private int price;
 
 	private TradeMethod tradeMethod;

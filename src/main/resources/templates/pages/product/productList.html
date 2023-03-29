@@ -25,12 +25,17 @@
 
         <div>
             <div th:each="product : ${productList}">
-                <div th:text="${product.productName}" th:value="${product.productId}" onclick=""></div>
+                <a th:text="${product.productName}" th:href="@{/product/detail/{productId}(productId=${product.productId})}"></a>
             </div>
         </div>
 
     </div>
+
+
+
 </div>
+
+
 
 
 </html>

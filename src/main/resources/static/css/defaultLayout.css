@@ -194,7 +194,7 @@ input[type="number"]::-webkit-inner-spin-button {
     padding-top: 60px;
     height: 150px;
     color: #cccccc;
-    text-align: center;
+    text-align: left;
 }
 
 .copyright {

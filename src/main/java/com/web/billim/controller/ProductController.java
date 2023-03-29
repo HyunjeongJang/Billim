@@ -32,13 +32,9 @@ public class ProductController {
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {
 
-        List<Product> productList = productService.findProductDetail(productId);
-        model.addAttribute("productList", productList);
 
         return "pages/product/productDetail";
     }
-
-
 
     @GetMapping("/myPage/sales")
     public String myPageSalesManagement() {
@@ -57,7 +53,6 @@ public class ProductController {
     public ResponseEntity<Product> registerProduct(@Valid @RequestBody ProductRegisterRequest req) {
         Member testMember = Member.builder().memberId(1).build();
         req.setRegisterMember(testMember);
-
         return ResponseEntity.ok(productService.register(req));
     }
 
