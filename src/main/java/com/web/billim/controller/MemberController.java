@@ -1,5 +1,6 @@
 package com.web.billim.controller;
 
+
 import com.web.billim.dto.request.MemberSignupRequest;
 import com.web.billim.service.MemberService;
 import com.web.billim.validation.CheckIdValidator;
@@ -66,10 +67,15 @@ public class MemberController {
         return "pages/home";
     }
 
+
+//    @PostMapping("/member/login")
+//    public String memberLoginProc(@Valid MemberLoginRequest memberLoginRequest){
+//            memberService.login(memberLoginRequest);
+//    }
+
+
     @GetMapping("/member/myPage")
     public String myPage() {
         return "pages/myPage/myPurchaseList";
     }
-
-
 }
