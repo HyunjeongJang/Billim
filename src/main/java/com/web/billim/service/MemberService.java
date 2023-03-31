@@ -4,8 +4,7 @@ import com.web.billim.domain.Member;
 import com.web.billim.dto.request.MemberSignupRequest;
 import com.web.billim.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -18,6 +17,7 @@ import java.util.Map;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+//    private final AuthenticationManager authenticationManager;
 
     public Map<String, String> validateHandling(BindingResult bindingResult) {
         Map<String, String> validatorResult = new HashMap<>();
@@ -30,8 +30,8 @@ public class MemberService {
     }
 
     public void singUp(MemberSignupRequest memberSignupRequest) {
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        memberSignupRequest.setPassword(encoder.encode(memberSignupRequest.getPassword()));
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        memberSignupRequest.setPassword(encoder.encode(memberSignupRequest.getPassword()));
         Member member = memberSignupRequest.toEntity();
         memberRepository.save(member);
     }
