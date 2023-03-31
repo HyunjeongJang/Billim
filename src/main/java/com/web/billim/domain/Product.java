@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -15,10 +16,10 @@ import java.sql.Timestamp;
 @Getter
 public class Product extends JpaEntity {
 
-    @Id
+    @Id   // 이 필드가 해당 테이블의 PK 다.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private int productId;
+    private Integer productId;
 
     private int categoryId;
 
@@ -35,14 +36,19 @@ public class Product extends JpaEntity {
     @Enumerated(EnumType.STRING)
     private TradeMethod tradeMethod;
 
-    public static Product generateNewProduct(ProductRegisterRequest request) {
+    @JoinColumn
+    @OneToMany
+    private List<ImageProduct> images;
+
+    public static Product generateNewProduct(ProductRegisterRequest request, List<ImageProduct> images) {
         return Product.builder()
                 .categoryId(request.getCategoryId())
                 .member(request.getMember())
                 .productName(request.getName())
                 .detail(request.getDetail())
                 .price(request.getPrice())
-                .tradeMethod(request.getTradeMethod())
+                .tradeMethod(TradeMethod.DIRECT)
+                .images(images)
                 .build();
     }
 

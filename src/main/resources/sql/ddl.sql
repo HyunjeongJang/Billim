@@ -37,16 +37,6 @@ CREATE TABLE `product_category`
     `category_name` varchar(100) NOT NULL COMMENT '카테고리명'
 );
 
-DROP TABLE IF EXISTS `attachment`;
-
-CREATE TABLE `attachment`
-(
-    `file_id`    int primary key auto_increment COMMENT '파일번호',
-    `member_id`  int                                 NOT NULL COMMENT '업로더번호',
-    `file_name`  varchar(200)                        NOT NULL COMMENT '파일이름',
-    `created_at` timestamp default current_timestamp NOT NULL COMMENT '생성일자'
-);
-
 DROP TABLE IF EXISTS `interest_list`;
 
 CREATE TABLE `interest_list`
@@ -174,16 +164,30 @@ DROP TABLE IF EXISTS `image_product`;
 
 CREATE TABLE `image_product`
 (
-    `file_id`    int NOT NULL COMMENT '파일번호',
-    `product_id` int NOT NULL COMMENT '상품번호'
+    `image_product_id` int primary key auto_increment COMMENT '이미지번호',
+    `product_id` int NOT NULL COMMENT '상품번호',
+    `created_at`  timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
+    `updated_at`  timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
 
 DROP TABLE IF EXISTS `image_chat`;
 
 CREATE TABLE `image_chat`
 (
-    `file_id`    int NOT NULL COMMENT '파일번호',
-    `message_id` int NOT NULL COMMENT '메세지번호'
+    `image_chat_id` int primary key auto_increment COMMENT '이미지번호',
+    `message_id` int NOT NULL COMMENT '메세지번호',
+    `created_at`  timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
+    `updated_at`  timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
+);
+
+DROP TABLE IF EXISTS `image_profile`;
+
+CREATE TABLE `image_profile`
+(
+    `image_profile_id` int primary key auto_increment COMMENT '이미지번호',
+    `member_id` int NOT NULL COMMENT '회원번호',
+    `created_at`  timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
+    `updated_at`  timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
 
 DROP TABLE IF EXISTS `saved_point_rate`;
@@ -204,13 +208,7 @@ CREATE TABLE `coupon`
     `limit_date` int          NOT NULL COMMENT '유효기간'
 );
 
-DROP TABLE IF EXISTS `image_profile`;
 
-CREATE TABLE `image_profile`
-(
-    `file_id`   int NOT NULL COMMENT '파일번호',
-    `member_id` int NOT NULL COMMENT '회원번호'
-);
 
 
 

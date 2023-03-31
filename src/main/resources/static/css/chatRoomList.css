@@ -141,15 +141,15 @@
 }
 
 .basicImage > img{
-    width: 300px;
-    margin-left: 180px;
+    width: 250px;
+    margin-left: 30%;
     margin-bottom: 20px;
 }
 
 .basicImage > div{
     text-align: center;
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 300;
     color: #3d3d3d;
     margin-top: 10px;
 }
