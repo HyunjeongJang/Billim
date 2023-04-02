@@ -1,6 +1,6 @@
 package com.web.billim.security.provider;
 
-import com.web.billim.domain.Member;
+import com.web.billim.dto.request.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,9 +21,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
 
         // AuthenticaionFilter에서 생성된 토큰으로부터 아이디와 비밀번호를 조회함
-        String userid = token.getName();
+        String userId = token.getName();
         String password = (String) token.getCredentials();
-        Member user = (Member) userDetailsService.loadUserByUsername(userid);
+        User user = (User) userDetailsService.loadUserByUsername(userId);
 
         if(!passwordEncoder.matches(password, user.getPassword())){
             throw new BadCredentialsException(user.getUserId() + " Invalid password");

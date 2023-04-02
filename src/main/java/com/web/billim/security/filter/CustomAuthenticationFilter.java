@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+    // UsernamePasswordAuthenticationFilter
+    // spring security 에서 폼 형식의 로그인 형태에서 사용하는 filter
+    // SecurityConfig에 http.formLogin() 작성하면 자동으로 사용되어짐
+    // 기본 값으로 username password 를 사용하지만 userId, password 를 사용하여 가독성을 높이기 위해 커스텀을 진행
 
     public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
         super.setAuthenticationManager(authenticationManager);

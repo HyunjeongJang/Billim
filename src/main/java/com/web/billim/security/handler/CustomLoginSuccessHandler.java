@@ -15,6 +15,6 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
                                         Authentication authentication) throws IOException {
         //나중에 사용자의 정보를 꺼낼 경우에도 SecurityContextHolder의 context에서 조회 가능함
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        response.sendRedirect("/user");
+        response.sendRedirect("/");
     }
 }

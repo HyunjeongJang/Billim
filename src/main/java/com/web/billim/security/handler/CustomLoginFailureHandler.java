@@ -27,7 +27,7 @@ public class CustomLoginFailureHandler extends SimpleUrlAuthenticationFailureHan
             msg = "BadCredentialsException account";
         }
 
-        setDefaultFailureUrl("/login?error=true&exception=" + msg);
+        setDefaultFailureUrl("/member/login?error=true&exception=" + msg);
 
         super.onAuthenticationFailure(request, response, exception);
     }
