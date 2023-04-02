@@ -1,10 +1,8 @@
 package com.web.billim.dto.request;
 
 import com.web.billim.domain.Member;
-import com.web.billim.type.MemberGrade;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;

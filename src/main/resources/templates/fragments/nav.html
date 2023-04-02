@@ -1,5 +1,5 @@
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <nav th:fragment="NavFragment" id="nav_menu" role="navigation">
     <div id="menuToggle">
         <input type="checkbox"/>
@@ -36,7 +36,9 @@
                     <li style="font-size: smaller"><a href="#">차단관리</a></li>
                 </ul>
             </li>
-            <a>로그아웃</a>
+            <div sec:authorize="isAuthenticated()">
+                <a  href="/member/logout">로그아웃</a>
+            </div>
         </ul>
     </div>
 </nav>
