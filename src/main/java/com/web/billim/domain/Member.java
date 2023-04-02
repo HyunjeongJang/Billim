@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -47,6 +48,5 @@ public class Member{
 //    public void setProfileImageUrl(String profileImageUrl) {
 //        this.profileImageUrl = profileImageUrl;
 //    }
-
 
 }

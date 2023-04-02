@@ -31,9 +31,6 @@ public class MemberService {
     }
 
     public void singUp(MemberSignupRequest memberSignupRequest) {
-
-//        Bean 으로 만들어 놨으니까 객체 생성이 아니라 주입 받아서 써야,,
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); new 는 dto 만들때나 도메인 객체 만들때,
         memberSignupRequest.setPassword(bCryptPasswordEncoder.encode(memberSignupRequest.getPassword()));
         Member member = memberSignupRequest.toEntity();
         memberRepository.save(member);
