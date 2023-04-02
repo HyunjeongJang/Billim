@@ -11,7 +11,8 @@ CREATE TABLE `member`
     `email`      varchar(200)                                                    NOT NULL COMMENT '회원이메일',
     `grade`      varchar(10)                                                     NOT NULL COMMENT '회원등급',
     `created_at` timestamp default current_timestamp                             NOT NULL COMMENT '가입일자',
-    `updated_at` timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '접속일자'
+    `updated_at` timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '접속일자',
+    `profile_image_url` varchar(1024) NOT NULL COMMENT '프로필 url'
 );
 
 DROP TABLE IF EXISTS `product`;
@@ -166,7 +167,7 @@ CREATE TABLE `image_product`
 (
     `image_product_id` int primary key auto_increment COMMENT '이미지번호',
     `product_id`       int                                                             NOT NULL COMMENT '상품번호',
-    'url'              varchar(1024) COMMENT '이미지 url',
+    `url`              varchar(1024) NOT NULL COMMENT '이미지 url',
     `created_at`       timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
     `updated_at`       timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
@@ -177,7 +178,7 @@ CREATE TABLE `image_chat`
 (
     `image_chat_id` int primary key auto_increment COMMENT '이미지번호',
     `message_id`    int                                                             NOT NULL COMMENT '메세지번호',
-    'url'           varchar(1024) COMMENT '이미지 url',
+    `url`           varchar(1024) COMMENT '이미지 url',
     `created_at`    timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
     `updated_at`    timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
@@ -188,7 +189,7 @@ CREATE TABLE `image_profile`
 (
     `image_profile_id` int primary key auto_increment COMMENT '이미지번호',
     `member_id`        int                                                             NOT NULL COMMENT '회원번호',
-    'url'              varchar(1024) COMMENT '이미지 url',
+    `url`              varchar(1024) COMMENT '이미지 url',
     `created_at`       timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
     `updated_at`       timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );

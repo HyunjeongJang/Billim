@@ -2,6 +2,7 @@ package com.web.billim.domain;
 
 import com.web.billim.type.MemberGrade;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -37,7 +38,13 @@ public class Member implements UserDetails {
     @Enumerated(EnumType.STRING)
     private MemberGrade grade;
 
-    private String profileImageUrl = "https://billim.s3.ap-northeast-2.amazonaws.com/profile/default.png";
+
+    private String profileImageUrl;
+
+    @PrePersist
+    public void prePersist(){
+        this.profileImageUrl = this.profileImageUrl == null ? "https://billim.s3.ap-northeast-2.amazonaws.com/profile/default.png": this.profileImageUrl;
+    }
 
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;

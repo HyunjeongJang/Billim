@@ -2,7 +2,6 @@ package com.web.billim.service;
 
 import com.web.billim.domain.Member;
 import com.web.billim.dto.request.MemberSignupRequest;
-import com.web.billim.infra.ImageUploadService;
 import com.web.billim.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
