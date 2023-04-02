@@ -11,26 +11,10 @@ import java.util.Collection;
 
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 public class User implements UserDetails {
 
-    private int memberId;
-
-    private String userId;
-
-    private String password;
-
-    private String name;
-
-    private String nickname;
-
-    private String address;
-
-    private String email;
-
-
-    private MemberGrade grade;
+   private final Member member;
 
 
     @Override
@@ -38,14 +22,14 @@ public class User implements UserDetails {
         return null;
     }
 
-//    @Override
-//    public String getPassword() {
-//        return getPassword();
-//    }
+    @Override
+    public String getPassword() {
+        return member.getPassword();
+    }
 
     @Override
     public String getUsername() {
-        return getUsername();
+        return member.getName();
     }
 
     @Override
