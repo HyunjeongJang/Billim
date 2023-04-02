@@ -1,4 +1,4 @@
-package com.web.billim.controller.provider;
+package com.web.billim.security.provider;
 
 import com.web.billim.domain.Member;
 import lombok.RequiredArgsConstructor;

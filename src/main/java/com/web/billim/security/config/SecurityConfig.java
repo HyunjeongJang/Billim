@@ -1,9 +1,9 @@
-package com.web.billim.controller.config;
+package com.web.billim.security.config;
 
-import com.web.billim.controller.filter.CustomAuthenticationFilter;
-import com.web.billim.controller.handler.CustomLoginFailureHandler;
-import com.web.billim.controller.handler.CustomLoginSuccessHandler;
-import com.web.billim.controller.provider.CustomAuthenticationProvider;
+import com.web.billim.security.filter.CustomAuthenticationFilter;
+import com.web.billim.security.handler.CustomLoginFailureHandler;
+import com.web.billim.security.handler.CustomLoginSuccessHandler;
+import com.web.billim.security.provider.CustomAuthenticationProvider;
 import com.web.billim.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
