@@ -51,8 +51,8 @@
             <tr>
                 <td class="table_text">거래 방법</td>
                 <td class="table_input">
-                    <input type="checkbox" class="trade_method" name="tradeMethod" value="DIRECT"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" class="trade_method" name="tradeMethod" value="DELIVERY"> &nbsp;택배
+                    <input type="checkbox" class="tradeMethod" name="tradeMethod" value="DIRECT"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" class="tradeMethod" name="tradeMethod" value="DELIVERY"> &nbsp;택배
                 </td>
                 <td></td>
             </tr>
@@ -95,19 +95,34 @@
                 formData.set("price", $('#price').val());
                 formData.set("tradeMethod", $('input:checkbox[name=tradeMethod]:checked').val()); // TODO : 체크 돼야 넘어가게끔도 처리해야함
 
+
+                // const tradeMethods = [];
+                // $('input:checkbox[name=tradeMethod]:checked').each(function () {
+                //     tradeMethods.push(this.value);
+                // });
+
+                // const tradeMethods = [];
+                // console.log($('input:checkbox[name=tradeMethod]:checked'));
+                // console.log(tradeMethods);
+
+                // const array = [];
+                // $('input:checkbox[name=tradeMethod]:checked').each(function() {
+                //     array.push(this.value);
+                // });
+                // formData.set("tradeMethod",$("#arrayParam").val(array));
+
+
                 const files = $('#btnAtt')[0].files
                 for (let i = 0; i < files.length; ++i) {
                     formData.append('images', files[i]);
                 }
 
-                var trade_methods = [];
-                console.log($('input:checkbox[name=trade_method]:checked'))
-                console.log(trade_methods)
 
                 $.ajax({
                     url: '/product/enroll',
                     method: 'POST',
                     data: formData,
+                        // tradeMethod: tradeMethods.join(',')
                     contentType: false,
                     processData: false,
                     success : function (){

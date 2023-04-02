@@ -11,18 +11,20 @@
     </div>
 
     <div id="header_3">
-        <div sec:authorize="isAnonymous()"  class="login-before">
-            <a th:href="@{/member/login}">
-                <span class="login-before">로그인</span>
-            </a>
-        </div>
-        <div sec:authorize="isAuthenticated()" class="login-after">
-<!--            <span th:text="${user.getMember().getEmail()}"></span>-->
-            <span sec:authentication="principal.member.email"></span>
-            <span sec:authentication="principal.member.userId"></span>
-            <span><a href="/chat/myChatRoom">메세지</a></span>
-            <span><a href="/member/myPage">마이페이지</a></span>
-        </div>
+        <div class="login">
+            <div sec:authorize="isAnonymous()"  class="login-before">
+                <a th:href="@{/member/login}">
+                    <span class="login-before">로그인</span>
+                </a>
+            </div>
+            <div sec:authorize="isAuthenticated()" class="login-after">
+                <!--            <span th:text="${user.getMember().getEmail()}"></span>-->
+                <span sec:authentication="principal.member.email"></span>
+                <span sec:authentication="principal.member.userId"></span>
+                <span><a href="/chat/myChatRoom">메세지</a></span>
+                <span><a href="/member/myPage">마이페이지</a></span>
+            </div>
+
         </div>
     </div>
 </header>

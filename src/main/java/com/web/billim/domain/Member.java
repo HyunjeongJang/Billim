@@ -38,7 +38,6 @@ public class Member{
     @Enumerated(EnumType.STRING)
     private MemberGrade grade;
 
-
     private String profileImageUrl;
 
     @PrePersist
@@ -46,9 +45,8 @@ public class Member{
         this.profileImageUrl = this.profileImageUrl == null ? "https://billim.s3.ap-northeast-2.amazonaws.com/profile/default.png": this.profileImageUrl;
     }
 
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
-    }
-
+//    public void setProfileImageUrl(String profileImageUrl) {
+//        this.profileImageUrl = profileImageUrl;
+//    }
 
 }

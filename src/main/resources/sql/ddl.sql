@@ -178,7 +178,7 @@ CREATE TABLE `image_chat`
 (
     `image_chat_id` int primary key auto_increment COMMENT '이미지번호',
     `message_id`    int                                                             NOT NULL COMMENT '메세지번호',
-    `url`           varchar(1024) COMMENT '이미지 url',
+    `url`              varchar(1024) NOT NULL COMMENT '이미지 url',
     `created_at`    timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
     `updated_at`    timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
@@ -189,7 +189,7 @@ CREATE TABLE `image_profile`
 (
     `image_profile_id` int primary key auto_increment COMMENT '이미지번호',
     `member_id`        int                                                             NOT NULL COMMENT '회원번호',
-    `url`              varchar(1024) COMMENT '이미지 url',
+    `url`              varchar(1024) NOT NULL COMMENT '이미지 url',
     `created_at`       timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
     `updated_at`       timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
