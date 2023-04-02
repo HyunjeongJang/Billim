@@ -22,27 +22,31 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProductRegisterRequest {
 
-	private int categoryId;
-	private Member member;
+    private int categoryId;
 
-	 @NotEmpty
+    private Member member;
+
+    @NotEmpty
 //	@NotEmpty(message = "대여 상품명은 필수 항목입니다.")
-	private String name;
+    private String name;
 
-	 @NotEmpty
+    @NotEmpty
 //	@NotEmpty(message = "상품 설명은 필수 항목입니다.")
-	private String detail;
+    private String detail;
 
-	//	@NotEmpty(message = "금액은 필수항목입니다. 100원 이상 입력해 주세요.")
- 	@Min(100)
-	private int price;
+    //	@NotEmpty(message = "금액은 필수항목입니다. 100원 이상 입력해 주세요.")
+    @Min(value = 100, message = "100원 이상 입력해 주세요.")
+    private int price;
 
-	private List<MultipartFile> images;
+    @NotEmpty
+    private List<MultipartFile> images;
 
-	// private TradeMethod tradeMethod;
-	public void setRegisterMember(Member member) {
-		this.member = member;
-	}
+	@NotEmpty
+    private TradeMethod tradeMethod;
+
+    public void setRegisterMember(Member member) {
+        this.member = member;
+    }
 }
 
 // AWS AccessKey, SecretKey

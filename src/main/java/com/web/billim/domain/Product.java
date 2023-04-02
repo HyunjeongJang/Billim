@@ -47,7 +47,7 @@ public class Product extends JpaEntity {
                 .productName(request.getName())
                 .detail(request.getDetail())
                 .price(request.getPrice())
-                .tradeMethod(TradeMethod.DIRECT)
+                .tradeMethod(request.getTradeMethod())
                 .images(images)
                 .build();
     }

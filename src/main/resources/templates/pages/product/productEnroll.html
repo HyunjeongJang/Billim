@@ -51,8 +51,8 @@
             <tr>
                 <td class="table_text">거래 방법</td>
                 <td class="table_input">
-                    <input type="checkbox" class="trade_method" name="trade_method" value="direct"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" class="trade_method" name="trade_method" value="delivery"> &nbsp;택배
+                    <input type="checkbox" class="trade_method" name="tradeMethod" value="DIRECT"> &nbsp;직거래&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" class="trade_method" name="tradeMethod" value="DELIVERY"> &nbsp;택배
                 </td>
                 <td></td>
             </tr>
@@ -89,12 +89,11 @@
         <script>
             function register() {
                 const formData = new FormData();
-                // formData.set("categoryId", 1);
                 formData.set("categoryId", $('#category').val());
                 formData.set("name", $('#title').val());
                 formData.set("detail", $('#product_content').val());
                 formData.set("price", $('#price').val());
-                formData.set("tradeMethod", $('#trade_method').val()); // TODO : 체크 돼야 넘어가게끔도 처리해야함
+                formData.set("tradeMethod", $('input:checkbox[name=tradeMethod]:checked').val()); // TODO : 체크 돼야 넘어가게끔도 처리해야함
 
                 const files = $('#btnAtt')[0].files
                 for (let i = 0; i < files.length; ++i) {
@@ -111,9 +110,9 @@
                     data: formData,
                     contentType: false,
                     processData: false,
-                    // success : function (){
-                    //     location.href = ''; // TODO: 경로 걸어야함
-                    // },
+                    success : function (){
+                        location.href = '/myPage/sales';
+                    },
                     error : function (error) {
                         console.log(error);
                         Swal.fire({
