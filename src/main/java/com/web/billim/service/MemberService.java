@@ -2,6 +2,7 @@ package com.web.billim.service;
 
 import com.web.billim.domain.Member;
 import com.web.billim.dto.request.MemberSignupRequest;
+import com.web.billim.infra.ImageUploadService;
 import com.web.billim.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,7 +18,8 @@ import java.util.Map;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-//    private final AuthenticationManager authenticationManager;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Map<String, String> validateHandling(BindingResult bindingResult) {
         Map<String, String> validatorResult = new HashMap<>();
@@ -30,8 +32,10 @@ public class MemberService {
     }
 
     public void singUp(MemberSignupRequest memberSignupRequest) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        memberSignupRequest.setPassword(encoder.encode(memberSignupRequest.getPassword()));
+
+//        Bean 으로 만들어 놨으니까 객체 생성이 아니라 주입 받아서 써야,,
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); new 는 dto 만들때나 도메인 객체 만들때,
+        memberSignupRequest.setPassword(bCryptPasswordEncoder.encode(memberSignupRequest.getPassword()));
         Member member = memberSignupRequest.toEntity();
         memberRepository.save(member);
     }

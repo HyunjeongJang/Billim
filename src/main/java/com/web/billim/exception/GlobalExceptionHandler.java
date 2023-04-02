@@ -10,7 +10,6 @@ import javax.validation.ConstraintViolationException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-	// Validation -> Exception ->
 	@ExceptionHandler(value = ConstraintViolationException.class)
 	public ResponseEntity<ErrorResponse> handleValidationException(ConstraintViolationException ex) {
 		StringBuilder message = new StringBuilder("잘못된 사용자 입력이 있습니다.\n");

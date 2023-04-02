@@ -9,12 +9,13 @@
     <div class="content" th:fragment="">
 
         <div>
-            <div th:each="product : ${productList}">
+            <div th:each="product : ${product}">
                 <div th:text="${product.productName}"></div>
+                <div th:text="${product.detail}"></div>
+                <div th:text="${product.price}"></div>
+                <div th:text="${product.tradeMethod}"></div>
             </div>
         </div>
-
-
 
     </div>
 </div>

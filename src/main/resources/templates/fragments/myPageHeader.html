@@ -1,6 +1,48 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
+<style>
+    #myPageHeader {
+        height: 100px;
+    }
+
+    #header > div {
+        height: 100%;
+        float: left;
+    }
+
+    #header_1 {
+        width: 25%;
+        font-weight: 600;
+    }
+
+    #header_2 {
+        width: 50%;
+        height: 100%;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    #header_3 {
+        width: 25%;
+        height: 100%;
+    }
+
+    .login {
+        width: 100%;
+        height: 100%;
+        margin-left: 60%;
+        padding-top: 30px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .login a:hover {
+        color: #d5d5d5;
+    }
+</style>
+
 <header th:fragment="HeaderFragment" id="myPageHeader">
+
     <div class="header-top">
         <div id="header_1">
         </div>

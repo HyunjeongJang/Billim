@@ -6,12 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -26,9 +21,7 @@ public class ImageProduct extends JpaEntity {
     private Integer id;
 
     private String url;
-
-    private int productId;
-
+    
     public static ImageProduct of(String url) {
         return ImageProduct.builder()
                 .url(url)

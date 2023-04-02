@@ -25,26 +25,26 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MemberController {
 
-    @Autowired
+//    @Autowired
     private final MemberService memberService;
     private final CheckIdValidator checkIdValidator;
     private final CheckNickNameValidator checkNickNameValidator;
     private final CheckPasswordValidator checkPasswordValidator;
 
     @InitBinder
-    public void validatorBinder(WebDataBinder binder){
+    public void validatorBinder(WebDataBinder binder) {
         binder.addValidators(checkIdValidator);
         binder.addValidators(checkNickNameValidator);
         binder.addValidators(checkPasswordValidator);
     }
 
     @GetMapping("/member/login")
-    public String memberLogin(){
+    public String memberLogin() {
         return "pages/member/login";
     }
 
     @GetMapping("/member/signup")
-    public String memberSignUp(){
+    public String memberSignUp() {
         return "pages/member/signup";
     }
 
@@ -52,13 +52,13 @@ public class MemberController {
     public String memberSingUpProc(@Valid MemberSignupRequest memberSignupRequest,
                                    BindingResult bindingResult,
                                    Model model
-    ){
-        if(bindingResult.hasErrors()){
-            model.addAttribute("memberDto",memberSignupRequest);
+    ) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("memberDto", memberSignupRequest);
 
-            Map<String,String> validatorResult = memberService.validateHandling(bindingResult);
-            for(String key : validatorResult.keySet()){
-                model.addAttribute(key,validatorResult.get(key));
+            Map<String, String> validatorResult = memberService.validateHandling(bindingResult);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
             }
             return "pages/member/signup";
         }
@@ -72,7 +72,6 @@ public class MemberController {
 //    public String memberLoginProc(@Valid MemberLoginRequest memberLoginRequest){
 //            memberService.login(memberLoginRequest);
 //    }
-
 
     @GetMapping("/member/myPage")
     public String myPage() {

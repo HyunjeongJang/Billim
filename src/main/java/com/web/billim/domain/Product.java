@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 public class Product extends JpaEntity {
 
-    @Id   // 이 필드가 해당 테이블의 PK 다.
+    @Id   // 이 필드가 해당 테이블의 PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Integer productId;
@@ -36,8 +36,8 @@ public class Product extends JpaEntity {
     @Enumerated(EnumType.STRING)
     private TradeMethod tradeMethod;
 
-    @JoinColumn
-    @OneToMany
+    @JoinColumn(name = "product_id")
+    @OneToMany(fetch = FetchType.LAZY) // EAGER(즉시 로딩)
     private List<ImageProduct> images;
 
     public static Product generateNewProduct(ProductRegisterRequest request, List<ImageProduct> images) {

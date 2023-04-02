@@ -1,4 +1,4 @@
-package com.web.billim.domain;
+package com.web.billim.dto;
 
 
 import lombok.Builder;

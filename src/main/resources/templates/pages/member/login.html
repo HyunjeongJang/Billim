@@ -6,26 +6,7 @@
 
 <div layout:fragment="content">
 
-    <style>
-        .login_input {
-            width: 300px;
-        }
-
-        .login_area {
-            padding-bottom: 25px;
-        }
-
-        .login_button {
-            width: 300px;
-        }
-
-        .search_id {
-            text-align: right;
-        }
-
-    </style>
-
-
+    <link th:href="@{/css/login.css}" rel="stylesheet">
     <div class="content">
         <table th:align="center" width="300px">
             <form method="post" th:action="@{/member/login}">

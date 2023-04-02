@@ -37,6 +37,11 @@ public class Member implements UserDetails {
     @Enumerated(EnumType.STRING)
     private MemberGrade grade;
 
+    private String profileImageUrl = "https://billim.s3.ap-northeast-2.amazonaws.com/profile/default.png";
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

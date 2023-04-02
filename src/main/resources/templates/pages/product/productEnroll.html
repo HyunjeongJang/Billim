@@ -89,11 +89,12 @@
         <script>
             function register() {
                 const formData = new FormData();
-                formData.set("categoryId", 1);
+                // formData.set("categoryId", 1);
+                formData.set("categoryId", $('#category').val());
                 formData.set("name", $('#title').val());
                 formData.set("detail", $('#product_content').val());
                 formData.set("price", $('#price').val());
-                // formData.set("tradeMethod", 'direct'.toUpperCase()); // TODO : 안됨.. 체크 돼야 넘어가게끔도 처리해야함
+                formData.set("tradeMethod", $('#trade_method').val()); // TODO : 체크 돼야 넘어가게끔도 처리해야함
 
                 const files = $('#btnAtt')[0].files
                 for (let i = 0; i < files.length; ++i) {
@@ -111,7 +112,7 @@
                     contentType: false,
                     processData: false,
                     // success : function (){
-                    //     location.href = ''; // TODO: 경로가 안걸림
+                    //     location.href = ''; // TODO: 경로 걸어야함
                     // },
                     error : function (error) {
                         console.log(error);
@@ -123,86 +124,6 @@
                 });
             }
         </script>
-
-
-
-        <!--        <form method="post" th:action="@{/product/enroll}" modelAttribute="ProductRegisterRequest">-->
-
-        <!--            <table th:align="center">-->
-        <!--                <tr>-->
-        <!--                    <td class="table_text">대여 상품명</td>-->
-        <!--                    <td class="table_input"><input type="text" id="상품명" class="form-control"></td>-->
-        <!--                    <td></span></td>-->
-        <!--                </tr>-->
-        <!--                <tr>-->
-        <!--                    <td colspan="3"><hr></td>-->
-        <!--                </tr>-->
-
-        <!--                <tr>-->
-        <!--                    <td class="table_text">카테고리</td>-->
-        <!--                    <td class="table_input">-->
-        <!--                        <select id="category" class="form-control" th:field="*{categoryList}">-->
-        <!--                            <option value="">카테고리 선택</option>-->
-        <!--                            <option th:each="category : ${categoryList}" th:value="${category.getCategoryId()}"-->
-        <!--                                    th:text="${category.getCategoryName()}" ></option>-->
-        <!--                        </select>-->
-        <!--                    </td>-->
-        <!--                    <td></td>-->
-        <!--                </tr>-->
-        <!--                <tr>-->
-        <!--                    <td colspan="3"><hr></td>-->
-        <!--                </tr>-->
-
-        <!--                <tr>-->
-        <!--                    <td class="table_text">대여 요금</td>-->
-        <!--                    <td class="table_input"><input type="number" id="price" class="form-control"></td>-->
-        <!--                    <td class="table_last">원(/일)</td>-->
-        <!--                </tr>-->
-        <!--                <tr>-->
-        <!--                    <td colspan="3"><hr></td>-->
-        <!--                </tr>-->
-
-        <!--                <tr>-->
-        <!--                    <td class="table_text">거래 방법</td>-->
-        <!--                    <td class="table_input">-->
-        <!--                        <input type="checkbox" class="trade_method" name="trade_method" value="direct"> &nbsp;직거래&nbsp;&nbsp;&nbsp;-->
-        <!--                        <input type="checkbox" class="trade_method" name="trade_method" value="delivery"> &nbsp;택배-->
-        <!--                    </td>-->
-        <!--                    <td></td>-->
-        <!--                </tr>-->
-        <!--                <tr>-->
-        <!--                    <td colspan="3"><hr></td>-->
-        <!--                </tr>-->
-
-        <!--                <tr>-->
-        <!--                    <td class="table_text">상품 설명</td>-->
-        <!--                    <td><textarea name="" id="product_content" rows="15" class="form-control" style="padding-left: 20px" required></textarea></td>-->
-        <!--                    <td></td>-->
-        <!--                </tr>-->
-        <!--                <tr>-->
-        <!--                    <td colspan="3"><hr></td>-->
-        <!--                </tr>-->
-
-        <!--                <tr>-->
-        <!--                    <td class="table_text">상품 사진</td>-->
-        <!--                    <td class="table_input">-->
-        <!--                        <div id='image_preview' class="filebox">-->
-        <!--                            <input type='file' id='btnAtt' multiple='multiple' class="form-control upload-hidden" onchange="readURL(this);" />-->
-        <!--                            <div id='att_zone'-->
-        <!--                                 data-placeholder='이미지를 첨부 하시려면 파일 선택 버튼을 클릭하거나 드래그 앤 드랍 하세요'></div>-->
-        <!--                        </div>-->
-        <!--                    </td>-->
-        <!--                    <td></td>-->
-        <!--                </tr>-->
-
-        <!--            </table>-->
-        <!--            <br>-->
-        <!--            <button class="btn btn-secondary" type="reset">취소</button>&nbsp;-->
-        <!--            <button class="btn btn-dark" type="submit">상품등록</button>-->
-
-        <!--        </form>-->
-
-
 
     </div>
 </div>

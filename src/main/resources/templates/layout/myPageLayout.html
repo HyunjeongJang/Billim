@@ -9,6 +9,7 @@
   <th:block layout:fragment="contentCss"></th:block>
 </head>
 <th:block th:replace="fragments/myPageHeader.html :: HeaderFragment"></th:block>
+<link th:href="@{/css/myPageLayout.css}" rel="stylesheet">
 <th:block th:replace="fragments/nav.html :: NavFragment"></th:block>
 <body>
 <th:block layout:fragment="content"></th:block>

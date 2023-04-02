@@ -10,7 +10,7 @@
 
 
 .search-area {
-    padding-left: 20%;
+    padding-left: 15%;
 }
 
 .isStatusOnInput {
@@ -18,7 +18,7 @@
     border-right-width: 0;
     border-top-width: 0;
     border-bottom-width: 1px;
-
+    width: 220px;
 }
 
 *,*:focus,*:hover{outline:none;}
