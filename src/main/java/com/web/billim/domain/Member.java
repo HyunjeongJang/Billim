@@ -15,7 +15,7 @@ import java.util.Collection;
 @Table(name = "member")
 @Builder
 @Getter
-public class Member implements UserDetails {
+public class Member{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // MYSQL increment_auto 로 PK 를 생성
@@ -48,33 +48,5 @@ public class Member implements UserDetails {
 //        this.profileImageUrl = profileImageUrl;
 //    }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
 
-    @Override
-    public String getUsername() {
-        return getUserId();
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }
