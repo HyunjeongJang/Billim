@@ -165,9 +165,10 @@ DROP TABLE IF EXISTS `image_product`;
 CREATE TABLE `image_product`
 (
     `image_product_id` int primary key auto_increment COMMENT '이미지번호',
-    `product_id` int NOT NULL COMMENT '상품번호',
-    `created_at`  timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
-    `updated_at`  timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
+    `product_id`       int                                                             NOT NULL COMMENT '상품번호',
+    'url'              varchar(1024) COMMENT '이미지 url',
+    `created_at`       timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
+    `updated_at`       timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
 
 DROP TABLE IF EXISTS `image_chat`;
@@ -175,9 +176,10 @@ DROP TABLE IF EXISTS `image_chat`;
 CREATE TABLE `image_chat`
 (
     `image_chat_id` int primary key auto_increment COMMENT '이미지번호',
-    `message_id` int NOT NULL COMMENT '메세지번호',
-    `created_at`  timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
-    `updated_at`  timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
+    `message_id`    int                                                             NOT NULL COMMENT '메세지번호',
+    'url'           varchar(1024) COMMENT '이미지 url',
+    `created_at`    timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
+    `updated_at`    timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
 
 DROP TABLE IF EXISTS `image_profile`;
@@ -185,9 +187,10 @@ DROP TABLE IF EXISTS `image_profile`;
 CREATE TABLE `image_profile`
 (
     `image_profile_id` int primary key auto_increment COMMENT '이미지번호',
-    `member_id` int NOT NULL COMMENT '회원번호',
-    `created_at`  timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
-    `updated_at`  timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
+    `member_id`        int                                                             NOT NULL COMMENT '회원번호',
+    'url'              varchar(1024) COMMENT '이미지 url',
+    `created_at`       timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
+    `updated_at`       timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
 
 DROP TABLE IF EXISTS `saved_point_rate`;
