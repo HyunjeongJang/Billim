@@ -1,3 +1,7 @@
+div {
+    border: 1px solid palevioletred;
+}
+
 #category_nav {
     width: 100%;
 }
@@ -23,8 +27,6 @@
 
 *,*:focus,*:hover{outline:none;}
 
-
-
 .product-list{
     display: flex;
     align-content: center;
@@ -40,17 +42,62 @@
     transition: all 0.3s linear;
     margin: 15px 15px;
     padding-top: 10px;
-    border-radius: 20px;
+    /*border-radius: 20px;*/
 }
 
-.product-image{
+.product-image > img{
     width: 300px;
     height: 300px;
     cursor: pointer;
-    border-radius: 20px;
     margin-bottom: 10px;
+}
+
+.product-image {
+    border-radius: 30px;
 }
 
 /*.product-info:hover{*/
 /*    transform: scale(1.05);*/
 /*}*/
+
+/*#heart{*/
+/*    width: 20%;*/
+/*}*/
+
+/*#heart > label > .fa-heart{*/
+/*    font-size: 35px;*/
+/*    margin:5px 0 0 40px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*#heart > input[type=checkbox]{*/
+/*    display: none;*/
+/*}*/
+
+/*#heart > label > .fa-heart:hover{*/
+/*    color: #e74464;*/
+/*}*/
+/*#heart > label > .fa-heart :hover ~ label{*/
+/*    color: #e74464;*/
+/*}*/
+/*#heart > input[type=checkbox]:checked ~ label{*/
+/*    color: #e74464;*/
+/*}*/
+
+
+/* hides the checkbox */
+#heart {
+    display: none;
+}
+
+/* changes the color when selected */
+input:checked ~ label {
+    color: red;
+    position: relative;
+}
+
+/* for styling purpose only */
+label {
+    font-size: 2em;
+}
+

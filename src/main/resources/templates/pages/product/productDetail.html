@@ -8,6 +8,16 @@
     <link th:href="@{/css/.css}" rel="stylesheet">
     <div class="content" th:fragment="">
 
+        <div class="content-wrap">
+            <div>
+                상품제목
+            </div>
+            <div>
+                별점 4.5 후기 개 | 등급 | 지역
+            </div>
+
+        </div>
+
         <div>
             <div th:each="product : ${product}">
                 <div th:text="${product.productName}"></div>
@@ -15,6 +25,10 @@
                 <div th:text="${product.price}"></div>
                 <div th:text="${product.tradeMethod}"></div>
             </div>
+        </div>
+
+        <div>
+            님이 대여하는 상품
         </div>
 
     </div>
