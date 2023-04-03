@@ -63,9 +63,10 @@ public class ProductController {
     @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
     public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest req) {
-//        UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-//        int memberId = (Integer) authentication.getPrincipal();
-        Member testMember = Member.builder().memberId(1).build();
+        UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        int memberId = (Integer) authentication.getPrincipal();
+//        Member testMember = Member.builder().memberId(1).build();
+        Member testMember = Member.builder().memberId(memberId).build();
         req.setRegisterMember(testMember);
         return ResponseEntity.ok(productService.register(req));
     }
