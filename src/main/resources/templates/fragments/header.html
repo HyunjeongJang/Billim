@@ -18,13 +18,11 @@
                 </a>
             </div>
             <div sec:authorize="isAuthenticated()" class="login-after">
-                <!--            <span th:text="${user.getMember().getEmail()}"></span>-->
                 <img style="width: 35px;" th:src="${#authentication.principal.member.profileImageUrl}">
                 <span sec:authentication="principal.member.name"></span>
                 <span><a href="/chat/myChatRoom">메세지</a></span>
                 <span><a href="/member/myPage">마이페이지</a></span>
             </div>
-
         </div>
     </div>
 </header>

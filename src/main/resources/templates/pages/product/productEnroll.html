@@ -94,7 +94,7 @@
                 formData.set("detail", $('#product_content').val());
                 formData.set("price", $('#price').val());
 
-                const tradeMethods = [];
+                const tradeMethods = new Array();
                 formData.set("tradeMethod",$('input:checkbox[name=tradeMethod]:checked').each(function () {
                     tradeMethods.push(this.value);
                 }));

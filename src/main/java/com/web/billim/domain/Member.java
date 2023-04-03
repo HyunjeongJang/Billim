@@ -16,7 +16,7 @@ import java.util.Collection;
 @Table(name = "member")
 @Builder
 @Getter
-public class Member{
+public class Member extends JpaEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // MYSQL increment_auto 로 PK 를 생성

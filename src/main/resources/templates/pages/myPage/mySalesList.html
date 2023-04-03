@@ -5,9 +5,86 @@
       layout:decorate="~{layout/myPageLayout}">
 
 <div layout:fragment="content">
-    <div class="content">
-        <a href="/product/enroll">상품 등록</a>
-    </div>
+    <style>
+        #test{
+            height: 100%;
+            width: 100%;
+        }
 
+        .salesContent_2{
+            display: inline-block;
+        }
+        #myPageNav{
+            /*height: 100%;*/
+            width: 30%;
+        }
+        #salesList{
+            /*height: 100%;*/
+            width: 70%;
+            float: right;
+        }
+        #myPageNav_2{
+            padding: 10% 10% 10% 10%;
+        }
+        #title, #productEnroll{
+            display: inline-block;
+        }
+        #productEnroll{
+            float: right;
+            text-align: right;
+        }
+        #productList{
+            background-color: lightgrey;
+        }
+        #titleContent{
+            height: 20%;
+        }
+        #productList{
+            height: 80%;
+        }
+
+    </style>
+    <div id="test">
+        <div id="myPageNav" class="salesContent_2">
+            <div id="myPageNav_2">
+            <li><a>마이페이지</a>
+                <ul class="sub">
+                    <li style="font-size: xx-small"></li>
+                    <li style="font-size: smaller"><a href="">구매관리</a></li>
+                    <li style="font-size: smaller"><a href="/myPage/sales">판매관리</a></li>
+                    <li style="font-size: smaller"><a href="#">후기</a></li>
+                    <li style="font-size: smaller"><a href="#">최근본상품</a></li>
+                    <li style="font-size: smaller"><a href="#">관심상품</a></li>
+                    <li style="font-size: smaller"><a href="#">차단관리</a></li>
+                </ul>
+            </li>
+            </div>
+        </div>
+        <div id="salesList" class="salesContent_2">
+            <div id="titleContent">
+                <div id="title">
+                    <h2>판매중인 상품</h2>
+                </div>
+                <div id="productEnroll">
+                    <a href="/product/enroll">상품 등록</a>
+                </div>
+            </div>
+            <div id="productList">
+                    <br>
+                <br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
 </div>
+
 </html>

@@ -33,7 +33,7 @@ public class Product extends JpaEntity {
 
     private int price;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private TradeMethod tradeMethod;
 
     @JoinColumn(name = "product_id")
