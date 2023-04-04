@@ -10,6 +10,8 @@ import com.web.billim.repository.ProductCategoryRepository;
 import com.web.billim.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,9 +64,20 @@ public class ProductService {
         return productCategoryRepository.findAll();
     }
 
-    public List<Product> findAllProduct() {
-        return productRepository.findAll();
+
+//    public List<Product> findAllProduct() {
+//        return productRepository.findAll();
+//    }
+
+
+    public Page<Product> findAllProduct(int page) {
+        PageRequest paging = PageRequest.of(page,12);
+        return productRepository.findAll(paging);
     }
+
+//    public Page<Product> findAll(int page) {
+//        return productPageRepogitory.findAll(paging);
+//    }
 
     @Transactional
     public Product retrieve(int productId) {
@@ -78,4 +91,8 @@ public class ProductService {
                 new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
         return product;
     }
+
+
+
+
 }

@@ -59,7 +59,18 @@
                 <br>
                 <span style="float: left; font-weight: 500;" th:text="${product.price}"></span><span style="float: left">&nbsp;원(/일)</span>
             </div>
+
         </div>
+
+        <div class="pagination">
+            <ul>
+                <li th:each="page : ${#numbers.sequence(0, totalPage - 1)}">
+                    <a th:href="@{/product/list(page=${pageStat.index})}" th:text="${pageStat.index + 1}"></a>
+                </li>
+            </ul>
+        </div>
+
+
 
     </div>
 

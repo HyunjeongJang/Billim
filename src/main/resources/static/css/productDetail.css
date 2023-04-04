@@ -1,5 +1,42 @@
 @import url('https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
+/*div {*/
+/*    border: 1px solid red;*/
+/*}*/
+
+.title-area {
+    display: inline-block;
+}
+.title {
+    font-size: xx-large;
+}
+
+.product-wrap {
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+}
+
+.product-info {
+    width: 60%;
+    display: inline-block;
+    float: left;
+    height: 100%;
+}
+
+
+.product-pay {
+    width: 40%;
+    display: inline-block;
+    float: right;
+    height: 100%;
+    padding-right: 2%;
+}
+
+
+
+
+
 /* section calendar */
 
 * {
@@ -12,9 +49,6 @@ html {
     --blue: #838383;
 }
 
-body {
-    font-family: NanumSquareR;
-}
 
 a {
     text-decoration-line: none;
@@ -28,12 +62,12 @@ ul {
 }
 
 
+
 /* Calendar ---------------------------------------------------- */
 .calendar-wrap {
     max-width: 1175px;
     padding-top: 50px;
     margin: 0 auto;
-    font-family: "NanumSquareR";
     display: flex;
     gap: 2%;
     margin-bottom: 20px;
@@ -42,18 +76,19 @@ ul {
 .calendar-wrap>div {}
 
 .calendar-middle-wrap {
-    background: #fafbfa;
-    width: 34%;
+    background: #efefef;
+    /*width: 34%;*/
+    width: 49%;
     padding: 40px 32px;
     padding-bottom: 100px;
 }
 
 .checkInOutInfo {
-    width: 30%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fafbfa;
+    background: #efefef;
     position: relative;
 }
 
@@ -230,7 +265,7 @@ ul {
 .checkInOutInfo>div {
     text-align: center;
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
 }
 
 .checkInOutInfo p {

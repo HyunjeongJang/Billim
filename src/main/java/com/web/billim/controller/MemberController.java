@@ -29,7 +29,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MemberController {
 
-//    @Autowired
     private final MemberService memberService;
     private final CheckIdValidator checkIdValidator;
     private final CheckNickNameValidator checkNickNameValidator;
@@ -86,7 +85,7 @@ public class MemberController {
 
     @GetMapping("/member/delete")
     public String deleteMember() {
-        return "pages/myPage/myDeleteMember";
+        return "pages/myPage/deleteMember";
     }
 
 

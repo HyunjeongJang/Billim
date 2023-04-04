@@ -48,5 +48,3 @@ public class ProductRegisterRequest {
         this.member = member;
     }
 }
-
-// AWS AccessKey, SecretKey

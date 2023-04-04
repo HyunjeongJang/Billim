@@ -2,6 +2,9 @@
 /*    box-sizing: border-box;*/
 /*    border: 1px solid red;*/
 /*}*/
+/*span {*/
+/*    border: 1px solid rebeccapurple;*/
+/*}*/
 
 a {
     text-decoration: none;
@@ -19,12 +22,12 @@ a {
 }
 
 #header_1 {
-    width: 25%;
+    width: 30%;
     font-weight: bold;
 }
 
 #header_2 {
-    width: 50%;
+    width: 40%;
     height: 100%;
     padding-top: 20px;
     text-align: center;
@@ -32,10 +35,15 @@ a {
 }
 
 #header_3 {
-    width: 25%;
+    width: 30%;
     height: 100%;
     padding-right: 3%;
     /*line-height: 100%;*/
+}
+
+#profileImage-header {
+    border-radius: 50%;
+    display: inline-block;
 }
 
 /* nav */

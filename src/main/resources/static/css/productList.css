@@ -1,6 +1,6 @@
-div {
-    border: 1px solid palevioletred;
-}
+/*div {*/
+/*    border: 1px solid palevioletred;*/
+/*}*/
 
 /*category*/
 
@@ -112,3 +112,19 @@ label {
 /*    transform: translate( -50%, -50% );*/
 /*    color: white;*/
 /*}*/
+
+/*페이징*/
+
+.pagination {
+    justify-content: center;
+}
+.pagination ul {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 10px;
+}

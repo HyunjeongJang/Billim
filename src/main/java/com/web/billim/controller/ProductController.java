@@ -8,11 +8,13 @@ import com.web.billim.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,12 +27,24 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/product/total")
-    public String productTotal(Model model) {
-        List<Product> productList = productService.findAllProduct();
+//    @GetMapping("/product/list")
+//    public String productTotal(Model model) {
+//        List<Product> productList = productService.findAllProduct();
+//        model.addAttribute("productList", productList);
+//        return "pages/product/productList";
+//    }
+
+
+
+    @GetMapping("/product/list")
+    public String productTotal(Model model,@RequestParam(required = false, defaultValue = "0", value = "page") int page
+    ) {
+        Page<Product> productList = productService.findAllProduct(page);
         model.addAttribute("productList", productList);
+        model.addAttribute("totalPage", productList.getTotalPages());
         return "pages/product/productList";
     }
+
 
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {

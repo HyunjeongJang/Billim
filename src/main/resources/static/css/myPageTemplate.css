@@ -5,8 +5,21 @@
     height: 250px;
 }
 
+#userInfo, #userInfo_1, #userInfo_2, #image, #text{
+    display: inline-block;
+}
+
+
 #userInfo {
-    width: 50%;
+    float: left;
+    text-align: right;
+    padding-right: 2%;
+    width: 30%;
+    height: 100%;
+}
+
+#userInfo_1 {
+    width: 30%;
     height: 100%;
 }
 
@@ -14,31 +27,34 @@
     float: right;
     padding-right: 1%;
     padding-top: 1%;
-    width: 50%;
+    width: 40%;
     height: 100%;
 }
 
-#userInfo, #userInfo_2,#image,#text{
-    display: inline-block;
-}
+
+
 #image{
-    padding-left: 10%;
-    width: 50%;
+    /*padding-left: 10%;*/
+    /*width: 230px;*/
+    /*height: 230px;*/
+    /*width: 50%;*/
     height: 100%;
+    border-radius: 50%;
 }
 
 #text{
-    width: 50%;
+    /*width: 50%;*/
+    width: 100%;
     height: 100%;
-    padding-top: 10%;
-    padding-bottom: 7%;
-    padding-left: 3%;
+    padding-top: 15%;
+    /*padding-bottom: 7%;*/
+    padding-left: 5%;
     float: right;
 }
 #profileImage{
     width: 100%;
     height: 100%;
-    padding-left: 20%;
+    /*padding-left: 20%;*/
 }
 .grade-info {
     font-size: x-small;

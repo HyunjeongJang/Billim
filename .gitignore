@@ -1,12 +1,12 @@
+application-aws.yml
+application-email.yml
+
 HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-
-application-aws.yml
-application-email.yml
 
 ### STS ###
 .apt_generated
