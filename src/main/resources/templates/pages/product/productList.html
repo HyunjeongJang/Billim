@@ -34,26 +34,30 @@
         <div class="product-list" style="text-align: center">
             <div th:each="product : ${productList}" class="product-info">
 
-                <div class="product-image">
-                    <img style="
+                <a th:href="@{/product/detail/{productId}(productId=${product.productId})}">
+                    <div class="product-image">
+                        <img style="
                     border-radius: 30px;
                     -moz-border-radius: 30px;
                     -khtml-border-radius: 30px;
                     -webkit-border-radius: 30px;"
-                         src="https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98c37fe3/images/large/00_LIFE_ORIGINAL_1.jpg">
+                             src="https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98c37fe3/images/large/00_LIFE_ORIGINAL_1.jpg">
 
-                    <div class="heart-check">
-                        <input type="checkbox" id="heart">
-                        <label for="heart">&#9829</label>
+                        <div class="heart-check">
+                            <input type="checkbox" id="heart">
+                            <label for="heart">&#9829</label>
+                        </div>
+
                     </div>
-
-                </div>
-
-                <span>
+                </a>
+                <span style="font-weight: 500; float: left">
                     <a th:text="${product.productName}" th:href="@{/product/detail/{productId}(productId=${product.productId})}"></a>
-                    별점 4.5
                 </span>
-                <div th:text="${product.price}">원(/일)</div>
+                <span style="float: right">
+                    ⭐️4.5
+                </span>
+                <br>
+                <span style="float: left; font-weight: 500;" th:text="${product.price}"></span><span style="float: left">&nbsp;원(/일)</span>
             </div>
         </div>
 

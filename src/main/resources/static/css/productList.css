@@ -2,6 +2,8 @@ div {
     border: 1px solid palevioletred;
 }
 
+/*category*/
+
 #category_nav {
     width: 100%;
 }
@@ -11,11 +13,10 @@ div {
     width: 50px;
 }
 
-
-
 .search-area {
     padding-left: 15%;
 }
+
 
 .isStatusOnInput {
     border-left-width: 0;
@@ -27,27 +28,31 @@ div {
 
 /**,*:focus,*:hover{outline:none;}*/
 
+/*product*/
+
 .product-list{
     display: flex;
-    align-content: center;
+    position: center;
     flex-wrap: wrap;
     width: 100%;
     margin-top: 40px;
+    /*justify-content : center;*/
+    padding-left: 6%;
 }
 
 .product-info{
-    width: 300px;
-    text-align: center;
-    height: 380px;
+    width: 330px;
+    /*text-align: center;*/
+    height: 400px;
     transition: all 0.3s linear;
-    margin: 15px 15px;
+    margin: 20px 20px;
     padding-top: 10px;
     /*border-radius: 20px;*/
 }
 
 .product-image > img{
-    width: 300px;
-    height: 300px;
+    width: 330px;
+    height: 330px;
     cursor: pointer;
     margin-bottom: 10px;
 }

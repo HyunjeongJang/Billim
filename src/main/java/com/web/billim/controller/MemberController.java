@@ -82,4 +82,12 @@ public class MemberController {
     public String myPage() {
         return "pages/myPage/myPurchaseList";
     }
+
+
+    @GetMapping("/member/delete")
+    public String deleteMember() {
+        return "pages/myPage/myDeleteMember";
+    }
+
+
 }
