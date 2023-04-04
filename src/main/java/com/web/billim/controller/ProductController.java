@@ -1,21 +1,17 @@
 package com.web.billim.controller;
 
-import com.web.billim.domain.Member;
 import com.web.billim.domain.Product;
 import com.web.billim.domain.ProductCategory;
 import com.web.billim.dto.request.ProductRegisterRequest;
-import com.web.billim.service.MemberService;
+import com.web.billim.dto.request.User;
 import com.web.billim.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +24,6 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-
-    private final MemberService memberService;
 
     @GetMapping("/product/total")
     public String productTotal(Model model) {
@@ -62,12 +56,10 @@ public class ProductController {
 
     @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest req) {
-        UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        int memberId = (Integer) authentication.getPrincipal();
-//        Member testMember = Member.builder().memberId(1).build();
-        Member testMember = Member.builder().memberId(memberId).build();
-        req.setRegisterMember(testMember);
+    public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest req,
+                                                   @AuthenticationPrincipal User user
+    ) {
+        req.setRegisterMember(user.getMember());
         return ResponseEntity.ok(productService.register(req));
     }
 

@@ -94,25 +94,19 @@
                 formData.set("detail", $('#product_content').val());
                 formData.set("price", $('#price').val());
 
-                const tradeMethods = new Array();
-                formData.set("tradeMethod",$('input:checkbox[name=tradeMethod]:checked').each(function () {
-                    tradeMethods.push(this.value);
-                }));
-
-                console.log(tradeMethods);
-
                 const files = $('#btnAtt')[0].files
                 for (let i = 0; i < files.length; ++i) {
                     formData.append('images', files[i]);
+                }
+                for (let tradeMethod of $('input:checkbox[name=tradeMethod]:checked')) {
+                    formData.append('tradeMethods', tradeMethod.defaultValue.toUpperCase());
                 }
 
                 $.ajax({
                     url: '/product/enroll',
                     method: 'POST',
-                    data: JSON.stringify({
-                        formData,
-                    }),
-                    contentType: "application/json; charset=UTF-8",
+                    data: formData,
+                    contentType: false,
                     processData: false,
                     success : function (){
                         location.href = '/myPage/sales';

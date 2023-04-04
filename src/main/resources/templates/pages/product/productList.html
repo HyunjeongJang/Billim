@@ -35,20 +35,25 @@
             <div th:each="product : ${productList}" class="product-info">
 
                 <div class="product-image">
-                    <img src="https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa1c42ab1/images/large/92553004_1.png">
-                </div>
+                    <img style="
+                    border-radius: 30px;
+                    -moz-border-radius: 30px;
+                    -khtml-border-radius: 30px;
+                    -webkit-border-radius: 30px;"
+                         src="https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98c37fe3/images/large/00_LIFE_ORIGINAL_1.jpg">
 
-                <div class="heart-check">
-                    <input type="checkbox" id="heart">
-                    <label for="heart">&#9829</label>
-                </div>
+                    <div class="heart-check">
+                        <input type="checkbox" id="heart">
+                        <label for="heart">&#9829</label>
+                    </div>
 
+                </div>
 
                 <span>
                     <a th:text="${product.productName}" th:href="@{/product/detail/{productId}(productId=${product.productId})}"></a>
                     별점 4.5
                 </span>
-                <div th:text="${product.price}">/일</div>
+                <div th:text="${product.price}">원(/일)</div>
             </div>
         </div>
 

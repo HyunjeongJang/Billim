@@ -6,7 +6,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -33,12 +36,18 @@ public class Product extends JpaEntity {
 
     private int price;
 
-//    @Enumerated(EnumType.STRING)
-    private TradeMethod tradeMethod;
+    // Getter 없는게 나은데..
+    private String tradeMethod;
 
     @JoinColumn(name = "product_id")
     @OneToMany(fetch = FetchType.LAZY) // EAGER(즉시 로딩)
     private List<ImageProduct> images;
+
+    public List<TradeMethod> getTradeMethods() {
+        return Arrays.stream(tradeMethod.split(","))
+                .map(TradeMethod::valueOf)
+                .collect(Collectors.toList());
+    }
 
     public static Product generateNewProduct(ProductRegisterRequest request, List<ImageProduct> images) {
         return Product.builder()
@@ -47,7 +56,11 @@ public class Product extends JpaEntity {
                 .productName(request.getName())
                 .detail(request.getDetail())
                 .price(request.getPrice())
-                .tradeMethod(request.getTradeMethod())
+                .tradeMethod(
+                        request.getTradeMethods().stream()
+                                .map(Objects::toString)
+                                .collect(Collectors.joining(","))
+                )
                 .images(images)
                 .build();
     }

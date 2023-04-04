@@ -18,6 +18,12 @@ spring:
     suffix: .html
     enabled: true
 
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
   servlet:
     multipart:
       max-file-size: 10MB

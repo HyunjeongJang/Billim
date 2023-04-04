@@ -25,7 +25,7 @@ div {
     width: 220px;
 }
 
-*,*:focus,*:hover{outline:none;}
+/**,*:focus,*:hover{outline:none;}*/
 
 .product-list{
     display: flex;
@@ -56,33 +56,12 @@ div {
     border-radius: 30px;
 }
 
+
+
 /*.product-info:hover{*/
 /*    transform: scale(1.05);*/
 /*}*/
 
-/*#heart{*/
-/*    width: 20%;*/
-/*}*/
-
-/*#heart > label > .fa-heart{*/
-/*    font-size: 35px;*/
-/*    margin:5px 0 0 40px;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*#heart > input[type=checkbox]{*/
-/*    display: none;*/
-/*}*/
-
-/*#heart > label > .fa-heart:hover{*/
-/*    color: #e74464;*/
-/*}*/
-/*#heart > label > .fa-heart :hover ~ label{*/
-/*    color: #e74464;*/
-/*}*/
-/*#heart > input[type=checkbox]:checked ~ label{*/
-/*    color: #e74464;*/
-/*}*/
 
 
 /* hides the checkbox */
@@ -101,3 +80,30 @@ label {
     font-size: 2em;
 }
 
+
+.heart-check {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+.product-image {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+/*.product-info {*/
+/*    position: relative;*/
+/*}*/
+/*.heart-check {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate( -50%, -50% );*/
+/*    color: white;*/
+/*}*/

@@ -1,0 +1,19 @@
+#title, #productEnroll{
+    display: inline-block;
+    height: 158px;
+    line-height: 158px;
+}
+#productEnroll{
+    float: right;
+    text-align: right;
+    padding-right: 6%;
+}
+
+#productList{
+    background-color: #e5e5e5;
+    width: 97%;
+}
+
+#productList{
+    height: 80%;
+}

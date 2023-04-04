@@ -1,114 +1,58 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<!--<style>-->
-<!--    #myPageHeader {-->
-<!--        height: 100px;-->
-<!--    }-->
-
-<!--    #header > div {-->
-<!--        height: 100%;-->
-<!--        float: left;-->
-<!--    }-->
-
-<!--    #header_1 {-->
-<!--        width: 25%;-->
-<!--        font-weight: 600;-->
-<!--    }-->
-
-<!--    #header_2 {-->
-<!--        width: 50%;-->
-<!--        height: 100%;-->
-<!--        padding-top: 20px;-->
-<!--        text-align: center;-->
-<!--    }-->
-
-<!--    #header_3 {-->
-<!--        width: 25%;-->
-<!--        height: 100%;-->
-<!--    }-->
-
-<!--    .login {-->
-<!--        width: 100%;-->
-<!--        height: 100%;-->
-<!--        margin-left: 60%;-->
-<!--        padding-top: 30px;-->
-<!--        font-weight: bold;-->
-<!--        color: black;-->
-<!--    }-->
-
-<!--    .login a:hover {-->
-<!--        color: #d5d5d5;-->
-<!--    }-->
-<!--</style>-->
 
 <div th:fragment="HeaderFragment" id="myPageHeader">
+    <link th:href="@{/css/myPageTemplate.css}" rel="stylesheet">
+    <div class="info-wrap">
+        <div id="userInfo">
+            <div id="image">
+                <img  id=profileImage th:src="${#authentication.principal.member.profileImageUrl}">
+            </div>
 
-    <style>
-        div {
-            border: 1px solid pink;
-        }
-        #myPageHeader{
-            height: 200px;
-        }
-
-        #userInfo {
-            width: 40%;
-            height: 100%;
-        }
-        #userInfo_2{
-            float: right;
-            width: 60%;
-            height: 100%;
-        }
-        #userInfo, #userInfo_2,#image,#text{
-            display: inline-block;
-        }
-        #image{
-            width: 50%;
-            height: 100%;
-        }
-
-        #text{
-            width: 50%;
-            height: 100%;
-            padding-top: 7%;
-            padding-bottom: 7%;
-            float: right;
-        }
-        #profileImage{
-            width: 100%;
-            height: 100%;
-            padding-left: 20%;
-        }
-        .grade-info {
-            font-size: x-small;
-        }
-        #nickname{
-            font-size: xx-large;
-        }
-    </style>
-
-
-    <div id="userInfo">
-        <div id="image">
-            <img  id=profileImage th:src="${#authentication.principal.member.profileImageUrl}">
+            <div id="text">
+                <span id="nickname" sec:authentication="principal.member.nickname"></span>
+                <br>
+                <span id="grade" sec:authentication="principal.member.grade"></span>
+                <span sec:authentication="principal.member.createdAt"></span>
+                <br>
+                <p class="grade-info">
+                    다음등급인 골드까지 3334점 남았습니다.
+                </p>
+            </div>
         </div>
-        <div id="text">
-            <span id="nickname" sec:authentication="principal.member.nickname"></span>
-            <br>
-            <span sec:authentication="principal.member.grade"></span>
-            <span sec:authentication="principal.member.createdAt"></span>
-            <br>
-            <p class="grade-info">
-                다음등급인 골드까지 3334점 남았습니다.
-            </p>
+
+        <div id="userInfo_2">
+
+
+            <div class="info-right">
+                <p>리뷰</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/1240/1240343.png" style="width: 30px">
+            </div>
+            <div class="info-right">쿠폰</div>
+            <div class="info-right">적립금</div>
+        </div>
+
+    </div>
+
+    <div id="myPage-warp">
+        <div id="myPageNav" class="salesContent_2">
+            <div id="myPageNav_2">
+                <p class="nav-myPage">마이페이지</p>
+                <hr>
+                <p class="nav-text"><a href="">구매관리</a></p>
+                <p class="nav-text"><a href="/myPage/sales">판매관리</a></p>
+                <p class="nav-text"><a href="">최근본상품</a></p>
+                <p class="nav-text"><a href="">관심상품</a></p>
+                <p class="nav-text"><a href="">후기</a></p>
+                <p class="nav-text"><a href="">차단관리</a></p>
+                <p class="nav-text"><a href="">회원탈퇴</a></p>
+            </div>
         </div>
     </div>
-    <div id="userInfo_2">
-        <span>적립금</span>
-        <span>쿠폰</span>
-        <span>후기</span>
-    </div>
+
+
 </div>
+
+
 </html>
 

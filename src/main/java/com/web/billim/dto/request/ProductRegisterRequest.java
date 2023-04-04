@@ -41,8 +41,8 @@ public class ProductRegisterRequest {
     @NotEmpty
     private List<MultipartFile> images;
 
-	@NotEmpty
-    private TradeMethod tradeMethod;
+    @NotEmpty
+    private List<TradeMethod> tradeMethods;
 
     public void setRegisterMember(Member member) {
         this.member = member;

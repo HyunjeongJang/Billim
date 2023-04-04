@@ -5,86 +5,28 @@
       layout:decorate="~{layout/myPageLayout}">
 
 <div layout:fragment="content">
-    <style>
-        #test{
-            height: 100%;
-            width: 100%;
-        }
-
-        .salesContent_2{
-            display: inline-block;
-        }
-        #myPageNav{
-            /*height: 100%;*/
-            width: 30%;
-        }
-        #salesList{
-            /*height: 100%;*/
-            width: 70%;
-            float: right;
-        }
-        #myPageNav_2{
-            padding: 10% 10% 10% 10%;
-        }
-        #title, #productEnroll{
-            display: inline-block;
-        }
-        #productEnroll{
-            float: right;
-            text-align: right;
-        }
-        #productList{
-            background-color: lightgrey;
-        }
-        #titleContent{
-            height: 20%;
-        }
-        #productList{
-            height: 80%;
-        }
-
-    </style>
-    <div id="test">
-        <div id="myPageNav" class="salesContent_2">
-            <div id="myPageNav_2">
-            <li><a>마이페이지</a>
-                <ul class="sub">
-                    <li style="font-size: xx-small"></li>
-                    <li style="font-size: smaller"><a href="">구매관리</a></li>
-                    <li style="font-size: smaller"><a href="/myPage/sales">판매관리</a></li>
-                    <li style="font-size: smaller"><a href="#">후기</a></li>
-                    <li style="font-size: smaller"><a href="#">최근본상품</a></li>
-                    <li style="font-size: smaller"><a href="#">관심상품</a></li>
-                    <li style="font-size: smaller"><a href="#">차단관리</a></li>
-                </ul>
-            </li>
+    <link th:href="@{/css/mySalesList.css}" rel="stylesheet">
+    <div id="content-area" class="content-area">
+        <div id="content-title">
+            <div id="title">
+                <span class="my-subject">판매중인 상품</span>
+            </div>
+            <div id="productEnroll">
+                <a href="/product/enroll" style="font-weight: 500; color: #000000;">
+                    <!--                        <img style="width: 50px;" src="https://cdn-icons-png.flaticon.com/512/8910/8910600.png">-->
+                    상품 등록
+                </a>
             </div>
         </div>
-        <div id="salesList" class="salesContent_2">
-            <div id="titleContent">
-                <div id="title">
-                    <h2>판매중인 상품</h2>
-                </div>
-                <div id="productEnroll">
-                    <a href="/product/enroll">상품 등록</a>
-                </div>
-            </div>
-            <div id="productList">
-                    <br>
-                <br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br
-
-
-
-
-
-
-
-            </div>
+        <div id="productList">
+            <br>
+            <br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br
         </div>
     </div>
 </div>
+
 
 </html>

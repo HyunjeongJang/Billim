@@ -39,8 +39,6 @@ public class MemberSignupRequest {
     @Email(message = "올바른 이메일 형식으로 입력해아 합니다.")
     private String email;
 
-    private String profileImageUrl;
-
 
     public Member toEntity() {
         return Member.builder()

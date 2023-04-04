@@ -1,0 +1,128 @@
+/*div {*/
+/*    border: 1px solid pink;*/
+/*}*/
+#myPageHeader{
+    height: 250px;
+}
+
+#userInfo {
+    width: 50%;
+    height: 100%;
+}
+
+#userInfo_2{
+    float: right;
+    padding-right: 1%;
+    padding-top: 1%;
+    width: 50%;
+    height: 100%;
+}
+
+#userInfo, #userInfo_2,#image,#text{
+    display: inline-block;
+}
+#image{
+    padding-left: 10%;
+    width: 50%;
+    height: 100%;
+}
+
+#text{
+    width: 50%;
+    height: 100%;
+    padding-top: 10%;
+    padding-bottom: 7%;
+    padding-left: 3%;
+    float: right;
+}
+#profileImage{
+    width: 100%;
+    height: 100%;
+    padding-left: 20%;
+}
+.grade-info {
+    font-size: x-small;
+}
+#nickname{
+    font-size: xx-large;
+    font-weight: 600;
+    padding-bottom: 5%;
+}
+
+#grade {
+    font-weight: 500;
+    color: red;
+}
+
+
+
+
+#myPage-warp{
+    height: 100%;
+    width: 100%;
+}
+
+#myPageNav_2{
+    padding: 15% 10% 10% 30%;
+}
+
+
+#myPageNav{
+    /*height: 100%;*/
+    width: 25%;
+}
+
+
+.nav-myPage {
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.nav-text {
+    font-size: large;
+    font-weight: 500;
+}
+
+.info-wrap {
+    height: 250px;
+}
+
+.info-right {
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    border-radius: 20px;
+    width: 25%;
+    height: 80%;
+    background: #dcdcdc;
+    margin-top: 3%;
+    margin-right: 3%;
+    float: right;
+    padding-top: 3%;
+    padding-right: 3%;
+    font-weight: 600;
+}
+
+/*content*/
+
+#content-area{
+    display: inline-block;
+    /*height: 100%;*/
+    width: 75%;
+    float: right;
+}
+
+#content-title{
+    height: 20%;
+}
+
+.my-subject {
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+#title {
+    display: inline-block;
+    height: 158px;
+    line-height: 158px;
+}

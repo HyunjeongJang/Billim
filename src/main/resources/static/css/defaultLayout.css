@@ -28,11 +28,14 @@ a {
     height: 100%;
     padding-top: 20px;
     text-align: center;
+    /*line-height: 100%;*/
 }
 
 #header_3 {
     width: 25%;
     height: 100%;
+    padding-right: 3%;
+    /*line-height: 100%;*/
 }
 
 /* nav */
@@ -151,10 +154,11 @@ a {
 .login {
     width: 100%;
     height: 100%;
-    margin-left: 50%;
     padding-top: 30px;
     font-weight: 600;
     color: black;
+    text-align: right;
+    padding-right: 4%;
 }
 
 .login a:hover {

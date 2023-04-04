@@ -2,13 +2,24 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/defaultLayout}">
+      layout:decorate="~{layout/myPageLayout}">
 
 <div layout:fragment="content">
+    <link th:href="@{/css/myPurchaseList.css}" rel="stylesheet">
+    <div id="content-area" class="content-area">
+        <div id="content-title">
+            <div id="title">
+                <span class="my-subject">구매 상품</span>
+            </div>
+        </div>
+        <div id="productList">
+            <br>
+            <br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br>
 
-    <div class="content">
-        구매목록
+        </div>
     </div>
-
 </div>
+
+
 </html>
