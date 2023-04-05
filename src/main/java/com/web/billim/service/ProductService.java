@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Spliterator;
 import java.util.stream.Collectors;
 
 @Service
@@ -98,6 +99,10 @@ public class ProductService {
     }
 
 
+    public List<Product> myProduceSales(User user) {
+         List<Product> products= productRepository.findByMember_memberId(user.getMember().getMemberId());
+         return products;
+    }
 
 //    public Map<String, String> validateHandling(BindingResult bindingResult) {
 //        Map<String, String> validatorResult = new HashMap<>();
