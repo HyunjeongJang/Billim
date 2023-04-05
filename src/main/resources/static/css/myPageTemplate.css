@@ -1,6 +1,6 @@
-/*div {*/
-/*    border: 1px solid pink;*/
-/*}*/
+div {
+    border: 1px solid pink;
+}
 #myPageHeader{
     height: 250px;
 }
@@ -79,7 +79,7 @@
 }
 
 #myPageNav_2{
-    padding: 15% 10% 10% 30%;
+    padding: 50px 10% 10% 30%;
 }
 
 
@@ -108,7 +108,7 @@
     position: relative;
     text-align: right;
     border-radius: 20px;
-    width: 25%;
+    width: 30%;
     height: 80%;
     background: #dcdcdc;
     margin-top: 3%;
@@ -129,7 +129,7 @@
 }
 
 #content-title{
-    height: 20%;
+    height: 15%;
 }
 
 .my-subject {
@@ -139,6 +139,7 @@
 
 #title {
     display: inline-block;
-    height: 158px;
-    line-height: 158px;
+    padding: 50px 0px 15px 0px;
+    /*height: 158px;*/
+    /*line-height: 158px;*/
 }
