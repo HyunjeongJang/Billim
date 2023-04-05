@@ -17,3 +17,18 @@
 #productList{
     height: 80%;
 }
+
+.product-image{
+    width: 150px;
+    height: 150px;
+}
+.myProductImage{
+    float: left;
+    display: inline-block;
+    padding: 3% 3% 3% 3%;
+}
+.myProductInfo{
+    display: inline-block;
+    float:left;
+    padding :3% 3% 3% 3%;
+}

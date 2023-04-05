@@ -97,7 +97,7 @@ public class ProductService {
 
 
     public List<Product> myProduceSales(User user) {
-         List<Product> products= productRepository.findByMemberId(user.getMember().getMemberId());
+         List<Product> products= productRepository.findByMember_memberId(user.getMember().getMemberId());
          return products;
     }
 }
