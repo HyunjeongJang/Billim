@@ -14,7 +14,6 @@ import com.web.billim.type.TradeMethod;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
@@ -27,21 +26,21 @@ public class ProductRegisterRequest {
     private Member member;
 
     @NotEmpty
-//	@NotEmpty(message = "대여 상품명은 필수 항목입니다.")
+//	@NotBlank(message = "대여 상품명은 필수 항목입니다.")
     private String name;
 
     @NotEmpty
-//	@NotEmpty(message = "상품 설명은 필수 항목입니다.")
+//	@NotBlank(message = "상품 설명은 필수 항목입니다.")
     private String detail;
 
-    //	@NotEmpty(message = "금액은 필수항목입니다. 100원 이상 입력해 주세요.")
+//    @NotBlank(message = "금액은 필수항목입니다. 100원 이상 입력해 주세요.")
     @Min(value = 100, message = "100원 이상 입력해 주세요.")
     private int price;
 
-    @NotEmpty
+//    @NotBlank(message = "필수입력")
     private List<MultipartFile> images;
 
-    @NotEmpty
+//    @NotBlank(message = "필수입력")
     private List<TradeMethod> tradeMethods;
 
     public void setRegisterMember(Member member) {

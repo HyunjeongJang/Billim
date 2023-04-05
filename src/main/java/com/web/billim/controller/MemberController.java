@@ -66,7 +66,6 @@ public class MemberController {
             return "pages/member/signup";
         }
         memberService.singUp(memberSignupRequest);
-
         return "pages/home";
     }
 
@@ -77,15 +76,22 @@ public class MemberController {
         return "redirect:/member/login";
     }
 
-    @GetMapping("/member/myPage")
-    public String myPage() {
-        return "pages/myPage/myPurchaseList";
-    }
+
 
 
     @GetMapping("/member/delete")
     public String deleteMember() {
         return "pages/myPage/deleteMember";
+    }
+
+    @GetMapping("/member/searchId")
+    public String searchId() {
+        return "pages/member/searchId";
+    }
+
+    @GetMapping("/member/changePassword")
+    public String changePassword() {
+        return "pages/member/changePassword";
     }
 
 

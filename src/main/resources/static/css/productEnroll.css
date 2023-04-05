@@ -6,23 +6,21 @@
     text-align : left;
     font-weight: 600;
     padding : 10px 0 10px 40px;
+    width: 20%;
 }
 
 .table_input {
     text-align: left;
     /*padding-left: 30px;*/
     font-weight: 400;
+    width: 65%;
 }
 
 .table_last {
     padding-right: 40px;
     font-weight: 400;
+    width: 15%;
 }
-
-/*input {*/
-/*    border:none;*/
-/*}*/
-
 
 
 

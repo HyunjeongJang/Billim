@@ -11,7 +11,6 @@
     <div class="content" th:fragment="productEnroll">
         <div class="subject">
             <h2>상품 등록</h2>
-            <!--            <span class="symbol"><img th:src="@{/images/product_enroll.png}" width="40px"> 대여할 상품을 등록해 주세요!</span>-->
         </div>
 
         <table th:align="center">
@@ -41,8 +40,8 @@
 
             <tr>
                 <td class="table_text">대여 요금</td>
-                <td class="table_input"><input type="number" id="price" class="form-control" required></td>
-                <td class="table_last">원(/일)</td>
+                <td class="table_input"><input type="number" id="price" class="form-control" style="width: 85%; display: inline-block;">&nbsp;&nbsp;&nbsp;원(/일)</td>
+                <td class="table_last"></td>
             </tr>
             <tr>
                 <td colspan="3"><hr></td>
@@ -121,7 +120,6 @@
                 });
             }
         </script>
-
     </div>
 </div>
 

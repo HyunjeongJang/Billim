@@ -4,6 +4,7 @@ import com.web.billim.domain.ImageProduct;
 import com.web.billim.domain.Product;
 import com.web.billim.domain.ProductCategory;
 import com.web.billim.dto.request.ProductRegisterRequest;
+import com.web.billim.dto.request.User;
 import com.web.billim.infra.ImageUploadService;
 import com.web.billim.repository.ImageProductRepository;
 import com.web.billim.repository.ProductCategoryRepository;
@@ -14,9 +15,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -91,6 +96,18 @@ public class ProductService {
                 new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
         return product;
     }
+
+
+
+//    public Map<String, String> validateHandling(BindingResult bindingResult) {
+//        Map<String, String> validatorResult = new HashMap<>();
+//
+//        for(FieldError error : bindingResult.getFieldErrors()){
+//            String validKeyName = String.format("valid_%s",error.getField());
+//            validatorResult.put(validKeyName,error.getDefaultMessage());
+//        }
+//        return validatorResult;
+//    }
 
 
 

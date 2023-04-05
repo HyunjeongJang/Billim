@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+
+<div layout:fragment="content">
+    <link th:href="@{/css/.css}" rel="stylesheet">
+    <div class="content">
+
+
+        <form method="post" th:action="@{/}">
+
+            <table th:align="center" width="500px">
+
+                <div><h2>아이디 찾기</h2></div>
+
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <div class="login_area"><input class="form-control" name="" type="text" placeholder=""></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td>
+                        <div class="login_area"><input class="form-control" name="" type="email" placeholder="">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-light">발송</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>인증번호</td>
+                    <td><input class="form-control" type="text"></td>
+                    <td>
+                        <button class="btn btn-light">확인</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button class="btn btn-light">아이디 찾기</button></td>
+                </tr>
+            </table>
+
+        </form>
+
+
+        <div>
+            <div>
+                아이디 보여주는영역
+            </div>
+            <div>
+                비밀번호 찾기
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</html>
