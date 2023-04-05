@@ -4,6 +4,7 @@ import com.web.billim.domain.ImageProduct;
 import com.web.billim.domain.Product;
 import com.web.billim.domain.ProductCategory;
 import com.web.billim.dto.request.ProductRegisterRequest;
+import com.web.billim.dto.request.User;
 import com.web.billim.infra.ImageUploadService;
 import com.web.billim.repository.ImageProductRepository;
 import com.web.billim.repository.ProductCategoryRepository;
@@ -18,12 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Spliterator;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
+
     private final ProductCategoryRepository productCategoryRepository;
     private final ImageProductRepository imageProductRepository;
     private final ImageUploadService imageUploadService;
@@ -93,6 +96,8 @@ public class ProductService {
     }
 
 
-
-
+    public List<Product> myProduceSales(User user) {
+         List<Product> products= productRepository.findByMemberId(user.getMember().getMemberId());
+         return products;
+    }
 }

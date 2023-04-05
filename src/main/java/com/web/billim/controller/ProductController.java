@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Slf4j
@@ -57,7 +58,10 @@ public class ProductController {
     }
 
     @GetMapping("/myPage/sales")
-    public String myPageSalesManagement() {
+    public String myPageSalesManagement(Model model,@AuthenticationPrincipal User user) {
+
+        List<Product> products = productService.myProduceSales(user);
+        model.addAttribute("myProducts",products);
         return "pages/myPage/mySalesList";
     }
 
@@ -84,5 +88,7 @@ public class ProductController {
 //        productService.register(productRegisterRequest);
 //        return "pages/myPage/mySalesList";
 //    }
+
+
 }
 

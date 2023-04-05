@@ -18,11 +18,9 @@
             </div>
         </div>
         <div id="productList">
-            <br>
-            <br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div th:each="product : ${myProducts}" class="product-info">
+                <h1 th:text="${product.getProductName()}"></h1>
+            </div>
         </div>
     </div>
 </div>
