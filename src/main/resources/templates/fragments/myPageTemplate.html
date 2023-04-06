@@ -6,16 +6,22 @@
     <div class="info-wrap">
         <div id="userInfo">
             <div id="image">
-                <img  id=profileImage th:src="${#authentication.principal.member.profileImageUrl}">
+<!--                <img  id=profileImage th:src="${#authentication.principal.member.profileImageUrl}">-->
+                <img  id=profileImage th:src="${#authentication.principal.profileImageUrl}">
             </div>
         </div>
 
         <div id="userInfo_1">
             <div id="text">
-                <span id="nickname" sec:authentication="principal.member.nickname"></span>
+<!--                <span id="nickname" sec:authentication="principal.member.nickname"></span>-->
+<!--                <br>-->
+<!--                <span id="grade" sec:authentication="principal.member.grade"></span>-->
+<!--                <span sec:authentication="principal.member.createdAt"></span>-->
+
+                <span id="nickname" sec:authentication="principal.nickname"></span>
                 <br>
-                <span id="grade" sec:authentication="principal.member.grade"></span>
-                <span sec:authentication="principal.member.createdAt"></span>
+                <span id="grade" sec:authentication="principal.grade"></span>
+                <span sec:authentication="principal.createdAt"></span>
                 <br>
                 <p class="grade-info">
                     다음등급인 골드까지 3334점 남았습니다.

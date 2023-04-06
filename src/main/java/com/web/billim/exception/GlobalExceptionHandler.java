@@ -1,6 +1,7 @@
 package com.web.billim.exception;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,8 +20,8 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.badRequest().body(new ErrorResponse("INVALID_INPUT", message.toString()));
 	}
 
-	@ExceptionHandler(value = MethodArgumentNotValidException.class)
-	public ResponseEntity<ErrorResponse> handleValidationException(MethodArgumentNotValidException ex) {
+	@ExceptionHandler(value = {MethodArgumentNotValidException.class, BindException.class})
+	public ResponseEntity<ErrorResponse> handleValidationException(BindException ex) {
 		StringBuilder message = new StringBuilder("잘못된 사용자 입력이 있습니다.\n");
 		ex.getBindingResult().getFieldErrors().forEach(error -> {
 			message.append(" - ").append(error.getField()).append(" 은(는) ").append(error.getDefaultMessage()).append("\n");

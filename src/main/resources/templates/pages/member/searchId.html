@@ -6,20 +6,40 @@
 
 <div layout:fragment="content">
     <link th:href="@{/css/.css}" rel="stylesheet">
+    <style>
+
+        table {
+            text-align: center;
+        }
+
+        table td {
+            padding-top: 30px;
+        }
+
+        .td-1 {
+            width: 25%;
+        }
+
+        .td-2 {
+            width: 50%;
+        }
+
+        .td-3 {
+            width: 25%;
+        }
+
+
+    </style>
+
     <div class="content">
-
-
         <form method="post" th:action="@{/}">
-
-            <table th:align="center" width="500px">
-
-                <div><h2>아이디 찾기</h2></div>
-
+            <table th:align="center">
                 <tr>
-                    <td>이름</td>
-                    <td>
+                    <td class="td-1">이름</td>
+                    <td class="td-2">
                         <div class="login_area"><input class="form-control" name="" type="text" placeholder=""></div>
                     </td>
+                    <td class="td-3"></td>
                 </tr>
                 <tr>
                     <td>이메일</td>
@@ -28,17 +48,16 @@
                         </div>
                     </td>
                     <td>
-                        <button class="btn btn-light">발송</button>
+                        <button class="btn btn-light">인증번호 발송</button>
                     </td>
                 </tr>
                 <tr>
                     <td>인증번호</td>
-                    <td><input class="form-control" type="text"></td>
+                    <td><input class="form-control" type="text" placeholder=""></td>
                     <td>
-                        <button class="btn btn-light">확인</button>
+                        <button class="btn btn-light">인증하기</button>
                     </td>
                 </tr>
-
             </table>
 
         </form>

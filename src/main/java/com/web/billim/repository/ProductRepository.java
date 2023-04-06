@@ -10,6 +10,10 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findByMember_memberId(int memberId);
+
+//     JPQL
+//     @Query("SELECT p FROM Product p WHERE p.member.memberId = :memberId")
+//     List<Product> findByMemberId(@Param("memberId") int memberId);
 }
 
 

@@ -1,6 +1,5 @@
 package com.web.billim.controller;
 
-
 import com.web.billim.dto.request.MemberSignupRequest;
 import com.web.billim.service.MemberService;
 import com.web.billim.validation.CheckIdValidator;
@@ -96,3 +95,19 @@ public class MemberController {
 
 
 }
+
+
+
+/*
+ *  [ 비밀번호 재설정 ]
+ *   1. 사용자에게 아이디/이메일 인증을 받는다.
+ *   2. 기존 패스워드, 변경할 패스워드, 변경할 패스워드 확인을 받는다.
+ *   3. 아이디, 기존 패스워드, 변경할 패스워드를 서버로 전송
+ *   4. 아이디로 Member 조회
+ *   5. Member.getPassword 랑 기존 패스워드 받은거 비교 (BCryp~~ matches()) -> 암호화가 해결됨
+ *   	5-1. 대칭키 암호화
+ *      5-2. 기존 패스워드를 받음 -> 평문
+ *      5-3. 데이터베이스에 있는 패스워드 -> 암호화
+ *      5-4. passwordEncoder.matches(평문, 암호화 된거)
+ *   6. 변경할 패스워드로 Member 의 password 업데이트.
+ */

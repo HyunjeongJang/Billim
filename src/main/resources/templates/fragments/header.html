@@ -1,3 +1,36 @@
+<!--<html lang="en"-->
+<!--      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<!--<header th:fragment="HeaderFragment" id="header">-->
+<!--    <div id="header_1">-->
+<!--    </div>-->
+
+<!--    <div id="header_2">-->
+<!--        <a th:href="@{/}" class="logo">-->
+<!--            <span class="symbol"><img th:src="@{/images/common/billim_logo_1.png}" width="100px"></span>-->
+<!--        </a>-->
+<!--    </div>-->
+
+<!--    <div id="header_3">-->
+<!--        <div class="login">-->
+<!--            <div sec:authorize="isAnonymous()"  class="login-before">-->
+<!--                <a th:href="@{/member/login}">-->
+<!--                    <span class="login-before">로그인</span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div sec:authorize="isAuthenticated()" class="login-after">-->
+<!--                <div id="profileImage-header">-->
+<!--                    <img style="width: 35px;" th:src="${#authentication.principal.member.profileImageUrl}">-->
+<!--                </div>-->
+<!--                <span sec:authentication="principal.member.name"></span>&nbsp;&nbsp;-->
+<!--                <span><a href="/chat/myChatRoom">메세지&nbsp;</a></span>-->
+<!--                <span><a href="/myPage/purchase">마이페이지</a></span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+<!--</html>-->
+
+
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <header th:fragment="HeaderFragment" id="header">
@@ -19,9 +52,9 @@
             </div>
             <div sec:authorize="isAuthenticated()" class="login-after">
                 <div id="profileImage-header">
-                    <img style="width: 35px;" th:src="${#authentication.principal.member.profileImageUrl}">
+                    <img style="width: 35px;" th:src="${#authentication.principal.profileImageUrl}">
                 </div>
-                <span sec:authentication="principal.member.name"></span>&nbsp;&nbsp;
+                <span sec:authentication="principal.name"></span>&nbsp;&nbsp;
                 <span><a href="/chat/myChatRoom">메세지&nbsp;</a></span>
                 <span><a href="/myPage/purchase">마이페이지</a></span>
             </div>
@@ -29,4 +62,5 @@
     </div>
 </header>
 </html>
+
 

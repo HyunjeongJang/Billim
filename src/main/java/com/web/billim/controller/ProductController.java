@@ -2,9 +2,9 @@ package com.web.billim.controller;
 
 import com.web.billim.domain.Product;
 import com.web.billim.domain.ProductCategory;
-import com.web.billim.dto.request.MemberSignupRequest;
 import com.web.billim.dto.request.ProductRegisterRequest;
-import com.web.billim.dto.request.User;
+import com.web.billim.dto.response.MyProductSalesResponse;
+import com.web.billim.security.domain.User;
 import com.web.billim.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +15,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Controller
@@ -56,13 +53,23 @@ public class ProductController {
     }
 
 
-    @GetMapping("/myPage/sales")
-    public String myPageSalesManagement(Model model,@AuthenticationPrincipal User user) {
 
-        List<Product> products = productService.myProduceSales(user);
-        model.addAttribute("myProducts",products);
+//    @GetMapping("/myPage/sales")
+//    public String myPageSalesManagement(Model model,@AuthenticationPrincipal User user) {
+//
+//        List<Product> products = productService.myProduceSales(user);
+//        model.addAttribute("myProducts",products);
+//        return "pages/myPage/mySalesList";
+//    }
+
+
+    @GetMapping("/myPage/sales")
+    public String myPageSalesManagement(Model model, @AuthenticationPrincipal User user) {
+        List<MyProductSalesResponse> products = productService.myProduceSales(user);
+        model.addAttribute("myProducts", products);
         return "pages/myPage/mySalesList";
     }
+
 
 
     @GetMapping("/product/enroll")
@@ -72,54 +79,30 @@ public class ProductController {
         return "pages/product/productEnroll";
     }
 
+
+
+//    @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    @ResponseBody
+//    public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest req,
+//                                                   @AuthenticationPrincipal User user
+//    ) {
+//        req.setRegisterMember(user.getMember());
+//        return ResponseEntity.ok(productService.register(req));
+//    }
+
+
     @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest req,
-                                                   @AuthenticationPrincipal User user
+    public ResponseEntity<Product> registerProduct(
+            @ModelAttribute @Valid ProductRegisterRequest req,
+            @AuthenticationPrincipal User user
     ) {
-        req.setRegisterMember(user.getMember());
+        req.setRegisterMember(user.getMemberId());
         return ResponseEntity.ok(productService.register(req));
     }
 
 
 
-
-
-
-//    @GetMapping("/product/list")
-//    public String productTotal(Model model) {
-//        List<Product> productList = productService.findAllProduct();
-//        model.addAttribute("productList", productList);
-//        return "pages/product/productList";
-//    }
-
-//    @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-//    @ResponseBody
-//    public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest productRegisterRequest,
-//                                                   BindingResult bindingResult,
-//                                                   @AuthenticationPrincipal User user,
-//                                                   Model model
-//    ) {
-//        if (bindingResult.hasErrors()) {
-//            model.addAttribute("productRegisterRequest", productRegisterRequest);
-//
-//            Map<String, String> validatorResult = productService.validateHandling(bindingResult);
-//            for (String key : validatorResult.keySet()) {
-//                model.addAttribute(key, validatorResult.get(key));
-//            }
-////            return
-//        }
-//        productRegisterRequest.setRegisterMember(user.getMember());
-//        return ResponseEntity.ok(productService.register(productRegisterRequest));
-//    }
-
-//    @PostMapping("/product/enroll")
-//    public String registerProduct(@Valid ProductRegisterRequest productRegisterRequest) {
-//        Member testMember = Member.builder().memberId(1).build();
-//        productRegisterRequest.setRegisterMember(testMember);
-//        productService.register(productRegisterRequest);
-//        return "pages/myPage/mySalesList";
-//    }
 
 
 }

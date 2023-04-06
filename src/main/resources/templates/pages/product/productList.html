@@ -2,7 +2,8 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/defaultLayout}">
+      layout:decorate="~{layout/defaultLayout}" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
 
 <div layout:fragment="content">
     <link th:href="@{/css/productList.css}" rel="stylesheet">
@@ -11,22 +12,27 @@
         <div id="category-nav">
             <span class="category-area">
                 <a th:href="@{/}" class="category_image" id="product_goods">
-                    <span class="category_image"><img src="https://cdn-icons-png.flaticon.com/512/2743/2743956.png" width="50px"></span>
+                    <span class="category_image"><img src="https://cdn-icons-png.flaticon.com/512/2743/2743956.png"
+                                                      width="50px"></span>
                 </a>
                 <a th:href="@{/}" class="category_image" id="product_electronic">
-                    <span class="category_image"><img src="https://cdn-icons-png.flaticon.com/512/5820/5820686.png" width="50px"></span>
+                    <span class="category_image"><img src="https://cdn-icons-png.flaticon.com/512/5820/5820686.png"
+                                                      width="50px"></span>
                 </a>
                 <a th:href="@{/}" class="category_image" id="product_furniture">
-                    <span class="category_image"><img src="https://cdn-icons-png.flaticon.com/512/7816/7816184.png" width="50px"></span>
+                    <span class="category_image"><img src="https://cdn-icons-png.flaticon.com/512/7816/7816184.png"
+                                                      width="50px"></span>
                 </a>
                 <a th:href="@{/}" class="category_image" id="product_sports">
-                    <span class="category_image"><img src="https://cdn-icons-png.flaticon.com/512/7118/7118138.png" width="50px"></span>
+                    <span class="category_image"><img src="https://cdn-icons-png.flaticon.com/512/7118/7118138.png"
+                                                      width="50px"></span>
                 </a>
             </span>
 
             <span class="search-area">
                 <input type="text" class="isStatusOnInput" placeholder="검색어를 입력해 주세요." style="margin-right: 10px;">
-                <button class="btn btn-light"><img src="https://cdn-icons-png.flaticon.com/512/7828/7828884.png" width="20px"></button>
+                <button class="btn btn-light"><img src="https://cdn-icons-png.flaticon.com/512/7828/7828884.png"
+                                                   width="20px"></button>
             </span>
         </div>
 
@@ -36,12 +42,9 @@
 
                 <a th:href="@{/product/detail/{productId}(productId=${product.productId})}">
                     <div class="product-image">
-                        <img style="
-                    border-radius: 30px;
-                    -moz-border-radius: 30px;
-                    -khtml-border-radius: 30px;
-                    -webkit-border-radius: 30px;"
-                             src="https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98c37fe3/images/large/00_LIFE_ORIGINAL_1.jpg">
+                        <img class="image-detail" th:src="${product.getImages()[0].getUrl()}">
+
+
 
                         <div class="heart-check">
                             <input type="checkbox" id="heart">
@@ -51,13 +54,15 @@
                     </div>
                 </a>
                 <span style="font-weight: 500; float: left">
-                    <a th:text="${product.productName}" th:href="@{/product/detail/{productId}(productId=${product.productId})}"></a>
+                    <a th:text="${product.productName}"
+                       th:href="@{/product/detail/{productId}(productId=${product.productId})}"></a>
                 </span>
                 <span style="float: right">
                     ⭐️4.5
                 </span>
                 <br>
-                <span style="float: left; font-weight: 500;" th:text="${product.price}"></span><span style="float: left">&nbsp;원(/일)</span>
+                <span style="float: left; font-weight: 500;" th:text="${product.price}"></span><span
+                    style="float: left">&nbsp;원(/일)</span>
             </div>
 
         </div>
@@ -71,9 +76,7 @@
         </div>
 
 
-
     </div>
-
 
 
 </div>
