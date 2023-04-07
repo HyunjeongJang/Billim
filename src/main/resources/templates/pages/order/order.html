@@ -5,6 +5,134 @@
       layout:decorate="~{layout/defaultLayout}">
 
 <div layout:fragment="content">
+    <link th:href="@{/css/productDetail.css}" rel="stylesheet">
+    <style>
+
+    </style>
+
+    <div class="content" th:fragment="">
+
+        <div class="content-wrap">
+            <div class="title-area">
+                <div class="title">
+                    <span th:text="${product.productName}"></span>
+                </div>
+                <span>
+                    별점 4.5 후기 개 | <span th:text="${product.member.getGrade()}"></span> | 지역
+                </span>
+                <span>
+                    공유하기
+                    저장
+                </span>
+            </div>
+
+            <div class="product-image">
+
+                <img class="image-detail" th:src="${product.getImages()[0].getUrl()}">
+
+
+
+            </div>
+
+            <div class="product-wrap">
+
+                <div class="product-info">
+                    <span th:text="${product.member.getNickname()}"></span>
+                    님이 대여하는 상품
+                    <img th:src="${product.member.getProfileImageUrl()}" width="60px">
+                    <hr>
+
+                    <div>직거래</div>
+                    <div>택배거래</div>
+                    <div><span th:text="${product.member.getNickname()}"></span>님은 <span
+                            th:text="${product.member.getGrade()}"></span>등급 입니다.
+                    </div>
+
+                    <div>
+                        상품 설명
+                        <span th:text="${product.detail}"></span>
+                    </div>
+
+
+                    <div th:text="${product.tradeMethod}"></div>
+
+
+                </div>
+
+                <div class="product-pay">
+                    결제정보
+                    <div>
+                        ₩ <span th:text="${product.price}"></span> (/일)
+                    </div>
+
+
+                    <div class="calendar-wrap">
+                        <div class="calendar-middle-wrap">
+                            <div class="cal_nav">
+                                <a href="javascript:;" class="nav-btn go-prev"></a>
+                                <span class="year-month start-year-month"></span>
+                                <a href="javascript:;" class="nav-btn go-next"></a>
+                            </div>
+                            <div class="cal_wrap">
+                                <div class="days">
+                                    <div class="day">일</div>
+                                    <div class="day">월</div>
+                                    <div class="day">화</div>
+                                    <div class="day">수</div>
+                                    <div class="day">목</div>
+                                    <div class="day">금</div>
+                                    <div class="day">토</div>
+                                </div>
+                                <div class="dates start-calendar"></div>
+                            </div>
+                        </div>
+
+                        <div class="calendar-middle-wrap">
+                            <div class="cal_nav">
+                                <a href="javascript:;" class="nav-btn go-prev"></a>
+                                <span class="year-month last-year-month"></span>
+                                <a href="javascript:;" class="nav-btn go-next"></a>
+                            </div>
+                            <div class="cal_wrap">
+                                <div class="days">
+                                    <div class="day">일</div>
+                                    <div class="day">월</div>
+                                    <div class="day">화</div>
+                                    <div class="day">수</div>
+                                    <div class="day">목</div>
+                                    <div class="day">금</div>
+                                    <div class="day">토</div>
+                                </div>
+                                <div class="dates last-calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkInOutInfo">
+                        <div>
+                            <p>
+                                <span>대여 시작일</span>
+                                <label id="check_in_day"></label>
+                            </p>
+                            <p class="space">~</p>
+                            <p>
+                                <span>대여 종료일</span>
+                                <label id="check_out_day"></label>
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
 
 </div>
 </html>
