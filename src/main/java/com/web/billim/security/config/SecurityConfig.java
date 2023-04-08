@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/font/**");
-        // Spring Security에서 해당 요청은 인증 대상에서 제외시킵니다. = 모두 접근 가능
+        // Spring Security에서 해당 요청은 인증 대상에서 제외 = 모두 접근 가능
     }
 
     //HttpSecurity를 통해 HTTP 요청에 대한 보안을 설정할 수 있습니다.
@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true);   // 세션 날리기
     }
 
-    //1. 가장 첫 요청이 Filter를 통해 들어옴 (FilterChain을 거치면서 줄줄이 수행함)
+    // 1. 가장 첫 요청이 Filter를 통해 들어옴 (FilterChain을 거치면서 줄줄이 수행함)
     @Bean
     public CustomAuthenticationFilter customAuthenticationFilter() throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManager());
@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return customAuthenticationFilter;
     }
 
-    //2. 반환한 데이터를 인증처리 후 인증된 토큰을 AuthenticationManager에게 반환
+    // 2. 반환한 데이터를 인증처리 후 인증된 토큰을 AuthenticationManager에게 반환
     @Override   // AuthenticationManagerBuilder : 인증을 수행하기 위해 ProviderManager를 생성
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) {
         authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider());
@@ -80,18 +80,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Bean//CustomAuthenticationProvider : 인증 처리 핵심 로직
+    @Bean // CustomAuthenticationProvider : 인증 처리 핵심 로직
     public CustomAuthenticationProvider customAuthenticationProvider() {
         return new CustomAuthenticationProvider(userService, bCryptPasswordEncoder());
     }
 
-    //    AuthenticationManager를 bean으로 등록하기 위한 메소드
+    // AuthenticationManager를 bean으로 등록하기 위한 메소드
     @Bean
     public AuthenticationManager getAuthenticationManager() throws Exception {
         return super.authenticationManagerBean();
     }
 
-    //AuthenticationManager는 AuthenticationFilter에게 토큰 전달
+    // AuthenticationManager는 AuthenticationFilter에게 토큰 전달
     @Bean
     @Override // AuthenticationManager 클래스를 오버라이딩해서 Bean으로 등록
     public AuthenticationManager authenticationManagerBean() throws Exception {

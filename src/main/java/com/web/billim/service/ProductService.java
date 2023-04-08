@@ -70,7 +70,6 @@ public class ProductService {
         // NULL 이 저장된 객체를 쓰려고 에러가 난다. -> NPE
         // Optional -> 값이 들어있거나, 안들어있거나 두가지 상태를 가짐
 
-        // N + 1 문제, Open-In-View 옵션, Proxy 에러
         // TODO : CustomException
         Product product = productOptional.orElseThrow(() ->
                 new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));

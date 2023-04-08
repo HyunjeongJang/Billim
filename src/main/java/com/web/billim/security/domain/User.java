@@ -49,7 +49,6 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return null; null 보내는것보다 빈 리스트라도 보내주는게 나음
         return List.of();
     }
 

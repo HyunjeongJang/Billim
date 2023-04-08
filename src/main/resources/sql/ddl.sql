@@ -53,14 +53,15 @@ CREATE TABLE `block`
 (
     `member_id`  int                                 NOT NULL COMMENT '회원번호',
     `target_id`  int                                 NOT NULL COMMENT '차단대상번호',
-    `created_at` timestamp default current_timestamp NOT NULL COMMENT '생성일자'
+    `created_at` timestamp default current_timestamp NOT NULL COMMENT '생성일자',
+    `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );
 
 DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `order`
 (
-    `share_id`    int primary key auto_increment COMMENT '대여번호',
+    `order_id`    int primary key auto_increment COMMENT '대여번호',
     `product_id`  int                                 NOT NULL COMMENT '상품번호',
     `member_id`   int                                 NOT NULL COMMENT '구매회원번호',
     `status`      varchar(10)                         NOT NULL COMMENT '대여상태',
@@ -69,7 +70,7 @@ CREATE TABLE `order`
     `address`     varchar(200)                        NULL COMMENT '주소',
     `phone`       varchar(100)                        NULL COMMENT '연락처',
     `created_at`  timestamp default current_timestamp NOT NULL COMMENT '주문일자',
-    `canceled_at` timestamp                           NULL COMMENT '취소일자'
+    `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );
 
 DROP TABLE IF EXISTS `payment`;
@@ -82,9 +83,10 @@ CREATE TABLE `payment`
     `point`        int                                 NULL COMMENT '적립금',
     `merchant_uid` varchar(500)                        NULL COMMENT '카드결제ID',
     `total_amount` int                                 NOT NULL COMMENT '총금액',
-    `created_at`   timestamp default current_timestamp NOT NULL COMMENT '결제일자',
     `status`       boolean                             NOT NULL COMMENT '결제여부',
-    `trade_method` varchar(10)                         NOT NULL COMMENT '거래 방법'
+    `trade_method` varchar(10)                         NOT NULL COMMENT '거래 방법',
+    `created_at`   timestamp default current_timestamp NOT NULL COMMENT '결제일자',
+    `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );
 
 DROP TABLE IF EXISTS `saved_point`;
@@ -132,7 +134,8 @@ CREATE TABLE `notification`
     `is_read`    boolean                             NOT NULL COMMENT '읽음여부',
     `is_delete`  boolean                             NOT NULL COMMENT '삭제여부',
     `content`    varchar(100)                        NOT NULL COMMENT '알림내용',
-    `created_at` timestamp default current_timestamp NOT NULL COMMENT '생성일자'
+    `created_at` timestamp default current_timestamp NOT NULL COMMENT '생성일자',
+    `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );
 
 DROP TABLE IF EXISTS `chat_message`;
@@ -144,7 +147,8 @@ CREATE TABLE `chat_message`
     `member_id`    int                                 NOT NULL COMMENT '발신회원번호',
     `message`      varchar(2000)                       NOT NULL COMMENT '채팅메세지',
     `is_read`      boolean                             NOT NULL COMMENT '읽음여부',
-    `created_at`   timestamp default current_timestamp NOT NULL COMMENT '생성일자'
+    `created_at`   timestamp default current_timestamp NOT NULL COMMENT '생성일자',
+    `updated_at`   timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );
 
 DROP TABLE IF EXISTS `review`;
