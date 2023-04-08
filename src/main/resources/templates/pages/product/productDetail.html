@@ -124,14 +124,23 @@
                     </div>
 
                     <div class="pay-info">
-                        <button class="btn btn-light">확인 및 결제</button>
+                        <button class="btn btn-light" onclick="orderConfirm()">확인 및 결제</button>
                     </div>
+
+
+
+                    <script>
+
+                        function orderConfirm() {
+                            location.href = '/order/confirm';
+                        }
+
+                    </script>
 
 
                 </div>
 
             </div>
-
 
         </div>
 

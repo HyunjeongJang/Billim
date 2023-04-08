@@ -28,7 +28,8 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/product/list")
-    public String productTotal(Model model,@RequestParam(required = false, defaultValue = "0", value = "page") int page
+    public String productTotal(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+                               Model model
     ) {
         Page<Product> productList = productService.findAllProduct(page);
         model.addAttribute("productList", productList);
@@ -71,14 +72,12 @@ public class ProductController {
     }
 
 
-
     @GetMapping("/product/enroll")
     public String productEnroll(Model model) {
         List<ProductCategory> categoryList = productService.categoryList();
         model.addAttribute("categoryList", categoryList);
         return "pages/product/productEnroll";
     }
-
 
 
 //    @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -93,9 +92,8 @@ public class ProductController {
 
     @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<Product> registerProduct(
-            @ModelAttribute @Valid ProductRegisterRequest req,
-            @AuthenticationPrincipal User user
+    public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest req,
+                                                   @AuthenticationPrincipal User user
     ) {
         req.setRegisterMember(user.getMemberId());
         return ResponseEntity.ok(productService.register(req));
