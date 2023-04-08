@@ -24,6 +24,10 @@ public class Product extends JpaEntity {
     private Integer productId;
 
     // TODO : 카테고리 Entity 랑 연관관계 맺기
+//    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+//    @ManyToOne
+//    private ProductCategory productCategory;
+
     private int categoryId;
 
     @JoinColumn(name = "member_id", referencedColumnName = "member_id")

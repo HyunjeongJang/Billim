@@ -5,83 +5,7 @@
       layout:decorate="~{layout/defaultLayout}">
 
 <div layout:fragment="content">
-    <link th:href="@{/css/productDetail.css}" rel="stylesheet">
-    <style>
-        /*div {*/
-        /*    border: solid 1px red;*/
-        /*}*/
-
-        .content-wrap {
-            display: inline-block;
-            width: 100%;
-        }
-
-        .title-area {
-            width: 100%;
-            padding-left: 100px;
-            padding-bottom: 20px;
-        }
-        .title {
-            float: left;
-        }
-
-        .confirm-area {
-            float: left;
-            width: 50%;
-        }
-
-        .confirm-left {
-            text-align: left;
-            padding-left: 10%;
-
-        }
-
-        .confirm-title {
-            font-size: xx-large;
-        }
-
-        .left-title {
-            font-size: x-large;
-        }
-
-
-        .pay-area {
-            float: right;
-            width: 50%;
-            padding-inline: 5%;
-        }
-
-
-        .pay-inside {
-            background-color: #e5e5e5;
-        }
-
-        hr {
-            width: 90%;
-        }
-
-
-
-
-        .inside-top {
-            width: 100%;
-            padding-top: 30px;
-        }
-
-        .inside-top-image {
-            display: inline-block;
-            width: 40%;
-            float: left;
-        }
-
-        .inside-top-right {
-            display: inline-block;
-            width: 60%;
-            float: right;
-        }
-
-
-    </style>
+    <link th:href="@{/css/orderInfo.css}" rel="stylesheet">
 
     <div class="content" th:fragment="">
 
@@ -251,7 +175,7 @@
 </div>
 
 <th:block layout:fragment="contentJs">
-    <th:block th:replace="pages/order/orderScript.html :: orderScript"></th:block>
+    <th:block th:replace="pages/order/orderInfoScript.html :: orderInfoScript"></th:block>
 </th:block>
 
 

@@ -75,8 +75,6 @@ public class MemberController {
     }
 
 
-
-
     @GetMapping("/member/delete")
     public String deleteMember() {
         return "pages/myPage/deleteMember";

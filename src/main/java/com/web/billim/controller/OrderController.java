@@ -16,7 +16,7 @@ public class OrderController {
 
     @RequestMapping("/order/confirm")
     public String orderConfirm(Model model) {
-        return "/pages/order/order";
+        return "pages/order/orderInfo";
     }
 
 }
