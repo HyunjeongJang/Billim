@@ -1,6 +1,7 @@
 package com.web.billim.domain;
 
 import com.web.billim.dto.request.ProductRegisterRequest;
+import com.web.billim.dto.response.ProductDetailResponse;
 import com.web.billim.type.TradeMethod;
 import lombok.*;
 
@@ -68,6 +69,11 @@ public class Product extends JpaEntity {
                 .images(images)
                 .build();
     }
+
+
+
+
+
 
 }
 

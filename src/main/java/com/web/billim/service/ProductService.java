@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.web.billim.dto.response.MyProductSalesResponse;
+import com.web.billim.dto.response.ProductDetailResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -77,7 +78,7 @@ public class ProductService {
 
 
     @Transactional
-    public Product retrieve(int productId) {
+    public ProductDetailResponse retrieve(int productId) {
         Optional<Product> productOptional = productRepository.findById(productId);
         // Optional -> NULL 에 대한 처리를 좀 더 안전하게
         // NULL 이 저장된 객체를 쓰려고 에러가 난다. -> NPE
@@ -86,7 +87,7 @@ public class ProductService {
         // TODO : CustomException
         Product product = productOptional.orElseThrow(() ->
                 new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
-        return product;
+        return ProductDetailResponse.of(product);
     }
 
 

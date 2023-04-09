@@ -4,6 +4,7 @@ import com.web.billim.domain.Product;
 import com.web.billim.domain.ProductCategory;
 import com.web.billim.dto.request.ProductRegisterRequest;
 import com.web.billim.dto.response.MyProductSalesResponse;
+import com.web.billim.dto.response.ProductDetailResponse;
 import com.web.billim.security.domain.User;
 import com.web.billim.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -51,11 +52,8 @@ public class ProductController {
 
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {
-        Product product = productService.retrieve(productId);
-        product.getImages().forEach(imageProduct -> {
-            System.out.println(imageProduct.getUrl());
-        });
-        model.addAttribute("product", product);
+        ProductDetailResponse productDetail = productService.retrieve(productId);
+        model.addAttribute("product", productDetail);
         return "pages/product/productDetail";
     }
 
