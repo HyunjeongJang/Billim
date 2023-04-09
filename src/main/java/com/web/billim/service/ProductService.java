@@ -1,29 +1,25 @@
 package com.web.billim.service;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.web.billim.domain.*;
 import com.web.billim.dto.response.MyProductSalesResponse;
 import com.web.billim.dto.response.ProductDetailResponse;
+import com.web.billim.dto.response.ReservationDateResponse;
+import com.web.billim.repository.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.web.billim.domain.ImageProduct;
-import com.web.billim.domain.Member;
-import com.web.billim.domain.Product;
-import com.web.billim.domain.ProductCategory;
 import com.web.billim.dto.request.ProductRegisterRequest;
 import com.web.billim.security.domain.User;
 import com.web.billim.infra.ImageUploadService;
-import com.web.billim.repository.ImageProductRepository;
-import com.web.billim.repository.MemberRepository;
-import com.web.billim.repository.ProductCategoryRepository;
-import com.web.billim.repository.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,6 +28,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
     private final MemberRepository memberRepository;
     private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
     private final ProductCategoryRepository productCategoryRepository;
     private final ImageProductRepository imageProductRepository;
     private final ImageUploadService imageUploadService;
@@ -109,5 +106,13 @@ public class ProductService {
     }
 
 
+    public ReservationDateResponse reservationDate(int productId) {
+        Optional<Order> order =  orderRepository.findByProductId(productId)
+                .orElseThrow(()->
+                        new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다.");
+        return order.stream().map(ReservationDateResponse::of)
+                .collect(Collectors.toList());
+
+    }
 }
 
