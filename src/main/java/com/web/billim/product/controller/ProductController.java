@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -29,7 +32,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/product/list")
-    public String productTotal(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+    public String productList(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
                                Model model
     ) {
         Page<Product> productList = productService.findAllProduct(page);
@@ -37,6 +40,19 @@ public class ProductController {
         model.addAttribute("totalPage", productList.getTotalPages());
         return "pages/product/productList";
     }
+
+
+
+//    @GetMapping("/product/list")
+//    public String productList(Model model,
+//                              String keyword,
+//                              @PageableDefault(size = 12, sort = "id", direction = Sort.Direction.DESC) Pageable pageable
+//    ) {
+//        Page<Product> productList = productService.search(keyword, pageable);
+//        model.addAttribute("productList", productList);
+//        return "pages/product/productList";
+//    }
+
 
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {

@@ -21,7 +21,7 @@ public class ProductListResponse {
     private int price;
     private List<String> imageUrls;
 
-    public static ProductListResponse of(Product product, Review review) {
+    public static ProductListResponse of(Product product) {
         return ProductListResponse.builder()
                 .productId(product.getProductId())
                 .productName(product.getProductName())

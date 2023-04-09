@@ -57,11 +57,11 @@ CREATE TABLE `block`
     `updated_at` timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `product_order`;
 
-CREATE TABLE `order`
+CREATE TABLE `product_order`
 (
-    `order_id`   int primary key auto_increment COMMENT '대여번호',
+    `product_order_id`   int primary key auto_increment COMMENT '대여번호',
     `product_id` int                                                             NOT NULL COMMENT '상품번호',
     `member_id`  int                                                             NOT NULL COMMENT '구매회원번호',
     `status`     varchar(10)                                                     NOT NULL COMMENT '대여상태', # 대여중, 예약중, 취소
@@ -211,17 +211,6 @@ CREATE TABLE `image_chat`
     `url`           varchar(1024)                                                   NOT NULL COMMENT '이미지 url',
     `created_at`    timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
     `updated_at`    timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
-);
-
-DROP TABLE IF EXISTS `image_profile`;
-
-CREATE TABLE `image_profile`
-(
-    `image_profile_id` int primary key auto_increment COMMENT '이미지번호',
-    `member_id`        int                                                             NOT NULL COMMENT '회원번호',
-    `url`              varchar(1024)                                                   NOT NULL COMMENT '이미지 url',
-    `created_at`       timestamp default current_timestamp                             NOT NULL COMMENT '작성일자',
-    `updated_at`       timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
 
 DROP TABLE IF EXISTS `saved_point_rate`;

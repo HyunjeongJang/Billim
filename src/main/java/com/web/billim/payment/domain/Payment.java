@@ -2,7 +2,7 @@ package com.web.billim.payment.domain;
 
 import com.web.billim.common.domain.JpaEntity;
 import com.web.billim.coupon.domain.CouponIssue;
-import com.web.billim.order.domain.Order;
+import com.web.billim.order.domain.ProductOrder;
 import com.web.billim.common.type.TradeMethod;
 import lombok.*;
 
@@ -20,9 +20,9 @@ public class Payment extends JpaEntity {
 	@Column(name = "payment_id")
 	private Integer id;
 
-	@JoinColumn(name = "order_id", referencedColumnName = "order_id")
+	@JoinColumn(name = "order_id", referencedColumnName = "product_order_id")
 	@OneToOne
-	private Order order;
+	private ProductOrder productOrder;
 
 	@JoinColumn(name = "coupon_issue_id", referencedColumnName = "coupon_issue_id")
 	@OneToOne

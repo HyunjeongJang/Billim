@@ -18,7 +18,7 @@ public class ReservationDateResponse {
 //    private Timestamp endAt;
 
 
-//    public static ReservationDateResponse of(Order order){
+//    public static ReservationDateResponse of(ProductOrder productOrder){
 //        return null;
 //    }
 

@@ -1,4 +1,4 @@
-package com.web.billim.domain.point;
+package com.web.billim.point.domain;
 
 import com.web.billim.point.domain.service.SavedPoint;
 import org.junit.jupiter.api.Test;

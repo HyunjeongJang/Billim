@@ -13,11 +13,13 @@ import com.web.billim.product.dto.response.MyProductSalesResponse;
 import com.web.billim.product.dto.response.ProductDetailResponse;
 import com.web.billim.member.domain.Member;
 import com.web.billim.member.repository.MemberRepository;
+import com.web.billim.product.dto.response.ProductListResponse;
 import com.web.billim.product.repository.ImageProductRepository;
 import com.web.billim.product.repository.ProductCategoryRepository;
 import com.web.billim.product.repository.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,6 +70,15 @@ public class ProductService {
         return productRepository.findAll(paging);
     }
 
+
+
+
+//    @Transactional
+//    public Page<Product> search(String keyword, Pageable pageable) {
+//        return productRepository.findByProductNameAndDetailContaining(keyword, pageable);
+//    }
+
+
     @Transactional
     public ProductDetailResponse retrieve(int productId) {
         Optional<Product> productOptional = productRepository.findById(productId);
@@ -86,10 +97,10 @@ public class ProductService {
 
 
 //    public ReservationDateResponse reservationDate(int productId) {
-//        Optional<Order> order = Optional.ofNullable(orderRepository.findByProductId(productId)
+//        Optional<ProductOrder> productOrder = Optional.ofNullable(orderRepository.findByProductId(productId)
 //                .orElseThrow(() ->
 //                        new RuntimeException("해당 ProductId(" + productId + ") 에 대한 예약날짜가 없습니다.")));
-//        return (ReservationDateResponse) order.stream().map(ReservationDateResponse::of)
+//        return (ReservationDateResponse) productOrder.stream().map(ReservationDateResponse::of)
 //                .collect(Collectors.toList());
 //
 //    }

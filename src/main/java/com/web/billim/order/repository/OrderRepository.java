@@ -1,13 +1,13 @@
 package com.web.billim.order.repository;
 
-import com.web.billim.order.domain.Order;
+import com.web.billim.order.domain.ProductOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Integer> {
+public interface OrderRepository extends JpaRepository<ProductOrder, Integer> {
 
-//    Optional<Order> findByProductId(int productId);
+//    Optional<ProductOrder> findByProductId(int productId);
 
 
 }

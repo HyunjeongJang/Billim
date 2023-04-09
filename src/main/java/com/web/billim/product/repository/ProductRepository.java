@@ -1,6 +1,9 @@
 package com.web.billim.product.repository;
 
 import com.web.billim.product.domain.Product;
+import com.web.billim.product.dto.response.ProductListResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

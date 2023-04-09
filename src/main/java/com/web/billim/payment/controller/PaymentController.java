@@ -30,7 +30,7 @@ public class PaymentController {
      * 	    실제 결제 완료처리
      * 	    3-1. 적립금 사용처리 (saved_point 의 available_amount 감소 되어야 하고,, point_history 에 새로운거 추가)
      * 	    3-2. 쿠폰 사용처리 (상태 바꾸면 되고)
-     * 	    3-3. Order 레코드 생성
+     * 	    3-3. ProductOrder 레코드 생성
      *
      *   3. 결제 내역 조회
      *   	3-1. 파라미터 :
