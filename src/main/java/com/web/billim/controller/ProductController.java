@@ -5,6 +5,7 @@ import com.web.billim.domain.ProductCategory;
 import com.web.billim.dto.request.ProductRegisterRequest;
 import com.web.billim.dto.response.MyProductSalesResponse;
 import com.web.billim.dto.response.ProductDetailResponse;
+import com.web.billim.dto.response.ReservationDateResponse;
 import com.web.billim.security.domain.User;
 import com.web.billim.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -32,20 +33,11 @@ public class ProductController {
 
     @GetMapping("/product/list")
     public String productTotal(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
-//                               Pageable pageable,
-//                               String keyword,
                                Model model
     ) {
         Page<Product> productList = productService.findAllProduct(page);
-
-//        Page<Product> searchList = productService.searchByKeyword(keyword, pageable);
-
         model.addAttribute("productList", productList);
-
-//        model.addAttribute("searchList", searchList);
-
         model.addAttribute("totalPage", productList.getTotalPages());
-
         return "pages/product/productList";
     }
 
@@ -53,16 +45,28 @@ public class ProductController {
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {
         ProductDetailResponse productDetail = productService.retrieve(productId);
+
+//        ReservationDateResponse dateList  = productService.reservationDate(productId);
+
         model.addAttribute("product", productDetail);
         return "pages/product/productDetail";
     }
 
 
+//    @GetMapping("/product/detail/{productId}")
+//    public String productDetail(@PathVariable("productId") int productId, Model model) {
+//        Product product = productService.retrieve(productId);
+//        product.getImages().forEach(imageProduct -> {
+//            System.out.println(imageProduct.getUrl());
+//        });
+//        model.addAttribute("product", product);
+//        return "pages/product/productDetail";
+//    }
+
     @GetMapping("/myPage/purchase")
     public String myPage() {
         return "pages/myPage/myPurchaseList";
     }
-
 
 
 //    @GetMapping("/myPage/sales")
@@ -90,16 +94,6 @@ public class ProductController {
     }
 
 
-//    @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-//    @ResponseBody
-//    public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest req,
-//                                                   @AuthenticationPrincipal User user
-//    ) {
-//        req.setRegisterMember(user.getMember());
-//        return ResponseEntity.ok(productService.register(req));
-//    }
-
-
     @PostMapping(value = "/product/enroll", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
     public ResponseEntity<Product> registerProduct(@ModelAttribute @Valid ProductRegisterRequest req,
@@ -108,8 +102,6 @@ public class ProductController {
         req.setRegisterMember(user.getMemberId());
         return ResponseEntity.ok(productService.register(req));
     }
-
-
 
 
 

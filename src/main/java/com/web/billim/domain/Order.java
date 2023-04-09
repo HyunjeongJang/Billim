@@ -18,7 +18,9 @@ public class Order extends JpaEntity{
     @Column(name = "order_id")
     private Integer orderId;
 
-    private int productId;
+    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+    @ManyToOne
+    private Product product;
 
     @JoinColumn(name = "member_id", referencedColumnName = "member_id")
     @ManyToOne

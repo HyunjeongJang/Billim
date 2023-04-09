@@ -1,11 +1,12 @@
 package com.web.billim.domain;
 
 import com.web.billim.dto.request.ProductRegisterRequest;
-import com.web.billim.dto.response.ProductDetailResponse;
 import com.web.billim.type.TradeMethod;
+
 import lombok.*;
 
 import javax.persistence.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -25,11 +26,11 @@ public class Product extends JpaEntity {
     private Integer productId;
 
     // TODO : 카테고리 Entity 랑 연관관계 맺기
-//    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
-//    @ManyToOne
-//    private ProductCategory productCategory;
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    @ManyToOne
+    private ProductCategory productCategory;
 
-    private int categoryId;
+    // private int categoryId;
 
     @JoinColumn(name = "member_id", referencedColumnName = "member_id")
     @ManyToOne
@@ -49,31 +50,20 @@ public class Product extends JpaEntity {
     private List<ImageProduct> images;
 
     public List<TradeMethod> getTradeMethods() {
-        return Arrays.stream(tradeMethod.split(","))
-                .map(TradeMethod::valueOf)
-                .collect(Collectors.toList());
+        return Arrays.stream(tradeMethod.split(",")).map(TradeMethod::valueOf).collect(Collectors.toList());
     }
 
-    public static Product generateNewProduct(ProductRegisterRequest request, Member member, List<ImageProduct> images) {
+    public static Product generateNewProduct(ProductRegisterRequest request, ProductCategory category, Member member, List<ImageProduct> images) {
         return Product.builder()
-                .categoryId(request.getCategoryId())
+                .productCategory(category)
                 .member(member)
                 .productName(request.getName())
                 .detail(request.getDetail())
                 .price(request.getPrice())
-                .tradeMethod(
-                        request.getTradeMethods().stream()
-                                .map(Objects::toString)
-                                .collect(Collectors.joining(","))
-                )
+                .tradeMethod(request.getTradeMethods().stream().map(Objects::toString).collect(Collectors.joining(",")))
                 .images(images)
                 .build();
     }
-
-
-
-
-
 
 }
 

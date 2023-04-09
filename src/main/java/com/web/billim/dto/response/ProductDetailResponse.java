@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @Builder
 public class ProductDetailResponse {
 
-
     private int productId;
     private String productName;
     private String detail;

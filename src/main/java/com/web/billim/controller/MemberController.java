@@ -1,14 +1,11 @@
 package com.web.billim.controller;
 
-import com.web.billim.dto.request.FindIdRequest;
-import com.web.billim.dto.request.MemberSignupRequest;
-import com.web.billim.dto.response.FindIdResponse;
-import com.web.billim.service.MemberService;
-import com.web.billim.validation.CheckIdValidator;
-import com.web.billim.validation.CheckNickNameValidator;
-import com.web.billim.validation.CheckPasswordValidator;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -20,10 +17,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import java.util.Map;
+import com.web.billim.dto.request.FindIdRequest;
+import com.web.billim.dto.request.MemberSignupRequest;
+import com.web.billim.dto.response.FindIdResponse;
+import com.web.billim.service.MemberService;
+import com.web.billim.validation.CheckIdValidator;
+import com.web.billim.validation.CheckNickNameValidator;
+import com.web.billim.validation.CheckPasswordValidator;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
@@ -70,13 +73,12 @@ public class MemberController {
         return "pages/home";
     }
 
-
     @GetMapping("/member/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+        new SecurityContextLogoutHandler().logout(request, response,
+                SecurityContextHolder.getContext().getAuthentication());
         return "redirect:/member/login";
     }
-
 
     @GetMapping("/member/delete")
     public String deleteMember() {
@@ -88,22 +90,15 @@ public class MemberController {
         return "pages/member/findId";
     }
 
-
-
     @PostMapping("/member/findId")
     public ResponseEntity<FindIdResponse> findId(FindIdRequest findIdRequest) {
-        memberService.findId(findIdRequest);
-        return ResponseEntity.ok(new FindIdResponse());
+        return ResponseEntity.ok(memberService.findId(findIdRequest));
     }
-
-
-
 
     @GetMapping("/member/changePassword")
     public String changePassword() {
         return "pages/member/changePassword";
     }
-
 
 }
 

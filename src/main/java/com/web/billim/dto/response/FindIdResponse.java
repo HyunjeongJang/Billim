@@ -1,6 +1,7 @@
 package com.web.billim.dto.response;
 
 import com.web.billim.domain.Member;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,6 @@ import lombok.NoArgsConstructor;
 public class FindIdResponse {
 
     private String userId;
-
 
     public static FindIdResponse from(Member member) {
         return new FindIdResponse(member.getUserId());

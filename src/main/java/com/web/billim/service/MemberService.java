@@ -1,18 +1,20 @@
 package com.web.billim.service;
 
-import com.web.billim.domain.Member;
-import com.web.billim.dto.request.FindIdRequest;
-import com.web.billim.dto.request.MemberSignupRequest;
-import com.web.billim.dto.response.FindIdResponse;
-import com.web.billim.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.web.billim.domain.Member;
+import com.web.billim.dto.request.FindIdRequest;
+import com.web.billim.dto.request.MemberSignupRequest;
+import com.web.billim.dto.response.FindIdResponse;
+import com.web.billim.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
@@ -25,9 +27,9 @@ public class MemberService {
     public Map<String, String> validateHandling(BindingResult bindingResult) {
         Map<String, String> validatorResult = new HashMap<>();
 
-        for(FieldError error : bindingResult.getFieldErrors()){
-            String validKeyName = String.format("valid_%s",error.getField());
-            validatorResult.put(validKeyName,error.getDefaultMessage());
+        for (FieldError error : bindingResult.getFieldErrors()) {
+            String validKeyName = String.format("valid_%s", error.getField());
+            validatorResult.put(validKeyName, error.getDefaultMessage());
         }
         return validatorResult;
     }
@@ -38,16 +40,14 @@ public class MemberService {
         memberRepository.save(member);
     }
 
+    public FindIdResponse findId(FindIdRequest findIdRequest) {
+        return memberRepository.findByNameAndEmail(findIdRequest.getName(), findIdRequest.getEmail())
+                .map(FindIdResponse::from)
+                .orElse(new FindIdResponse());
+    }
 
-
-    public void findId(FindIdRequest findIdRequest) {
-        Member member = memberRepository.findByUserIdAndEmail(findIdRequest.getName(), findIdRequest.getEmail());
-
-        if(member != null && member.getUserId().equals(findIdRequest.getName()) && member.getEmail().equals(findIdRequest.getEmail())) {
-            FindIdResponse.from(member);
-        } else {
-            new FindIdResponse();
-        }
-
+    public Member retrieve(int memberId) {
+        return memberRepository.findById(memberId)
+                .orElseThrow(() -> new RuntimeException("해당 사용자(" + memberId + ") 를 찾을 수 없습니다."));
     }
 }
