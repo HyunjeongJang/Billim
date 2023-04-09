@@ -80,11 +80,13 @@ ul {
 .calendar-wrap>div {}
 
 .calendar-middle-wrap {
-    background: #efefef;
+    background: #ffffff;
     /*width: 34%;*/
     width: 49%;
     padding: 40px 32px;
     padding-bottom: 100px;
+    border-radius: 10px;
+    border: solid #adadad 1px;
 }
 
 .checkInOutInfo {
@@ -92,8 +94,10 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #efefef;
+    /*background: #efefef;*/
     position: relative;
+    border-radius: 10px;
+    /*border: solid #adadad 1px;*/
 }
 
 .calendar-wrap .cal_nav {

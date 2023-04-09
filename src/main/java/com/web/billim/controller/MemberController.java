@@ -1,12 +1,15 @@
 package com.web.billim.controller;
 
+import com.web.billim.dto.request.FindIdRequest;
 import com.web.billim.dto.request.MemberSignupRequest;
+import com.web.billim.dto.response.FindIdResponse;
 import com.web.billim.service.MemberService;
 import com.web.billim.validation.CheckIdValidator;
 import com.web.billim.validation.CheckNickNameValidator;
 import com.web.billim.validation.CheckPasswordValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -75,17 +78,26 @@ public class MemberController {
     }
 
 
-
-
     @GetMapping("/member/delete")
     public String deleteMember() {
         return "pages/myPage/deleteMember";
     }
 
-    @GetMapping("/member/searchId")
-    public String searchId() {
-        return "pages/member/searchId";
+    @GetMapping("/member/findId")
+    public String findIdPage() {
+        return "pages/member/findId";
     }
+
+
+
+    @PostMapping("/member/findId")
+    public ResponseEntity<FindIdResponse> findId(FindIdRequest findIdRequest) {
+        memberService.findId(findIdRequest);
+        return ResponseEntity.ok(new FindIdResponse());
+    }
+
+
+
 
     @GetMapping("/member/changePassword")
     public String changePassword() {

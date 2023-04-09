@@ -9,6 +9,7 @@ import com.web.billim.dto.response.MyProductSalesResponse;
 import com.web.billim.dto.response.ProductDetailResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -59,10 +60,22 @@ public class ProductService {
         return productCategoryRepository.findAll();
     }
 
+
+
     public Page<Product> findAllProduct(int page) {
         PageRequest paging = PageRequest.of(page, 12);
         return productRepository.findAll(paging);
     }
+
+
+//    @Transactional
+//    public Page<Product> searchByKeyword(String keyword, Pageable pageable) {
+//        return productRepository.findByProductNameAndDetailContaining(keyword, pageable);
+//    }
+
+
+
+
 
     @Transactional
     public ProductDetailResponse retrieve(int productId) {
@@ -71,7 +84,6 @@ public class ProductService {
         // NULL 이 저장된 객체를 쓰려고 에러가 난다. -> NPE
         // Optional -> 값이 들어있거나, 안들어있거나 두가지 상태를 가짐
 
-        // N + 1 문제, Open-In-View 옵션, Proxy 에러
         // TODO : CustomException
         Product product = productOptional.orElseThrow(() ->
                 new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));

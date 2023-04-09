@@ -2,12 +2,8 @@ package com.web.billim.domain;
 
 import com.web.billim.type.MemberGrade;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 
 @Entity
