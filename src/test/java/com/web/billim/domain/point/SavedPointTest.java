@@ -1,5 +1,6 @@
 package com.web.billim.domain.point;
 
+import com.web.billim.point.domain.service.SavedPoint;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
