@@ -40,7 +40,7 @@
 
             <tr>
                 <td class="table_text">대여 요금</td>
-                <td class="table_input"><input type="number" id="price" class="form-control" style="width: 85%; display: inline-block;">&nbsp;&nbsp;&nbsp;원(/일)</td>
+                <td class="table_input"><input type="text" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" id="price" class="form-control" style="width: 85%; display: inline-block;">&nbsp;&nbsp;&nbsp;원(/일)</td>
                 <td class="table_last"></td>
             </tr>
             <tr>

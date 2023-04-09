@@ -17,11 +17,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    @Override //실제 인증에 대한 부분★★★★★
+    @Override // 실제 인증에 대한 부분
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken)authentication;
 
-        // AuthenticaionFilter에서 생성된 토큰으로부터 아이디와 비밀번호를 조회함
+        // AuthenticaionFilter에서 생성된 토큰으로부터 아이디와 비밀번호를 조회
         String userId = token.getName();
         String password = (String)token.getCredentials();
 //        User user = (User)userDetailsService.loadUserByUsername(userId);

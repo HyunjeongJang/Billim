@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import com.web.billim.dto.response.MyProductSalesResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,10 +59,22 @@ public class ProductService {
         return productCategoryRepository.findAll();
     }
 
+
+
     public Page<Product> findAllProduct(int page) {
         PageRequest paging = PageRequest.of(page, 12);
         return productRepository.findAll(paging);
     }
+
+
+//    @Transactional
+//    public Page<Product> searchByKeyword(String keyword, Pageable pageable) {
+//        return productRepository.findByProductNameAndDetailContaining(keyword, pageable);
+//    }
+
+
+
+
 
     @Transactional
     public Product retrieve(int productId) {

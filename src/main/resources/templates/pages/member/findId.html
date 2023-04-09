@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+
+<div layout:fragment="content">
+    <link th:href="@{/css/.css}" rel="stylesheet">
+    <style>
+
+        table {
+            text-align: left;
+        }
+
+        table td {
+            padding-top: 30px;
+        }
+
+        .td-1 {
+            width: 25%;
+            font-weight: 500;
+            padding-left: 10%;
+        }
+
+        .td-2 {
+            width: 50%;
+        }
+
+        .td-3 {
+            width: 25%;
+        }
+
+        button {
+            width: 150px;
+        }
+
+
+    </style>
+
+    <div class="content">
+        <div>아이디 찾기</div>
+        <table th:align="center">
+            <tr>
+                <td class="td-1">이름</td>
+                <td class="td-2">
+                    <div class="login_area"><input class="form-control" name="" type="text" placeholder=""></div>
+                </td>
+                <td class="td-3"></td>
+            </tr>
+            <tr>
+                <td class="td-1">이메일</td>
+                <td>
+                    <div class="login_area"><input class="form-control" name="" type="email" placeholder="">
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-light">인증번호 발송</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-1">인증번호</td>
+                <td><input class="form-control" type="text" placeholder=""></td>
+                <td>
+                    <button class="btn btn-light" onclick="verification()">인증하기</button>
+                </td>
+            </tr>
+        </table>
+
+        <script>
+
+
+
+        </script>
+
+
+        <div>
+            <div class="finIdArea">
+                아이디 보여주는영역
+            </div>
+            <div>
+                <a href="/member/changePassword">비밀번호 찾기</a>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</html>

@@ -42,7 +42,9 @@
 
 
 .pay-inside {
-    background-color: #e5e5e5;
+    border-radius: 10px;
+    border: solid 1px #adadad;
+    /*background-color: #e5e5e5;*/
 }
 
 hr {

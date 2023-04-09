@@ -10,12 +10,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -29,13 +31,23 @@ public class ProductController {
 
     @GetMapping("/product/list")
     public String productTotal(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+//                               Pageable pageable,
+//                               String keyword,
                                Model model
     ) {
         Page<Product> productList = productService.findAllProduct(page);
+
+//        Page<Product> searchList = productService.searchByKeyword(keyword, pageable);
+
         model.addAttribute("productList", productList);
+
+//        model.addAttribute("searchList", searchList);
+
         model.addAttribute("totalPage", productList.getTotalPages());
+
         return "pages/product/productList";
     }
+
 
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {

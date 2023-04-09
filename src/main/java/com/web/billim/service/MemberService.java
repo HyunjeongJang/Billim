@@ -1,7 +1,9 @@
 package com.web.billim.service;
 
 import com.web.billim.domain.Member;
+import com.web.billim.dto.request.FindIdRequest;
 import com.web.billim.dto.request.MemberSignupRequest;
+import com.web.billim.dto.response.FindIdResponse;
 import com.web.billim.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,5 +37,17 @@ public class MemberService {
         Member member = memberSignupRequest.toEntity();
         memberRepository.save(member);
     }
-}
 
+
+
+    public void findId(FindIdRequest findIdRequest) {
+        Member member = memberRepository.findByUserIdAndEmail(findIdRequest.getName(), findIdRequest.getEmail());
+
+        if(member != null && member.getUserId().equals(findIdRequest.getName()) && member.getEmail().equals(findIdRequest.getEmail())) {
+            FindIdResponse.from(member);
+        } else {
+            new FindIdResponse();
+        }
+
+    }
+}
