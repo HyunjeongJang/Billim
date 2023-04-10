@@ -80,12 +80,11 @@ public class ProductService {
 
 
     @Transactional
-    public ProductDetailResponse retrieve(int productId) {
-        Optional<Product> productOptional = productRepository.findById(productId);
-        // TODO : CustomException
-        Product product = productOptional.orElseThrow(() ->
+    public Product retrieve(int productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() ->
                 new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
-        return ProductDetailResponse.of(product);
+        return product;
     }
 
 
@@ -93,6 +92,10 @@ public class ProductService {
         return productRepository.findByMember_memberId(user.getMemberId()).stream()
                 .map(MyProductSalesResponse::of)
                 .collect(Collectors.toList());
+    }
+
+    public Optional<Product> findProduct(int i) {
+        return productRepository.findById(i);
     }
 
 

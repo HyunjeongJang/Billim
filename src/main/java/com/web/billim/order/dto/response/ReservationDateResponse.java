@@ -12,14 +12,6 @@ import java.util.List;
 @Builder
 public class ReservationDateResponse {
 
-    private  List<Timestamp> resDate;
 
-//    private Timestamp startAt;
-//    private Timestamp endAt;
-
-
-//    public static ReservationDateResponse of(ProductOrder productOrder){
-//        return null;
-//    }
 
 }

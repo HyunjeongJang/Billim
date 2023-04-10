@@ -1,5 +1,7 @@
 package com.web.billim.product.controller;
 
+import com.web.billim.order.dto.response.ReservationDateResponse;
+import com.web.billim.order.service.OrderService;
 import com.web.billim.product.domain.Product;
 import com.web.billim.product.domain.ProductCategory;
 import com.web.billim.product.dto.request.ProductRegisterRequest;
@@ -22,7 +24,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -30,6 +34,8 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+
+    private final OrderService orderService;
 
     @GetMapping("/product/list")
     public String productList(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
@@ -56,13 +62,21 @@ public class ProductController {
 
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {
-        ProductDetailResponse productDetail = productService.retrieve(productId);
-
-//        ReservationDateResponse dateList  = productService.reservationDate(productId);
-
+        Product product = productService.retrieve(productId);
+        ProductDetailResponse productDetail = ProductDetailResponse.of(product);
+        List<LocalDate> alreadyDates = orderService.reservationDate(product);
         model.addAttribute("product", productDetail);
+        model.addAttribute("alreadyDates",alreadyDates);
         return "pages/product/productDetail";
     }
+    @GetMapping("/test/test/test")
+    @ResponseBody
+    public ResponseEntity<List<LocalDate>> test() {
+        Product product = productService.retrieve(1);
+        List<LocalDate> dates = orderService.reservationDate(product);
+        return ResponseEntity.ok(dates);
+    }
+
 
 
 //    @GetMapping("/product/detail/{productId}")

@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OrderController {
 
     @RequestMapping("/order/confirm")
-    public String orderConfirm(Model model) {
+    public String orderConfirm(
+            String startDate,
+            String endDate,
+            int productId,
+            Model model) {
+
         return "pages/order/orderInfo";
     }
-
 }

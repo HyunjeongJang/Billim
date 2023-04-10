@@ -120,10 +120,15 @@
                     </div>
 
 
-                    <script>
+                    <script th:inline="javascript">
+
                         function orderConfirm() {
-                            location.href = '/order/confirm';
+                            let startDate = $('#check_in_day').text().substr(0,10);
+                            let endDate = $('#check_out_day').text().substr(0,10);
+                            location.href = '/order/confirm?startDate='+startDate+
+                                            '&endDate='+endDate+'&productId='+[[${product.productId}]];
                         }
+
                     </script>
 
                 </div>
@@ -134,5 +139,10 @@
 <th:block layout:fragment="contentJs">
     <th:block th:replace="pages/product/productDetailScript.html :: productDetailScript"></th:block>
 </th:block>
+<script>
+
+
+    console.log($('#check_in_day'));
+</script>
 
 </html>
