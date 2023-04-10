@@ -4,7 +4,7 @@ import com.web.billim.security.filter.CustomAuthenticationFilter;
 import com.web.billim.security.handler.CustomLoginFailureHandler;
 import com.web.billim.security.handler.CustomLoginSuccessHandler;
 import com.web.billim.security.provider.CustomAuthenticationProvider;
-import com.web.billim.service.UserService;
+import com.web.billim.security.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

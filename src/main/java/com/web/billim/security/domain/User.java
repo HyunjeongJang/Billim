@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.web.billim.domain.Member;
-import com.web.billim.type.MemberGrade;
+import com.web.billim.member.domain.Member;
+import com.web.billim.common.type.MemberGrade;
 
 import lombok.Builder;
 import lombok.Getter;

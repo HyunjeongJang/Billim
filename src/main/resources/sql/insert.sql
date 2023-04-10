@@ -7,3 +7,4 @@ insert into saved_point_rate values ('BRONZE' , 1);
 insert into saved_point_rate values ('SILVER' , 2);
 insert into saved_point_rate values ('GOLD' , 3);
 insert into saved_point_rate values ('DIAMOND' , 4);
+
