@@ -40,7 +40,9 @@ class PointDomainServiceTest {
 
 	@Test
 	public void use_사용가능_적립금_부족하면_에러나는지_확인() {
-		// TODO :
+		// given
+		Member member = Member.builder().memberId(1).build();
+		// when & then
 	}
 
 	@Test

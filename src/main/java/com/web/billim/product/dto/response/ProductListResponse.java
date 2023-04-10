@@ -20,8 +20,9 @@ public class ProductListResponse {
     private String detail;
     private int price;
     private List<String> imageUrls;
+    private int starRating;
 
-    public static ProductListResponse of(Product product) {
+    public static ProductListResponse of(Product product, Review review) {
         return ProductListResponse.builder()
                 .productId(product.getProductId())
                 .productName(product.getProductName())
@@ -32,6 +33,7 @@ public class ProductListResponse {
                                 .map(ImageProduct::getUrl)
                                 .collect(Collectors.toList())
                 )
+                .starRating(review.getStarRating())
                 .build();
     }
 }

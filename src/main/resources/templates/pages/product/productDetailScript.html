@@ -190,7 +190,6 @@
             function nextDisableDay(day) {
                 return '<div class="day next disable">' + day + '</div>';
             }
-
             addClassSelectDay();
         }
 
@@ -350,7 +349,7 @@
                 : yyyy + "." + zf(mm) + "." + zf(dd);
         }
 
-        // 몇요일인지 알려주는 함수 (숫자 형태)
+        // 무슨 요일인지 알려주는 함수 (숫자 형태)
         function weekday(YYYYMMDD) {
             const weekday_year = YYYYMMDD.substring(0, 4);
             const weekday_menth = YYYYMMDD.substring(4, 6);

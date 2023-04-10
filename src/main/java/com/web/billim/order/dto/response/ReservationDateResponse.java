@@ -1,10 +1,9 @@
 package com.web.billim.order.dto.response;
 
-
 import lombok.Builder;
 import lombok.Data;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -12,6 +11,6 @@ import java.util.List;
 @Builder
 public class ReservationDateResponse {
 
-
+    private  List<LocalDateTime> resDate;
 
 }

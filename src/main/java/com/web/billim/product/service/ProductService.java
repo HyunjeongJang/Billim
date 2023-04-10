@@ -10,16 +10,13 @@ import com.web.billim.product.domain.ImageProduct;
 import com.web.billim.product.domain.Product;
 import com.web.billim.product.domain.ProductCategory;
 import com.web.billim.product.dto.response.MyProductSalesResponse;
-import com.web.billim.product.dto.response.ProductDetailResponse;
 import com.web.billim.member.domain.Member;
 import com.web.billim.member.repository.MemberRepository;
-import com.web.billim.product.dto.response.ProductListResponse;
 import com.web.billim.product.repository.ImageProductRepository;
 import com.web.billim.product.repository.ProductCategoryRepository;
 import com.web.billim.product.repository.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,14 +66,6 @@ public class ProductService {
         PageRequest paging = PageRequest.of(page, 12);
         return productRepository.findAll(paging);
     }
-
-
-
-
-//    @Transactional
-//    public Page<Product> search(String keyword, Pageable pageable) {
-//        return productRepository.findByProductNameAndDetailContaining(keyword, pageable);
-//    }
 
 
     @Transactional

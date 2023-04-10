@@ -100,6 +100,11 @@ public class MemberController {
         return "pages/member/changePassword";
     }
 
+    @GetMapping("/member/changeInfo")
+    public String changeMemberInfo() {
+        return "pages/myPage/changeMyInfo";
+    }
+
 }
 
 
