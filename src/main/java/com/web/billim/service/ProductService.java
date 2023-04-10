@@ -2,6 +2,8 @@ package com.web.billim.service;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -106,13 +108,7 @@ public class ProductService {
     }
 
 
-    public ReservationDateResponse reservationDate(int productId) {
-        Optional<Order> order =  orderRepository.findByProductId(productId)
-                .orElseThrow(()->
-                        new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다.");
-        return order.stream().map(ReservationDateResponse::of)
-                .collect(Collectors.toList());
 
-    }
+
 }
 
