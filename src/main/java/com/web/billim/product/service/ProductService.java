@@ -62,6 +62,11 @@ public class ProductService {
         return productCategoryRepository.findAll();
     }
 
+//    public Page<Product> findAllProduct(int page) {
+//        PageRequest paging = PageRequest.of(page, 12);
+//        return productRepository.findAll(paging);
+//    }
+
     public Page<Product> findAllProduct(int page) {
         PageRequest paging = PageRequest.of(page, 12);
         return productRepository.findAll(paging);

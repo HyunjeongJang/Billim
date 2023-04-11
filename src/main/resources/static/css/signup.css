@@ -1,0 +1,23 @@
+table{
+    width: 50%;
+}
+
+.table_text {
+    text-align : left;
+    font-weight: 600;
+    padding : 10px 0 10px 40px;
+}
+
+table {
+    padding-top: 20px;
+    align-content: center;
+}
+
+td {
+    text-align: left;
+}
+
+.check-text {
+    font-size: smaller;
+    color: red;
+}

@@ -6,6 +6,7 @@ import com.web.billim.product.domain.ProductCategory;
 import com.web.billim.product.dto.request.ProductRegisterRequest;
 import com.web.billim.product.dto.response.MyProductSalesResponse;
 import com.web.billim.product.dto.response.ProductDetailResponse;
+import com.web.billim.product.dto.response.ProductListResponse;
 import com.web.billim.security.domain.User;
 import com.web.billim.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,7 @@ public class ProductController {
         model.addAttribute("totalPage", productList.getTotalPages());
         return "pages/product/productList";
     }
+
 
 
     @GetMapping("/product/detail/{productId}")

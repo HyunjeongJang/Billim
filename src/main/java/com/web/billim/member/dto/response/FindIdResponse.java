@@ -15,6 +15,5 @@ public class FindIdResponse {
 
     public static FindIdResponse from(Member member) {
         return new FindIdResponse(member.getUserId());
-
     }
 }

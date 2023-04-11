@@ -42,7 +42,14 @@ class PointDomainServiceTest {
 	public void use_사용가능_적립금_부족하면_에러나는지_확인() {
 		// given
 		Member member = Member.builder().memberId(1).build();
+		int amount = 5000;
+		SavedPoint point_2000 = SavedPoint.builder().availableAmount(2000).build();
+		given(savedPointRepository.findAllNotExpired(1))
+				.willReturn(List.of(point_2000));
 		// when & then
+		pointDomainService.use(member,amount);
+		assertEquals(point_2000.getAvailableAmount(), 0);
+
 	}
 
 	@Test

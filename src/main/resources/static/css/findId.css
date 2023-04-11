@@ -1,0 +1,46 @@
+.title-area{
+    font-weight: 500;
+    font-size: x-large;
+    text-align: center;
+}
+
+table {
+    text-align: left;
+    width: 500px;
+
+}
+
+
+.td-main {
+    width: 50%;
+}
+
+.td-title {
+    padding-top: 30px;
+}
+
+.td-input {
+    padding-top: 15px;
+    width: 350px;
+}
+
+.td-button {
+    width: 150px;
+}
+
+button {
+    width: 150px;
+}
+
+
+
+*,*:focus,*:hover{outline:none;}
+
+.isStatusOnInput {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    border-color: #bdbdbd;
+    width: 100%;
+}
