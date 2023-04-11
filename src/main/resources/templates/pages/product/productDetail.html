@@ -50,6 +50,28 @@
                     <div th:text="${product.tradeMethods}"></div>
 
 
+
+
+                    <div id="testtest">
+                        <button onclick="verify()">test</button>
+
+                        <script>
+                            function verify() {
+                                $.ajax({
+                                    url: '/test/test/test',
+                                    method: 'GET',
+                                    success: function (data) {
+                                        console.log(data);
+                                        $('#testtest').html(data+'\n')
+                                    }
+                                });
+                            }
+                        </script>
+                    </div>
+
+
+
+
                 </div>
 
                 <div class="product-pay">

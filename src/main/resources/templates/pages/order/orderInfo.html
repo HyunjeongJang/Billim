@@ -19,9 +19,12 @@
 
             <div class="confirm-area">
                 <div class="confirm-left">
-                    <div class="confirm-title">대여정보</div>
-                    <div class="left-title">이용 일자</div>
-                    <div>일 ~ 일</div>
+                    <div class="left-top">이용 일자</div>
+                    <div>
+                        <span th:text="${startDate}"></span>
+                        ~
+                        <span th:text="${endDate}"></span>
+                    </div>
                     <div class="left-title">거래방법</div>
                     <div>
                         <select>
@@ -33,60 +36,77 @@
                     <div>
                         <div class="left-title">적립금</div>
                         <div>
-                            <table>
-                                <tr>
-                                    <td>보유적립금</td>
-                                    <td colspan="2"> 원</td>
-                                </tr>
-                                <tr>
-                                    <td>사용</td>
-                                    <td><input class="form-control" type="text" value=""></td>
-                                    <td><button class="btn btn-light">사용</button></td>
-                                </tr>
-                            </table>
+
+                            <div class="leftSubTitle">
+                                <span>보유적립금</span> <span>원</span>
+                            </div>
+                            <div>
+                                <input class="isStatusOnInput" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" value="" style="width: 200px;">
+                                <button class="btn">사용</button>
+                            </div>
+
                             <div class="left-title">쿠폰</div>
-                            <select>
-                                <option></option>
-                            </select>
+                            <div class="leftSubTitle">
+                                <select>
+                                    <option>선택</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <hr>
                     <div class="delivery">
                         <div>택배 선택시에만 나오는 영역</div>
 
-                        <table>
+                        <div>
                             <div class="left-title">주소</div>
-                            <tr>
-                                <td>이름</td>
-                                <td colspan="2"><input class="form-control" type="text"></td>
-                            </tr>
-                            <tr>
-                                <td class="table_text">
-                                    주소
-                                </td>
-                                <td  class="table_input">
-                                    <input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
-                                </td>
-                                <td>
-                                    <input type="button" onclick="sample4_execDaumPostcode()" class="btn btn-light" value="우편번호 검색" style="width: 150px;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td colspan="2" class="table_input"><input type="text" name="address" id="sample4_roadAddress" class="form-control" placeholder="도로명주소"></td>
-                            </tr>
-                            <tr>
-                                <td><span id="guide" style="color:#999;display:none"></span></td>
-                                <td colspan="2" class="table_input">
-                                    <input type="text" id="sample4_detailAddress" name="address" class="form-control" placeholder="상세주소">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>전화번호</td>
-                                <td colspan="2"><input class="form-control" type="text"></td>
-                            </tr>
+                            <div>
+                                수취인명
+                            </div>
+                            <div>
+                               <input class="isStatusOnInput" type="text">
+                            </div>
 
-                        </table>
+
+                            <table>
+                                <tr>
+                                    <td class="table_text" colspan="3">
+                                        주소
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  class="table_input" colspan="2">
+                                        <input type="text" id="sample4_postcode" class="isStatusOnInput" placeholder="우편번호">
+                                    </td>
+                                    <td>
+                                        <input type="button" onclick="sample4_execDaumPostcode()" class="btn btn-light" value="우편번호 검색" style="width: 150px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_input" colspan="3">
+                                        <input type="text" name="address" id="sample4_roadAddress" class="isStatusOnInput" placeholder="도로명주소">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span id="guide" style="color:#999;display:none"></span></td>
+                                    <td class="table_input">
+                                        <input type="text" id="sample4_detailAddress" name="address" class="isStatusOnInput" placeholder="상세주소를 입력해 주세요.">
+                                    </td>
+                                    <td>
+                                        <input type="text" id="sample4_extraAddress" name="address" class="isStatusOnInput" placeholder="참고" style="width: 100px;">
+                                    </td>
+                                </tr>
+
+                            </table>
+
+
+                            <div>
+                                전화번호
+                            </div>
+                            <div>
+                                <input class="isStatusOnInput" type="text">
+                            </div>
+
+                        </div>
 
                     </div>
 

@@ -22,7 +22,7 @@
 
 .confirm-left {
     text-align: left;
-    padding-left: 10%;
+    padding-left: 11%;
 
 }
 
@@ -30,8 +30,17 @@
     font-size: xx-large;
 }
 
+.left-top {
+    font-size: x-large;
+}
+
 .left-title {
     font-size: x-large;
+    padding-top: 20px;
+}
+
+.leftSubTitle {
+    padding-top: 10px;
 }
 
 
@@ -70,4 +79,14 @@ hr {
     display: inline-block;
     width: 60%;
     float: right;
+}
+
+*,*:focus,*:hover{outline:none;}
+
+.isStatusOnInput {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    border-color: #bdbdbd;
 }
