@@ -1,21 +1,18 @@
 package com.web.billim.product.controller;
 
-import com.web.billim.order.dto.response.ReservationDateResponse;
 import com.web.billim.order.service.OrderService;
 import com.web.billim.product.domain.Product;
 import com.web.billim.product.domain.ProductCategory;
 import com.web.billim.product.dto.request.ProductRegisterRequest;
 import com.web.billim.product.dto.response.MyProductSalesResponse;
 import com.web.billim.product.dto.response.ProductDetailResponse;
+import com.web.billim.product.dto.response.ProductListResponse;
 import com.web.billim.security.domain.User;
 import com.web.billim.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -39,13 +35,26 @@ public class ProductController {
 
     @GetMapping("/product/list")
     public String productList(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
-                               Model model
+                              Model model
     ) {
-        Page<Product> productList = productService.findAllProduct(page);
+        Page<ProductListResponse> productList = productService.findAllProduct(page);
         model.addAttribute("productList", productList);
         model.addAttribute("totalPage", productList.getTotalPages());
         return "pages/product/productList";
     }
+
+
+//    @GetMapping("/product/list")
+//    public String productList(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+//                              Model model
+//    ) {
+//        Page<Product> productList = productService.findAllProduct(page);
+//        model.addAttribute("productList", productList);
+//        model.addAttribute("totalPage", productList.getTotalPages());
+//        return "pages/product/productList";
+//    }
+
+
 
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {
@@ -56,13 +65,18 @@ public class ProductController {
         model.addAttribute("alreadyDates",alreadyDates);
         return "pages/product/productDetail";
     }
-//    @GetMapping("/test/test/test")
-//    @ResponseBody
-//    public ResponseEntity<List<LocalDate>> test() {
-//        Product product = productService.retrieve(1);
-//        List<LocalDate> dates = orderService.reservationDate(product);
-//        return ResponseEntity.ok(dates);
-//    }
+
+
+    @GetMapping("/test/test/test")
+    @ResponseBody
+    public ResponseEntity<List<LocalDate>> test() {
+        Product product = productService.retrieve(1);
+        List<LocalDate> dates = orderService.reservationDate(product);
+        return ResponseEntity.ok(dates);
+    }
+
+
+
 
     @GetMapping("/myPage/purchase")
     public String myPage() {
@@ -94,5 +108,8 @@ public class ProductController {
         req.setRegisterMember(user.getMemberId());
         return ResponseEntity.ok(productService.register(req));
     }
+
+
+
 }
 

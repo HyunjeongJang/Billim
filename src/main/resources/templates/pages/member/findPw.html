@@ -7,31 +7,33 @@
 <div layout:fragment="content">
     <link th:href="@{/css/findId.css}" rel="stylesheet">
 
+
     <div class="content">
+
         <table th:align="center">
             <tr>
                 <td class="td-main">
                     <p class="title-area">
                         <a href="/member/findId">아이디 찾기</a>
                     </p>
-                    <p  style="border-bottom: black solid 3px;"></p>
+                    <p  style="border-bottom: white solid 3px;"></p>
                 </td>
                 <td class="td-main">
                     <p class="title-area">
                         <a href="/member/findPw">비밀번호 찾기</a>
                     </p>
-                    <p  style="border-bottom: white solid 3px;"></p>
+                    <p  style="border-bottom: black solid 3px;"></p>
                 </td>
             </tr>
         </table>
 
         <table th:align="center">
             <tr>
-                <td class="td-title" colspan="2">이름</td>
+                <td class="td-title" colspan="2">아이디</td>
             </tr>
             <tr>
                 <td class="td-input" colspan="2">
-                    <div class="login_area"><input class="isStatusOnInput" id="name" type="text" placeholder="가입하신 이름을 입력해 주세요"></div>
+                    <div class="login_area"><input class="isStatusOnInput" id="name" type="text" placeholder="가입하신 아이디를 입력해 주세요"></div>
                 </td>
             </tr>
             <tr>
@@ -58,56 +60,10 @@
             </tr>
         </table>
 
-        <script>
-
-            function verification() {
-                const formData = new FormData();
-                formData.set("name", $('#name').val());
-                formData.set("email", $('#email').val());
-
-                $.ajax({
-                    url: '/member/findId',
-                    method: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function (data) {
-                        $("#findIdResult").html(data['userId']+"입니당");
-                        console.log(data);
-                        let findId;
-                        if (data['userId'] === null) {
-                            findId = '일치하는 정보가 없습니다'
-                        } else {
-                            findId = '아이디는 ' + data['userId'] +' 입니다.'
-                        }
-                        $('#findIdResult').html(findId)
-                    },
-                    error() {
-                        Swal.fire({
-                            icon: 'error',
-                            title: '에러났어용'
-                        });
-                    }
-                });
-            }
-
-        </script>
-
-
-        <div>
-
-            <div class="finIdResult">
-                <span id="findIdResult">
-
-                </span>
-            </div>
-
-        </div>
-
-
-
 
     </div>
+
+
 
 </div>
 </html>

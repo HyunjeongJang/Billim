@@ -38,13 +38,14 @@ CREATE TABLE `product_category`
     `category_name` varchar(100) NOT NULL COMMENT '카테고리명'
 );
 
-DROP TABLE IF EXISTS `interest_list`;
+DROP TABLE IF EXISTS product_interest;
 
-CREATE TABLE `interest_list`
+CREATE TABLE `product_interest`
 (
     `interest_id` int primary key auto_increment COMMENT '관심상품번호',
     `product_id`  int NOT NULL COMMENT '상품번호',
     `member_id`   int NOT NULL COMMENT '회원번호'
+
 );
 
 DROP TABLE IF EXISTS `block`;

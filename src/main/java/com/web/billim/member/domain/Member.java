@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Member extends JpaEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // MYSQL increment_auto 로 PK 를 생성
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private int memberId;
 
@@ -37,19 +37,11 @@ public class Member extends JpaEntity {
 
     private String profileImageUrl;
 
-//    @PrePersist
-//    public void prePersist(){
-//        this.profileImageUrl = this.profileImageUrl == null ? "https://cdn-icons-png.flaticon.com/512/5580/5580988.png": this.profileImageUrl;
-//    }
-
     @PrePersist
     public void prePersist(){
         this.profileImageUrl = this.profileImageUrl == null ? "https://cdn-icons-png.flaticon.com/512/8246/8246830.png": this.profileImageUrl;
     }
 
 
-//    public void setProfileImageUrl(String profileImageUrl) {
-//        this.profileImageUrl = profileImageUrl;
-//    }
 
 }

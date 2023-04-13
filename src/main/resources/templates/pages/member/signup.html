@@ -3,41 +3,8 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/defaultLayout}">
-<style layout:fragment="contentCss">
-    /*hr {*/
-    /*    width: 50%;*/
-    /*    background-color: dimgray;*/
-    /*    height: 1px;*/
-    /*}*/
-    /*table{*/
-    /*    width: 50%;*/
-    /*}*/
-    table{
-        width: 50%;
-    }
-
-    .table_text {
-        text-align : left;
-        font-weight: 600;
-        padding : 10px 0 10px 40px;
-    }
-
-    table {
-        padding-top: 20px;
-        align-content: center;
-    }
-
-    td {
-        text-align: left;
-    }
-
-    .check-text {
-        font-size: smaller;
-        color: red;
-    }
-
-</style>
 <div layout:fragment="content">
+    <link th:href="@{/css/signup.css}" rel="stylesheet">
     <div class="content" style="text-align: center" th:fragment="testPage">
         <h1>회원가입</h1><br>
         <form method="post" th:action="@{/member/signup}" modelAttribute="MemberSignupRequest">
@@ -163,7 +130,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td><span id="guide" style="color:#999;display:none"></span></td>
                     <td class="table_input">
                         <input type="text" id="sample4_detailAddress" name="address" class="form-control" placeholder="상세주소">
                     </td>

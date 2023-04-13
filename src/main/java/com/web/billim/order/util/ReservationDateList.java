@@ -1,12 +1,12 @@
-package com.web.billim.order.helper;
+package com.web.billim.order.util;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocalDateHelper {
+public class ReservationDateList {
 
-    public static List<LocalDate> generateLocalDateInterval(LocalDate start, LocalDate end) {
+    public static List<LocalDate> changeDate(LocalDate start, LocalDate end){
         List<LocalDate> result = new ArrayList<>();
         do {
             result.add(start);
@@ -14,6 +14,4 @@ public class LocalDateHelper {
         } while(start.isEqual(end) || start.isBefore(end)); // !start.isAfter(end)
         return result;
     }
-
 }
-

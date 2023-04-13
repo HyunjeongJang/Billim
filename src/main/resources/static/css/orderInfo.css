@@ -1,3 +1,5 @@
+
+
 .content-wrap {
     display: inline-block;
     width: 100%;
@@ -22,7 +24,7 @@
 
 .confirm-left {
     text-align: left;
-    padding-left: 10%;
+    padding-left: 60px;
 
 }
 
@@ -30,9 +32,26 @@
     font-size: xx-large;
 }
 
-.left-title {
+.left-top {
     font-size: x-large;
 }
+
+.left-title {
+    font-size: x-large;
+    padding-top: 20px;
+}
+
+.leftSubTitle {
+    padding-top: 10px;
+}
+
+.tableInput {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+
+
 
 
 .pay-area {
@@ -52,12 +71,17 @@ hr {
     width: 90%;
 }
 
+.line {
+    padding-left: 5%;
+    padding-right: 5%;
+}
 
 
-
-.inside-top {
+.insideTop {
     width: 100%;
     padding-top: 30px;
+    padding-bottom: 20px;
+    height: 160px;
 }
 
 .inside-top-image {
@@ -70,4 +94,46 @@ hr {
     display: inline-block;
     width: 60%;
     float: right;
+}
+
+.insideTitle {
+    font-size: x-large;
+    text-align: left;
+    padding-left: 8%;
+    padding-bottom: 10px;
+}
+
+.insideContent {
+    display: inline-block;
+    text-align: left;
+    width: 49%;
+    padding-left: 8%;
+    padding-bottom: 10px;
+}
+
+.insidePrice {
+    display: inline-block;
+    text-align: right;
+    width: 49%;
+    padding-right: 8%;
+}
+
+.payButton {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+
+*,*:focus,*:hover{outline:none;}
+
+.isStatusOnInput {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    border-color: #bdbdbd;
 }

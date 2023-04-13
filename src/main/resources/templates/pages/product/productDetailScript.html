@@ -22,6 +22,8 @@
         // 체크아웃 날짜
         let checkOutDate = "";
 
+        let alreadyOrderDateList = ['2023-04-16', '2023-04-18'];
+
         $(document).ready(function () {
             // 달력 만들기
             calendarInit(thisMonth);
@@ -91,19 +93,42 @@
                 }
 
                 // 이번달
+                // for (let i = 1; i <= nextDate; i++) {
+                //     // 이번달이 현재 년도와 월이 같을경우
+                //     if (currentYear === today.getFullYear() && currentMonth === today.getMonth()) {
+                //         // 지난 날짜는 disable 처리
+                //         if (i < today.getDate()) {
+                //             start_calendar += pervDisableDay(i)
+                //         } else {
+                //             start_calendar += dailyDay(currentYear, currentMonth, i);
+                //         }
+                //     } else {
+                //         start_calendar += dailyDay(currentYear, currentMonth, i);
+                //     }
+                // }
+
+                // 이번달
                 for (let i = 1; i <= nextDate; i++) {
                     // 이번달이 현재 년도와 월이 같을경우
                     if (currentYear === today.getFullYear() && currentMonth === today.getMonth()) {
                         // 지난 날짜는 disable 처리
+
+                        // TODO : Year, Month, Day -> alreadyOrder~~ 에 있는지 확인해서 있으면 pervDisableDay(i) 하면 될듯...? 될까?
+
                         if (i < today.getDate()) {
                             start_calendar += pervDisableDay(i)
-                        } else {
+                        }
+                        // else if() {
+                        //
+                        // }
+                        else {
                             start_calendar += dailyDay(currentYear, currentMonth, i);
                         }
                     } else {
                         start_calendar += dailyDay(currentYear, currentMonth, i);
                     }
                 }
+
 
                 // 다음달 7 일 표시
                 for (let i = 1; i <= (6 - nextDay); i++) {

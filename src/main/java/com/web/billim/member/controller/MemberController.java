@@ -95,14 +95,19 @@ public class MemberController {
         return ResponseEntity.ok(memberService.findId(findIdRequest));
     }
 
-    @GetMapping("/member/changePassword")
+    @GetMapping("/member/findPw")
     public String changePassword() {
-        return "pages/member/changePassword";
+        return "pages/member/findPw";
     }
 
     @GetMapping("/member/changeInfo")
     public String changeMemberInfo() {
         return "pages/myPage/changeMyInfo";
+    }
+
+    @GetMapping("/member/changePw")
+    public String changePw() {
+        return "pages/member/changePw";
     }
 
 }

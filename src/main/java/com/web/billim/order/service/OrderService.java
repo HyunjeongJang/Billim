@@ -1,6 +1,6 @@
 package com.web.billim.order.service;
 
-import com.web.billim.order.ReservationDateList;
+import com.web.billim.order.util.ReservationDateList;
 import com.web.billim.order.domain.ProductOrder;
 import com.web.billim.order.repository.OrderRepository;
 import com.web.billim.product.domain.Product;
@@ -25,7 +25,6 @@ public class OrderService {
                 .filter(date -> !date.isBefore(LocalDate.now()))
                 .collect(Collectors.toList());
     }
-
 
 
 }

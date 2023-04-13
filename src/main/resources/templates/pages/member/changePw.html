@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+
+<div layout:fragment="content">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+    <style>
+        table{
+            width: 300px;
+        }
+
+        button {
+            width: 146px;
+        }
+
+    </style>
+
+    <div class="content">
+
+        <table th:align="center" width="300px">
+            <tr>
+                <td style="font-size: x-large; padding-bottom: 30px;">비밀번호 재설정</td>
+            </tr>
+            <form method="post" th:action="@{/member/changePw}">
+                <tr>
+                    <td>
+                        <div class="login_area"><input class="form-control login_input" name="userId" type="text" placeholder="비밀번호 입력"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="login_area"><input class="form-control login_input" name="password" type="password" placeholder="비밀번호 재입력">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="reset" class="btn btn-light">취소</button>
+                        <button class="btn btn-dark">확인</button>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
+</div>
+
+
+</html>

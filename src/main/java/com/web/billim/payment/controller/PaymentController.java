@@ -15,7 +15,7 @@ public class PaymentController {
      *   		1-3-2. 사용가능 쿠폰 목록
      *   	1-4. PaymentPageResponse
      *   		1-4-1. start_at, end_at
-     *   		1-4-2. product 정보 (ProductDetailResponse 를 넣어도 됨)
+     *   		1-4-2. product 정보 (ProductDetailResponse)
      *   				price 포함된 정보
      *   		1-4-3. available_amount
      *   		1-4-4. coupons (List) -> Id, 이름, 할인률

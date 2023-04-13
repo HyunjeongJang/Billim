@@ -12,8 +12,5 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<ProductOrder, Integer> {
     List<ProductOrder> findAllByProductAndEndAtAfter(Product product, LocalDate now);
 
-
-
-
 }
 

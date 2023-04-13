@@ -1,24 +1,24 @@
-package com.web.billim.review.domain;
+package com.web.billim.product.domain;
 
-import com.web.billim.common.domain.JpaEntity;
-import com.web.billim.product.domain.Product;
 import com.web.billim.member.domain.Member;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Table(name = "review")
-@Builder
+@Table(name = "product_interest")
 @Getter
-public class Review extends JpaEntity {
+public class ProductInterest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "review_id")
-    private Integer id;
+    @Column(name = "interest_id")
+    private int interestId;
 
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
     @ManyToOne
@@ -28,9 +28,4 @@ public class Review extends JpaEntity {
     @ManyToOne
     private Member member;
 
-    private String content;
-
-    private int starRating;
-
-    private String status;
 }
