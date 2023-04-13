@@ -7,6 +7,7 @@
 
 .title-area {
     display: inline-block;
+    padding-bottom: 40px;
 }
 .title {
     font-size: xx-large;
@@ -66,6 +67,37 @@
     padding-top: 10px ;
 }
 
+.product-image-wrap {
+    width: 100%;
+    /*height: 330px;*/
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.product-image{
+    justify-content: center;
+    width: 1015px;
+    /*height: 620px;*/
+}
+#image-1{
+    display: inline-block;
+    float: left;
+
+}
+.imag-2{
+    display: inline-block;
+}
+.image-top{
+    display: inline-block;
+    float: top;
+    padding-bottom: 3px;
+}
+.image-bottom{
+    display: inline-block;
+    float: bottom;
+}
+
 
 
 
@@ -82,8 +114,13 @@
 }
 
 .image-detail {
-    width: 800px;
+    width: 250px;
 }
+.image-main{
+    width: 500px;
+    height: 381px;
+}
+
 
 
 

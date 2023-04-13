@@ -23,8 +23,31 @@
                 </span>
             </div>
 
-            <div class="product-image">
-                <img class="image-detail" th:src="${product.imageUrls[0]}">
+            <div class="product-image-wrap">
+                <div class="product-image">
+                    <div id="image-1">
+                        <img class="image-main" th:src="${product.imageUrls[0]}">
+                    </div>
+                    <div class="image-top">
+                        <div class="imag-2 ">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
+                        </div>
+                        <div class="imag-2 image-top">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
+                        </div>
+                    </div>
+                    <div class="image-bottom">
+                        <div class="imag-2">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
+                        </div>
+                        <div class="imag-2 image-bottom">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
 
             <div class="product-wrap">
