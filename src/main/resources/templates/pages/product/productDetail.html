@@ -15,7 +15,7 @@
                     <span th:text="${product.productName}"></span>
                 </div>
                 <span>
-<!--                    별점 4.5 후기 개 | <span th:text="${product.member.getGrade()}"></span> | 지역-->
+                    별점 4.5 후기 개 | <span th:text="${product.member.getGrade()}"></span> | 지역
                 </span>
                 <span>
                     공유하기
@@ -30,35 +30,54 @@
             <div class="product-wrap">
 
                 <div class="product-info">
-                    <span th:text="${product.member.nickname}"></span>
-                    님이 대여하는 상품
-                    <img th:src="${product.member.profileImageUrl}" width="60px">
+                    <div class="product-info-content">
+                        <div class="product-info-left">
+                            <h3><span th:text="${product.member.nickname}"></span>
+                            님이 대여하는 상품
+                            </h3>
+                        </div>
+                        <div class="product-info-right">
+                            <div class="sellerImage">
+                                <img  class="sellerImageBig" th:src="${product.member.profileImageUrl}">
+                            </div>
+                        </div>
+                    </div>
                     <hr>
+                    <div class="product-info-content">
+<!--                        <div th:text="${product.tradeMethods}"></div>-->
+                        <div class="product-info-left">
+                            <div class="titleFont">
+                                <img class="titleImage" src="https://cdn-icons-png.flaticon.com/512/1672/1672190.png">
+                                직거래
+                            </div>
+                            <div class="subscription">가능</div>
+                            <div class="titleFont">
+                                <img class="titleImage" src="https://cdn-icons-png.flaticon.com/512/3847/3847871.png">
+                                택배 거래
+                            </div>
+                            <div class="subscription">불가능</div>
+                            <div class="titleFont">
+                                <img class="titleImage" src="https://cdn-icons-png.flaticon.com/512/4616/4616651.png">
+                                <span th:text="${product.member.nickname}"></span>님은
+                                <span th:text="${product.member.grade}"></span>등급 입니다.
+                            </div>
+                        </div>
 
-                    <div>직거래</div>
-                    <div>택배거래</div>
-                    <div><span th:text="${product.member.nickname}"></span>님은 <span
-                            th:text="${product.member.grade}"></span>등급 입니다.
                     </div>
-
-                    <div>
-                        상품 설명
-                        <span th:text="${product.detail}"></span>
+                    <hr>
+                    <div class="product-info-content">
+                        <div class="product-info-left">
+                            <div class="titleFont">
+                                <img class="titleImage" src="https://cdn-icons-png.flaticon.com/512/813/813885.png">
+                                상품 설명
+                            </div>
+                            <div class="subscription" th:text="${product.detail}"></div>
+                        </div>
                     </div>
-
-
-                    <div th:text="${product.tradeMethods}"></div>
-
-
                 </div>
 
+
                 <div class="product-pay">
-                    결제정보
-                    <div>
-                        ₩ <span th:text="${product.price}"></span> (/일)
-                    </div>
-
-
                     <div class="calendar-wrap">
                         <div class="calendar-middle-wrap">
                             <div class="cal_nav">

@@ -4,6 +4,7 @@
 /*    border: 1px solid red;*/
 /*}*/
 
+
 .title-area {
     display: inline-block;
 }
@@ -22,7 +23,54 @@
     display: inline-block;
     float: left;
     height: 100%;
+    padding: 5% 5% 5% 5%;
 }
+.product-info-left{
+    display: inline-block;
+    float: left;
+    padding-left: 7%;
+    text-align: left;
+}
+.product-info-right{
+    display: inline-block;
+    float: right;
+    padding-right: 5%;
+}
+.sellerImage{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.sellerImageBig{
+    width: 60px;
+    height: 60px;
+}
+
+.product-info-content{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.titleImage{
+    width: 40px;
+}
+.titleFont{
+    font-size: x-large;
+    font-weight: 500;
+
+}
+.subscription{
+    font-size: large;
+    padding-left: 50px;
+    padding-bottom: 17px;
+    padding-top: 10px ;
+}
+
+
+
+
+
+
 
 
 .product-pay {
