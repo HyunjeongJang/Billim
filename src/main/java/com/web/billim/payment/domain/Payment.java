@@ -2,6 +2,7 @@ package com.web.billim.payment.domain;
 
 import com.web.billim.common.domain.JpaEntity;
 import com.web.billim.coupon.domain.CouponIssue;
+import com.web.billim.member.domain.Member;
 import com.web.billim.order.domain.ProductOrder;
 import com.web.billim.common.type.TradeMethod;
 import lombok.*;
@@ -40,6 +41,9 @@ public class Payment extends JpaEntity {
 	@Enumerated(EnumType.STRING)
 	private PaymentStatus status;
 
+	public Member getMember() {
+		return this.productOrder.getMember();
+	}
 }
 
 enum PaymentStatus {

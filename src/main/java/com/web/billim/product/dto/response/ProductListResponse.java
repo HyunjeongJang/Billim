@@ -3,8 +3,7 @@ package com.web.billim.product.dto.response;
 import com.web.billim.product.domain.ImageProduct;
 import com.web.billim.product.domain.Product;
 import com.web.billim.product.domain.ProductCategory;
-import com.web.billim.product.domain.ProductInterest;
-import com.web.billim.review.domain.Review;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -21,10 +20,9 @@ public class ProductListResponse {
     private String detail;
     private int price;
     private List<String> imageUrls;
-    private int starRating;
-    private ProductInterest productInterest;
+    private double starRating;
 
-    public static ProductListResponse of(Product product, Review review) {
+    public static ProductListResponse of(Product product, double starRating) {
         return ProductListResponse.builder()
                 .productId(product.getProductId())
                 .productName(product.getProductName())
@@ -35,7 +33,7 @@ public class ProductListResponse {
                                 .map(ImageProduct::getUrl)
                                 .collect(Collectors.toList())
                 )
-                .starRating(review.getStarRating())
+                .starRating(starRating)
                 .build();
     }
 

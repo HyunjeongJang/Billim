@@ -1,8 +1,7 @@
-package com.web.billim.point.domain;
+package com.web.billim.payment.domain;
 
 import com.web.billim.common.domain.JpaEntity;
-import com.web.billim.payment.domain.Payment;
-import com.web.billim.point.domain.service.SavedPoint;
+import com.web.billim.point.domain.SavedPoint;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "point_history")
 @Builder
 @Getter
-public class PointHistory extends JpaEntity {
+public class PointUsedHistory extends JpaEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "point_history_id")

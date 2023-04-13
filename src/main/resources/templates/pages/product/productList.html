@@ -43,9 +43,7 @@
 
                 <a th:href="@{/product/detail/{productId}(productId=${product.productId})}">
                     <div class="product-image">
-                        <img class="image-detail" th:src="${product.getImages()[0].getUrl()}">
-
-
+                        <img class="image-detail" th:src="${product.getImageUrls()[0]}">
 
                         <div class="heart-check">
                             <input type="checkbox" id="heart">

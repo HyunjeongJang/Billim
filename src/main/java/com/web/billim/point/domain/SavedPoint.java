@@ -1,4 +1,4 @@
-package com.web.billim.point.domain.service;
+package com.web.billim.point.domain;
 
 import com.web.billim.common.domain.JpaEntity;
 import com.web.billim.member.domain.Member;
@@ -30,11 +30,11 @@ public class SavedPoint extends JpaEntity {
 
 	public static SavedPoint of(Member member, AppendPointCommand command) {
 		return SavedPoint.builder()
-			.member(member)
-			.amount(command.getAmount())
-			.availableAmount(command.getAmount())
-			.expiredAt(command.getExpiredAt())
-			.build();
+				.member(member)
+				.amount(command.getAmount())
+				.availableAmount(command.getAmount())
+				.expiredAt(command.getExpiredAt())
+				.build();
 	}
 
 	public int use(int amount) {

@@ -12,7 +12,7 @@
         <div class="content-wrap">
             <div class="title-area">
                 <div class="title">
-                    <span><img src="https://cdn-icons-png.flaticon.com/512/54/54321.png" width="30px"></span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/54/54321.png" width="30px">
                     <span>확인 및 결제</span>
                 </div>
             </div>
@@ -26,9 +26,9 @@
                         <span th:text="${endDate}"></span>
                     </div>
                     <div class="left-title">거래방법</div>
-                    <div>
+                    <div class="leftSubTitle">
                         <select>
-                            <option></option>
+                            <option>선택</option>
                         </select>
 
                     </div>
@@ -41,7 +41,7 @@
                                 <span>보유적립금</span> <span>원</span>
                             </div>
                             <div>
-                                <input class="isStatusOnInput" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" value="" style="width: 200px;">
+                                <input class="isStatusOnInput" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" value="" style="width: 150px;">
                                 <button class="btn">사용</button>
                             </div>
 
@@ -54,52 +54,53 @@
                         </div>
                     </div>
                     <hr>
+
+
                     <div class="delivery">
-                        <div>택배 선택시에만 나오는 영역</div>
+                        택배 선택시에만 나오는 영역
 
                         <div>
-                            <div class="left-title">주소</div>
-                            <div>
+                            <div class="left-title">택배 수령 정보</div>
+                            <div class="leftSubTitle">
                                 수취인명
                             </div>
                             <div>
-                               <input class="isStatusOnInput" type="text">
+                                <input class="isStatusOnInput" type="text" style="width: 300px;">
                             </div>
 
 
-                            <table>
+                            <table width="80%">
                                 <tr>
-                                    <td class="table_text" colspan="3">
+                                    <td class="leftSubTitle" colspan="3">
                                         주소
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  class="table_input" colspan="2">
+                                    <td  class="tableInput" colspan="2">
                                         <input type="text" id="sample4_postcode" class="isStatusOnInput" placeholder="우편번호">
                                     </td>
                                     <td>
-                                        <input type="button" onclick="sample4_execDaumPostcode()" class="btn btn-light" value="우편번호 검색" style="width: 150px;">
+                                        <input type="button" onclick="sample4_execDaumPostcode()" class="btn" value="우편번호 검색">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="table_input" colspan="3">
-                                        <input type="text" name="address" id="sample4_roadAddress" class="isStatusOnInput" placeholder="도로명주소">
+                                    <td class="tableInput" colspan="3">
+                                        <input type="text" name="address" id="sample4_roadAddress" class="isStatusOnInput" placeholder="도로명주소" style="width: 300px;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><span id="guide" style="color:#999;display:none"></span></td>
-                                    <td class="table_input">
-                                        <input type="text" id="sample4_detailAddress" name="address" class="isStatusOnInput" placeholder="상세주소를 입력해 주세요.">
+                                    <td class="tableInput">
+                                        <input type="text" id="sample4_detailAddress" name="address" class="isStatusOnInput" placeholder="상세주소">
                                     </td>
-                                    <td>
+                                    <td class="tableInput">
                                         <input type="text" id="sample4_extraAddress" name="address" class="isStatusOnInput" placeholder="참고" style="width: 100px;">
                                     </td>
                                 </tr>
-
                             </table>
 
 
-                            <div>
+                            <div class="leftSubTitle">
                                 전화번호
                             </div>
                             <div>
@@ -125,10 +126,9 @@
             <div class="pay-area">
                 <div class="pay-inside">
 
-                    <div class="inside-top">
-
+                    <div class="insideTop">
                         <div class="inside-top-image">
-                            <img src="https://cdn-icons-png.flaticon.com/512/679/679821.png" width="50px">
+                            <img src="" width="50px">
                         </div>
 
                         <div class="inside-top-right">
@@ -139,39 +139,57 @@
                     </div>
 
 
-                    <hr>
-                    <div>요금세부정보</div>
-                    <div>
-                        <div>
-                            <span>₩  (/일)</span>
-                            <span>₩ </span>
-                        </div>
-                        <div>
-                            <span>대여일</span>
-                            <span>일</span>
-                        </div>
-                        <div>
-                            <span>택배비</span>
-                            <span>₩</span>
-                        </div>
-                        <div>
-                            <span>적립금</span>
-                            <span>- ₩</span>
-                        </div>
-                        <div>
-                            <span>쿠폰적용</span>
-                            <span>- ₩</span>
-                        </div>
-                    </div>
-                    <hr>
-                    <div>
-                        <span>총 합계</span>
-                        <span>₩</span>
 
+
+                    <div class="line">
+                        <p  style="border-bottom: #adadad solid 1px;"></p>
                     </div>
 
+                    <div class="insideMiddle">
+
+                        <div class="insideTitle">요금세부정보</div>
+                        <div>
+                            <div>
+                                <div class="insideContent">₩  (/일)</div>
+                                <div class="insidePrice">₩ </div>
+                            </div>
+                            <div>
+                                <div class="insideContent">대여일</div>
+                                <div class="insidePrice">일</div>
+                            </div>
+                            <div>
+                                <div class="insideContent">택배비</div>
+                                <div class="insidePrice">₩</div>
+                            </div>
+                            <div>
+                                <div class="insideContent">적립금</div>
+                                <div class="insidePrice">- ₩</div>
+                            </div>
+                            <div>
+                                <div class="insideContent">쿠폰적용</div>
+                                <div class="insidePrice">- ₩</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="line">
+                        <p  style="border-bottom: #adadad solid 1px;"></p>
+                    </div>
+
 
                     <div>
+                        <div class="insideContent">총 합계</div>
+                        <div class="insidePrice">₩</div>
+                    </div>
+
+
+
+
+
+                    <div class="payButton">
                         <button class="btn btn-dark">확인 및 결제</button>
                     </div>
 
@@ -180,9 +198,6 @@
 
 
             </div>
-
-
-
 
 
         </div>

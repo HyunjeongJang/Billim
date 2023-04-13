@@ -12,6 +12,7 @@ import com.web.billim.product.domain.ProductCategory;
 import com.web.billim.product.dto.response.MyProductSalesResponse;
 import com.web.billim.member.domain.Member;
 import com.web.billim.member.repository.MemberRepository;
+import com.web.billim.product.dto.response.ProductListResponse;
 import com.web.billim.product.repository.ImageProductRepository;
 import com.web.billim.product.repository.ProductCategoryRepository;
 import com.web.billim.product.repository.ProductRepository;
@@ -34,8 +35,9 @@ public class ProductService {
     private final ProductCategoryRepository productCategoryRepository;
     private final ImageProductRepository imageProductRepository;
     private final OrderRepository orderRepository;
-    private final ImageUploadService imageUploadService;
 
+    private final ImageUploadService imageUploadService;
+    private final ReviewService reviewService;
 
     public Product register(ProductRegisterRequest request) {
         Member registerMember = memberRepository.findById(request.getMemberId())
@@ -62,22 +64,27 @@ public class ProductService {
         return productCategoryRepository.findAll();
     }
 
+
+    public Page<ProductListResponse> findAllProduct(int page) {
+        PageRequest paging = PageRequest.of(page, 12);
+        return productRepository.findAll(paging).map(product -> {
+            double starRating = reviewService.calculateStarRating(product.getProductId());
+            return ProductListResponse.of(product, starRating);
+        });
+    }
+
 //    public Page<Product> findAllProduct(int page) {
 //        PageRequest paging = PageRequest.of(page, 12);
 //        return productRepository.findAll(paging);
 //    }
 
-    public Page<Product> findAllProduct(int page) {
-        PageRequest paging = PageRequest.of(page, 12);
-        return productRepository.findAll(paging);
-    }
 
 
     @Transactional
     public Product retrieve(int productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() ->
-                new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
+                        new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
         return product;
     }
 

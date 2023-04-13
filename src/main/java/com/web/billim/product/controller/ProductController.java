@@ -37,11 +37,22 @@ public class ProductController {
     public String productList(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
                               Model model
     ) {
-        Page<Product> productList = productService.findAllProduct(page);
+        Page<ProductListResponse> productList = productService.findAllProduct(page);
         model.addAttribute("productList", productList);
         model.addAttribute("totalPage", productList.getTotalPages());
         return "pages/product/productList";
     }
+
+
+//    @GetMapping("/product/list")
+//    public String productList(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+//                              Model model
+//    ) {
+//        Page<Product> productList = productService.findAllProduct(page);
+//        model.addAttribute("productList", productList);
+//        model.addAttribute("totalPage", productList.getTotalPages());
+//        return "pages/product/productList";
+//    }
 
 
 
@@ -54,7 +65,6 @@ public class ProductController {
         model.addAttribute("alreadyDates",alreadyDates);
         return "pages/product/productDetail";
     }
-
 
 
     @GetMapping("/test/test/test")
