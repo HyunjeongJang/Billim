@@ -8,12 +8,15 @@ import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findByMember_memberId(int memberId);
+
+    // Page<Product> findAllOrderByCreatedAtDesc(Pageable pageable);
 
 //     JPQL
 //     @Query("SELECT p FROM Product p WHERE p.member.memberId = :memberId")

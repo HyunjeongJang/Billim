@@ -26,7 +26,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class PointService {
 
-	private final MemberService memberService;
 	private final PointDomainService pointDomainService;
 	private final SavedPointRepository savedPointRepository;
 	private final PointUsedHistoryRepository pointUsedHistoryRepository;
@@ -36,9 +35,7 @@ public class PointService {
 	// 1. 특정 사용자에게 적립금 부여 (C)
 	@Transactional
 	public void addPoint(AppendPointCommand command) {
-		Member member = memberService.retrieve(command.getMemberId());
-		SavedPoint point = SavedPoint.of(member, command);
-		savedPointRepository.save(point);
+		savedPointRepository.save(SavedPoint.of(command));
 	}
 
 	// 2. 특정 사용자의 사용가능 적립금 조회 (R)

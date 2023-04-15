@@ -1,5 +1,6 @@
 package com.web.billim.member.service;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,11 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
+import com.web.billim.coupon.repository.CouponRepository;
+import com.web.billim.coupon.service.CouponService;
 import com.web.billim.member.domain.Member;
 import com.web.billim.member.dto.request.FindIdRequest;
 import com.web.billim.member.dto.request.MemberSignupRequest;
 import com.web.billim.member.dto.response.FindIdResponse;
 import com.web.billim.member.repository.MemberRepository;
+import com.web.billim.point.dto.AppendPointCommand;
+import com.web.billim.point.service.PointService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,8 +25,10 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class MemberService {
 
+    private final CouponRepository couponRepository;
+    private final CouponService couponService;
+    private final PointService pointService;
     private final MemberRepository memberRepository;
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Map<String, String> validateHandling(BindingResult bindingResult) {
@@ -38,6 +45,15 @@ public class MemberService {
         memberSignupRequest.setPassword(bCryptPasswordEncoder.encode(memberSignupRequest.getPassword()));
         Member member = memberSignupRequest.toEntity();
         memberRepository.save(member);
+
+        // 쿠폰 주기
+        couponRepository.findByName("회원가입 쿠폰")
+                .map(coupon -> couponService.issueCoupon(member, coupon))
+                .orElseThrow();
+
+        // 포인트 주기
+        AppendPointCommand command = new AppendPointCommand(member, 1000, LocalDateTime.now().plusDays(365));
+        pointService.addPoint(command);
     }
 
     public FindIdResponse findId(FindIdRequest findIdRequest) {
