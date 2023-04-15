@@ -1,5 +1,7 @@
 package com.web.billim.coupon.domain;
 
+import java.time.LocalDateTime;
+
 import com.web.billim.common.domain.JpaEntity;
 import com.web.billim.member.domain.Member;
 import lombok.*;
@@ -28,6 +30,14 @@ public class CouponIssue extends JpaEntity {
 
 	@Enumerated(EnumType.STRING)
 	private CouponStatus status;
+
+	public LocalDateTime getExpiredAt() {
+		return this.getCreatedAt().plusDays(this.coupon.getLimitDate());
+	}
+
+	public void use() {
+		this.status = CouponStatus.USED;
+	}
 
 }
 

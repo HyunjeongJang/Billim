@@ -23,8 +23,31 @@
                 </span>
             </div>
 
-            <div class="product-image">
-                <img class="image-detail" th:src="${product.imageUrls[0]}">
+            <div class="product-image-wrap">
+                <div class="product-image">
+                    <div id="image-1">
+                        <img class="image-main" th:src="${product.imageUrls[0]}">
+                    </div>
+                    <div class="image-top">
+                        <div class="imag-2 ">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
+                        </div>
+                        <div class="imag-2 image-top">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
+                        </div>
+                    </div>
+                    <div class="image-bottom">
+                        <div class="imag-2">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
+                        </div>
+                        <div class="imag-2 image-bottom">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
 
             <div class="product-wrap">
@@ -33,7 +56,7 @@
                     <div class="product-info-content">
                         <div class="product-info-left">
                             <h3><span th:text="${product.member.nickname}"></span>
-                            님이 대여하는 상품
+                                님이 대여하는 상품
                             </h3>
                         </div>
                         <div class="product-info-right">
@@ -44,7 +67,7 @@
                     </div>
                     <hr>
                     <div class="product-info-content">
-<!--                        <div th:text="${product.tradeMethods}"></div>-->
+                        <!--                        <div th:text="${product.tradeMethods}"></div>-->
                         <div class="product-info-left">
                             <div class="titleFont">
                                 <img class="titleImage" src="https://cdn-icons-png.flaticon.com/512/1672/1672190.png">
@@ -145,7 +168,7 @@
                             let startDate = $('#check_in_day').text().substr(0,10);
                             let endDate = $('#check_out_day').text().substr(0,10);
                             location.href = '/order/confirm?startDate='+startDate+
-                                            '&endDate='+endDate+'&productId='+[[${product.productId}]];
+                                '&endDate='+endDate+'&productId='+[[${product.productId}]];
                         }
 
                     </script>

@@ -28,9 +28,9 @@ public class SavedPoint extends JpaEntity {
 	private int availableAmount;
 	private LocalDateTime expiredAt;
 
-	public static SavedPoint of(Member member, AppendPointCommand command) {
+	public static SavedPoint of(AppendPointCommand command) {
 		return SavedPoint.builder()
-				.member(member)
+				.member(command.getMember())
 				.amount(command.getAmount())
 				.availableAmount(command.getAmount())
 				.expiredAt(command.getExpiredAt())
