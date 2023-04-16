@@ -42,6 +42,4 @@ public class Member extends JpaEntity {
         this.profileImageUrl = this.profileImageUrl == null ? "https://cdn-icons-png.flaticon.com/512/8246/8246830.png": this.profileImageUrl;
     }
 
-
-
 }

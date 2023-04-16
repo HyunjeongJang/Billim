@@ -68,8 +68,9 @@ CREATE TABLE `product_order`
     `status`     varchar(10)                                                     NOT NULL COMMENT '대여상태', # 대여중, 예약중, 취소
     `start_at`   timestamp                                                       NOT NULL COMMENT '시작일',
     `end_at`     timestamp                                                       NOT NULL COMMENT '종료일',
-    `address`    varchar(200)                                                    NULL COMMENT '주소',
-    `phone`      varchar(100)                                                    NULL COMMENT '연락처',
+    'buyer_name' varchar(100) NOT NULL COMMENT '구매자이름',
+    `buyer_address`    varchar(200)                                                    NULL COMMENT '주소',
+    `buyer_phone`      varchar(100)                                                    NULL COMMENT '연락처',
     `created_at` timestamp default current_timestamp                             NOT NULL COMMENT '주문일자',
     `updated_at` timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );

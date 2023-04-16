@@ -8,10 +8,23 @@
 .title-area {
     display: inline-block;
     padding-bottom: 40px;
+    width: 70%;
 }
 .title {
     font-size: xx-large;
 }
+
+
+.subTitle-left {
+    float: left;
+}
+
+.subTitle-right {
+    float: right;
+}
+
+
+
 
 .product-wrap {
     width: 100%;

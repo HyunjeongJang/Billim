@@ -16,5 +16,4 @@ public class OrderInfoResponse {
     private int price;
     private List<TradeMethod> tradeMethods;
 
-
 }

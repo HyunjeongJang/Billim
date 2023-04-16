@@ -96,9 +96,10 @@ public class MemberController {
     }
 
     @GetMapping("/member/findPw")
-    public String changePassword() {
+    public String findPw() {
         return "pages/member/findPw";
     }
+
 
     @GetMapping("/member/changeInfo")
     public String changeMemberInfo() {

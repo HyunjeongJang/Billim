@@ -72,7 +72,6 @@ class PointDomainServiceTest {
 		assertEquals(point_3000.getAvailableAmount(), 1000);
 	}
 
-	// TODO : 반환 값에 대한 테스트
 	@Test
 	public void use_사용된_포인트_반환값_확인() {
 		// given
