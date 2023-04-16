@@ -1,7 +1,7 @@
 package com.web.billim.member.domain;
 
 import com.web.billim.common.domain.JpaEntity;
-import com.web.billim.common.type.MemberGrade;
+import com.web.billim.member.type.MemberGrade;
 import lombok.*;
 
 import javax.persistence.*;

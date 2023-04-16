@@ -79,8 +79,7 @@ public class ProductService {
     @Transactional
     public Product retrieve(int productId) {
         Product product = productRepository.findById(productId)
-                .orElseThrow(() ->
-                        new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
+                .orElseThrow(() -> new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
         return product;
     }
 

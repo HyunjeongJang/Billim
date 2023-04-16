@@ -28,7 +28,7 @@ public class Coupon extends JpaEntity {
 		return CouponIssue.builder()
 				.member(member)
 				.coupon(this)
-				.status(CouponStatus.PENDING)
+				.status(CouponStatus.AVAILABLE)
 				.build();
 	}
 

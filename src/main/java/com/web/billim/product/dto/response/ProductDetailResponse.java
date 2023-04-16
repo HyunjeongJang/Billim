@@ -3,7 +3,7 @@ package com.web.billim.product.dto.response;
 import com.web.billim.product.domain.ImageProduct;
 import com.web.billim.member.domain.Member;
 import com.web.billim.product.domain.Product;
-import com.web.billim.common.type.TradeMethod;
+import com.web.billim.product.type.TradeMethod;
 import lombok.Builder;
 import lombok.Getter;
 

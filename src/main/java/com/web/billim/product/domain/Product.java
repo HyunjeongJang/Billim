@@ -3,7 +3,7 @@ package com.web.billim.product.domain;
 import com.web.billim.common.domain.JpaEntity;
 import com.web.billim.product.dto.request.ProductRegisterRequest;
 import com.web.billim.member.domain.Member;
-import com.web.billim.common.type.TradeMethod;
+import com.web.billim.product.type.TradeMethod;
 
 import lombok.*;
 

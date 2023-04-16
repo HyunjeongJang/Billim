@@ -1,7 +1,7 @@
 package com.web.billim.member.dto.request;
 
 import com.web.billim.member.domain.Member;
-import com.web.billim.common.type.MemberGrade;
+import com.web.billim.member.type.MemberGrade;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

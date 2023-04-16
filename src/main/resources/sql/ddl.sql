@@ -68,9 +68,10 @@ CREATE TABLE `product_order`
     `status`     varchar(10)                                                     NOT NULL COMMENT '대여상태', # 대여중, 예약중, 취소
     `start_at`   timestamp                                                       NOT NULL COMMENT '시작일',
     `end_at`     timestamp                                                       NOT NULL COMMENT '종료일',
-    'buyer_name' varchar(100) NOT NULL COMMENT '구매자이름',
+    'buyer_name' varchar(100) NULL COMMENT '구매자이름',
     `buyer_address`    varchar(200)                                                    NULL COMMENT '주소',
     `buyer_phone`      varchar(100)                                                    NULL COMMENT '연락처',
+    'trade_method' varchar(50) NULL COMMENT '거래방법',
     `created_at` timestamp default current_timestamp                             NOT NULL COMMENT '주문일자',
     `updated_at` timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );
@@ -85,8 +86,9 @@ CREATE TABLE `payment`
     `point`           int                                                             NULL COMMENT '적립금',
     `merchant_uid`    varchar(500)                                                    NULL COMMENT '카드결제ID',
     `total_amount`    int                                                             NOT NULL COMMENT '총금액',
-    `status`          boolean                                                         NOT NULL COMMENT '결제여부',
-    `trade_method`    varchar(10)                                                     NOT NULL COMMENT '거래 방법',
+    `status`          varchar(50)                                                         NOT NULL COMMENT '결제여부',
+    `trade_method`    varchar(50)                                                     NOT NULL COMMENT '거래 방법',
+    'imp_uid' varchar(255) NOT NULL COMMENT 'impUID',
     `created_at`      timestamp default current_timestamp                             NOT NULL COMMENT '결제일자',
     `updated_at`      timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '수정일자'
 );

@@ -1,6 +1,6 @@
 package com.web.billim.order.dto.response;
 
-import com.web.billim.common.type.TradeMethod;
+import com.web.billim.product.type.TradeMethod;
 import lombok.Builder;
 import lombok.Getter;
 

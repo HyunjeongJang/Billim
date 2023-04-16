@@ -1,4 +1,4 @@
-package com.web.billim.common.vo;
+package com.web.billim.order.vo;
 
 import lombok.Value;
 
