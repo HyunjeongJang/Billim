@@ -33,5 +33,4 @@ public class PointDomainService {
 		}
 		return usedPointMap;
 	}
-
 }
