@@ -6,6 +6,7 @@
 
 <div layout:fragment="content">
     <link th:href="@{/css/productDetail.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/productDetail.js}"></script>
 
     <div class="content" th:fragment="">
 
@@ -182,9 +183,7 @@
         </div>
     </div>
 </div>
-<th:block layout:fragment="contentJs">
-    <th:block th:replace="pages/product/productDetailScript.html :: productDetailScript"></th:block>
-</th:block>
+
 <script>
 
 

@@ -10,24 +10,26 @@
     <div class="content">
         <table th:align="center" width="300px">
             <form method="post" th:action="@{/member/login}">
-            <tr>
-                <td>
-                    <div class="login_area"><input class="form-control login_input" name="userId" type="text" placeholder="아이디"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="login_area"><input class="form-control login_input" name="password" type="password" placeholder="비밀번호">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="login_area">
-                        <button class="btn btn-light login_button">로그인</button>
-                    </div>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <div class="login_area"><input class="form-control login_input" name="userId" type="text"
+                                                       placeholder="아이디"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="login_area"><input class="form-control login_input" name="password" type="password"
+                                                       placeholder="비밀번호">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="login_area">
+                            <button class="btn btn-light login_button">로그인</button>
+                        </div>
+                    </td>
+                </tr>
             </form>
             <tr>
                 <td>
@@ -40,7 +42,8 @@
             </tr>
 
             <tr>
-                <td class="find_id"><a href="/member/findId"><span>아이디 찾기</span></a> | <a href="/member/findPw"><span>비밀번호 찾기</span></a></td>
+                <td class="find_id"><a href="/member/findId"><span>아이디 찾기</span></a> | <a href="/member/findPw"><span>비밀번호 찾기</span></a>
+                </td>
             </tr>
         </table>
 
