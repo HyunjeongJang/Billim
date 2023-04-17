@@ -4,7 +4,9 @@ import com.web.billim.common.domain.JpaEntity;
 import com.web.billim.coupon.domain.CouponIssue;
 import com.web.billim.member.domain.Member;
 import com.web.billim.order.domain.ProductOrder;
-import com.web.billim.common.type.TradeMethod;
+import com.web.billim.payment.type.PaymentStatus;
+import com.web.billim.payment.dto.PaymentInfoDto;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,9 +34,7 @@ public class Payment extends JpaEntity {
 	@Column(name = "point")
 	private int usedPoint;
 
-	@Enumerated(EnumType.STRING)
-	private TradeMethod tradeMethod;
-
+	private String impUid;
 	private String merchantUid;
 	private int totalAmount;
 
@@ -44,8 +44,16 @@ public class Payment extends JpaEntity {
 	public Member getMember() {
 		return this.productOrder.getMember();
 	}
+
+	public static Payment of(String merchantUid, PaymentInfoDto dto) {
+		return Payment.builder()
+				.productOrder(dto.getOrder())
+				.couponIssue(dto.getCoupon())
+				.usedPoint(dto.getUsedPoint())
+				.merchantUid(merchantUid)
+				.totalAmount(dto.getAmount())
+				.status(PaymentStatus.IN_PROGRESS)
+				.build();
+	}
 }
 
-enum PaymentStatus {
-//	SHARING, PENDING, CANCELED
-}

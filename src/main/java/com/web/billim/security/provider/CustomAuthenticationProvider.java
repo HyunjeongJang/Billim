@@ -25,7 +25,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String userId = token.getName();
         String password = (String)token.getCredentials();
 //        User user = (User)userDetailsService.loadUserByUsername(userId);
-        // TODO: userDetiails vs user
         UserDetails user = userDetailsService.loadUserByUsername(userId);
 
         if (!passwordEncoder.matches(password, user.getPassword())) {

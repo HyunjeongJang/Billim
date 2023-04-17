@@ -11,6 +11,6 @@ import java.util.List;
 
 @Repository
 public interface CouponIssueRepository extends JpaRepository<CouponIssue, Integer> {
-	@Query("SELECT ci FROM CouponIssue ci WHERE ci.member = :member AND ci.status = 'PENDING'")
+	@Query("SELECT ci FROM CouponIssue ci WHERE ci.member = :member AND ci.status = 'AVAILABLE'")
 	List<CouponIssue> findAllByMember(@Param("member") Member member);
 }

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import com.web.billim.product.domain.ImageProduct;
 import com.web.billim.product.domain.Product;
-import com.web.billim.common.type.TradeMethod;
+import com.web.billim.product.type.TradeMethod;
 
 import lombok.Builder;
 import lombok.Getter;

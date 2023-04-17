@@ -8,7 +8,7 @@ import javax.validation.constraints.Positive;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.web.billim.common.type.TradeMethod;
+import com.web.billim.product.type.TradeMethod;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +41,7 @@ public class ProductRegisterRequest {
     private List<MultipartFile> images;
 
     //    @NotBlank(message = "필수입력")
+//    @Min(value = 5, message = "사진을 5장 첨부 해 주세요.")
     private List<TradeMethod> tradeMethods;
 
     public void setRegisterMember(int memberId) {

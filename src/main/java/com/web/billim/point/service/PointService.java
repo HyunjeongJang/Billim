@@ -1,7 +1,6 @@
 package com.web.billim.point.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -11,10 +10,7 @@ import com.web.billim.member.domain.Member;
 import com.web.billim.payment.domain.Payment;
 import com.web.billim.payment.domain.PointUsedHistory;
 import com.web.billim.point.domain.SavedPoint;
-import com.web.billim.point.domain.service.PointDomainService;
-import com.web.billim.point.domain.service.PointHistoryDomainService;
 import com.web.billim.point.dto.AppendPointCommand;
-import com.web.billim.member.service.MemberService;
 import com.web.billim.point.dto.PointResponse;
 import com.web.billim.payment.repository.PointUsedHistoryRepository;
 import com.web.billim.point.repository.SavedPointRepository;
@@ -31,7 +27,6 @@ public class PointService {
 	private final PointUsedHistoryRepository pointUsedHistoryRepository;
 	private final PointHistoryDomainService pointHistoryDomainService;
 
-	// UseCase
 	// 1. 특정 사용자에게 적립금 부여 (C)
 	@Transactional
 	public void addPoint(AppendPointCommand command) {
@@ -41,9 +36,7 @@ public class PointService {
 	// 2. 특정 사용자의 사용가능 적립금 조회 (R)
 	public int retrieveAvailablePoint(int memberId) {
 		return savedPointRepository.findAllNotExpired(memberId).stream()
-				// A -> B
-				// A : SavedPoint
-				// B : Integer
+				// A : SavedPoint -> B : Integer
 				.mapToInt(SavedPoint::getAvailableAmount)
 				.sum();
 	}

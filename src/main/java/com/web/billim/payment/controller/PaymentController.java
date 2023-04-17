@@ -1,9 +1,31 @@
 package com.web.billim.payment.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
+@RequiredArgsConstructor
+@RequestMapping("/payment")
 public class PaymentController {
+
+    @GetMapping("/complete")
+    public ResponseEntity<Void> paymentComplete(
+            @RequestParam("imp_uid") String impUid,
+            @RequestParam("merchant_uid") String merchantUid,
+            @RequestParam("imp_success") boolean impSuccess,
+            @RequestParam("error_code") String errorCode,
+            @RequestParam("error_msg") String errorMessage
+    ) {
+        log.info(String.format("merchant_uid(%s) 건 결제 완료!, 결제결과: %s", merchantUid, impSuccess));
+        return ResponseEntity.ok().build();
+    }
 
     // TODO : 동시에 두명이 클릭했을 때 어떻게 해야?
     /*

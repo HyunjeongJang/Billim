@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.web.billim.order.repository.OrderRepository;
 import com.web.billim.product.domain.ImageProduct;
 import com.web.billim.product.domain.Product;
 import com.web.billim.product.domain.ProductCategory;
@@ -34,8 +33,6 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
     private final ImageProductRepository imageProductRepository;
-    private final OrderRepository orderRepository;
-
     private final ImageUploadService imageUploadService;
     private final ReviewService reviewService;
 
@@ -67,7 +64,7 @@ public class ProductService {
 
     public Page<ProductListResponse> findAllProduct(int page) {
         PageRequest paging = PageRequest.of(page, 12);
-        return productRepository.findAll(paging).map(product -> {
+        return productRepository.findAllByOrderByCreatedAtDesc(paging).map(product -> {
             double starRating = reviewService.calculateStarRating(product.getProductId());
             return ProductListResponse.of(product, starRating);
         });
@@ -79,12 +76,10 @@ public class ProductService {
 //    }
 
 
-
     @Transactional
     public Product retrieve(int productId) {
         Product product = productRepository.findById(productId)
-                .orElseThrow(() ->
-                        new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
+                .orElseThrow(() -> new RuntimeException("해당 ProductId(" + productId + ") 에 대한 상품정보가 없습니다."));
         return product;
     }
 

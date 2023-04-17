@@ -1,7 +1,7 @@
 package com.web.billim.member.domain;
 
 import com.web.billim.common.domain.JpaEntity;
-import com.web.billim.common.type.MemberGrade;
+import com.web.billim.member.type.MemberGrade;
 import lombok.*;
 
 import javax.persistence.*;
@@ -41,7 +41,5 @@ public class Member extends JpaEntity {
     public void prePersist(){
         this.profileImageUrl = this.profileImageUrl == null ? "https://cdn-icons-png.flaticon.com/512/8246/8246830.png": this.profileImageUrl;
     }
-
-
 
 }

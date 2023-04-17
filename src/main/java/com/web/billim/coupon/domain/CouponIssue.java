@@ -42,5 +42,5 @@ public class CouponIssue extends JpaEntity {
 }
 
 enum CouponStatus {
-	PENDING, DELETED, USED
+	AVAILABLE, DELETED, USED
 }

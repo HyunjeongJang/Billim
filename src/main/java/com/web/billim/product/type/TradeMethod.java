@@ -1,4 +1,4 @@
-package com.web.billim.common.type;
+package com.web.billim.product.type;
 
 public enum TradeMethod {
     DIRECT, DELIVERY;

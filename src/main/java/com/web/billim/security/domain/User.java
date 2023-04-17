@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.web.billim.member.domain.Member;
-import com.web.billim.common.type.MemberGrade;
+import com.web.billim.member.type.MemberGrade;
 
 import lombok.Builder;
 import lombok.Getter;

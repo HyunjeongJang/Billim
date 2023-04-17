@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class FindIdRequest {
-
     private String name;
-
     private String email;
-
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/myPageLayout}">
+<div layout:fragment="content">
+    <!--    <link th:href="@{/css/myPurchaseList.css}" rel="stylesheet">-->
+    <div id="content-area" class="content-area">
+        <div id="content-title">
+            쿠폰
+        </div>
+    </div>
+</div>
+<th:block layout:fragment="contentJs">
+    <th:block th:replace="pages/member/signupScript.html :: signupScript"></th:block>
+</th:block>
