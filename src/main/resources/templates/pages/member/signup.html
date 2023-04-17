@@ -5,6 +5,9 @@
       layout:decorate="~{layout/defaultLayout}">
 <div layout:fragment="content">
     <link th:href="@{/css/signup.css}" rel="stylesheet">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" th:src="@{/js/postCode.js}"></script>
+
     <div class="content" style="text-align: center" th:fragment="testPage">
         <h1>회원가입</h1><br>
         <form method="post" th:action="@{/member/signup}" modelAttribute="MemberSignupRequest">
@@ -146,6 +149,3 @@
         </form>
     </div>
 </div>
-<th:block layout:fragment="contentJs">
-    <th:block th:replace="pages/member/signupScript.html :: signupScript"></th:block>
-</th:block>

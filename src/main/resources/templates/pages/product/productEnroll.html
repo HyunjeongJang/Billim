@@ -16,11 +16,13 @@
         <table th:align="center">
             <tr>
                 <td class="table_text">대여 상품명</td>
-                <td class="table_input"><input type="text" id="title" class="form-control" required ></td>
+                <td class="table_input"><input type="text" id="title" class="form-control" required></td>
                 <td></td>
             </tr>
             <tr>
-                <td colspan="3"><hr></td>
+                <td colspan="3">
+                    <hr>
+                </td>
             </tr>
 
             <tr>
@@ -29,22 +31,29 @@
                     <select id="category" class="form-control" th:field="*{categoryList}">
                         <option value="" class="form-control">카테고리 선택</option>
                         <option th:each="category : ${categoryList}" th:value="${category.getCategoryId()}"
-                                th:text="${category.getCategoryName()}" ></option>
+                                th:text="${category.getCategoryName()}"></option>
                     </select>
                 </td>
                 <td></td>
             </tr>
             <tr>
-                <td colspan="3"><hr></td>
+                <td colspan="3">
+                    <hr>
+                </td>
             </tr>
 
             <tr>
                 <td class="table_text">대여 요금</td>
-                <td class="table_input"><input type="text" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" id="price" class="form-control" style="width: 85%; display: inline-block;">&nbsp;&nbsp;&nbsp;원(/일)</td>
+                <td class="table_input"><input type="text" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');"
+                                               id="price" class="form-control"
+                                               style="width: 85%; display: inline-block;">&nbsp;&nbsp;&nbsp;원(/일)
+                </td>
                 <td class="table_last"></td>
             </tr>
             <tr>
-                <td colspan="3"><hr></td>
+                <td colspan="3">
+                    <hr>
+                </td>
             </tr>
 
             <tr>
@@ -56,70 +65,40 @@
                 <td></td>
             </tr>
             <tr>
-                <td colspan="3"><hr></td>
+                <td colspan="3">
+                    <hr>
+                </td>
             </tr>
 
             <tr>
                 <td class="table_text">상품 설명</td>
-                <td><textarea name="" id="product_content" rows="15" class="form-control" style="padding-left: 20px" required></textarea></td>
+                <td><textarea name="" id="product_content" rows="15" class="form-control" style="padding-left: 20px"
+                              required></textarea></td>
                 <td></td>
             </tr>
             <tr>
-                <td colspan="3"><hr></td>
+                <td colspan="3">
+                    <hr>
+                </td>
             </tr>
 
             <tr>
                 <td class="table_text">상품 사진</td>
                 <td class="table_input">
                     <div id='image_preview' class="filebox">
-                        <input type='file' id='btnAtt' multiple='multiple' class="form-control upload-hidden" onchange="readURL(this);" />
+                        <input type='file' id='btnAtt' multiple='multiple' class="form-control upload-hidden"
+                               onchange="readURL(this);"/>
                         <div id='att_zone'
                              data-placeholder='이미지를 첨부 하시려면 파일 선택 버튼을 클릭하거나 드래그 앤 드랍 하세요.'></div>
                     </div>
                 </td>
                 <td></td>
             </tr>
-
         </table>
         <br>
         <button class="btn btn-secondary" type="reset">취소</button>&nbsp;
         <button class="btn btn-dark" type="button" onclick="register()">상품등록</button>
 
-        <script>
-            function register() {
-                const formData = new FormData();
-                formData.set("categoryId", $('#category').val());
-                formData.set("name", $('#title').val());
-                formData.set("detail", $('#product_content').val());
-                formData.set("price", $('#price').val());
-
-                const files = $('#btnAtt')[0].files
-                for (let i = 0; i < files.length; ++i) {
-                    formData.append('images', files[i]);
-                }
-                for (let tradeMethod of $('input:checkbox[name=tradeMethod]:checked')) {
-                    formData.append('tradeMethods', tradeMethod.defaultValue.toUpperCase());
-                }
-
-                $.ajax({
-                    url: '/product/enroll',
-                    method: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success : function (){
-                        location.href = '/myPage/sales';
-                    },
-                    error : function (error) {
-                        console.log(error);
-                        Swal.fire({
-                            icon: 'warning',
-                            title: error['responseJSON'].message
-                        });
-                    }
-                });
-            }
-        </script>
     </div>
 </div>
 

@@ -6,6 +6,8 @@
 
 <div layout:fragment="content">
     <link th:href="@{/css/orderInfo.css}" rel="stylesheet">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" th:src="@{/js/postCode.js}"></script>
 
     <div class="content" th:fragment="">
 
@@ -190,13 +192,6 @@
         </div>
     </div>
 
-
-
 </div>
-
-<th:block layout:fragment="contentJs">
-    <th:block th:replace="pages/order/orderInfoScript.html :: orderInfoScript"></th:block>
-</th:block>
-
 
 </html>
