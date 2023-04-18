@@ -34,7 +34,7 @@ public class OrderController {
 
     @PostMapping("/order")
     public ResponseEntity<PaymentInfoResponse> order(@RequestBody OrderCommand command) {
-        PaymentInfoResponse resp = orderService.order(10, command);
+        PaymentInfoResponse resp = orderService.order(4, command);
         return ResponseEntity.ok(resp);
     }
 

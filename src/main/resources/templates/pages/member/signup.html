@@ -93,7 +93,7 @@
                     <td  class="table_input">
                         <input type="text" id="email" name="email" class="form-control">
                     </td>
-                    <td><button class="btn btn-light" style="width: 150px;">인증번호 발송</button></td>
+                    <td><button id="sendEmail"  class="btn btn-light" style="width: 150px;">인증번호 발송</button></td>
                 </tr>
                 <tr>
                     <td class="table_text">
@@ -146,6 +146,8 @@
         </form>
     </div>
 </div>
+
 <th:block layout:fragment="contentJs">
     <th:block th:replace="pages/member/signupScript.html :: signupScript"></th:block>
 </th:block>
+
