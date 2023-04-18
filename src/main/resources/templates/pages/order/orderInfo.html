@@ -10,7 +10,6 @@
     <script type="text/javascript" th:src="@{/js/postCode.js}"></script>
 
     <div class="content" th:fragment="">
-
         <div class="content-wrap">
             <div class="title-area">
                 <div class="title">
@@ -29,28 +28,46 @@
                     </div>
                     <div class="left-title">거래방법</div>
                     <div class="leftSubTitle">
-                        <select>
-                            <option>선택</option>
+
+                        <select th:field="*{product.tradeMethods}" class="form-select" style="width: 50%;">
+                            <option th:each="trademethod : ${product.tradeMethods}" th:value="${product.tradeMethods}"
+                                    th:text="${trademethod}"></option>
                         </select>
+
+
 
                     </div>
                     <hr>
                     <div>
                         <div class="left-title">적립금</div>
                         <div>
-
                             <div class="leftSubTitle">
                                 <span>보유적립금</span> <span>원</span>
                             </div>
                             <div>
                                 <input class="isStatusOnInput" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');"
-                                       value="" style="width: 150px;">
-                                <button class="btn">사용</button>
+                                       style="width: 150px;" id="usePoint">
+                                <button class="btn" id="useSavedPoint" onclick="usePoint">사용</button>
                             </div>
+
+
+                            <script>
+
+                                function usePoint() {
+                                    const usePoint = $('#usePoint').val();
+                                    console.log(usePoint);
+                                    $('#usedPoint').innerText(usePoint);
+                                }
+
+
+                            </script>
+
+
+
 
                             <div class="left-title">쿠폰</div>
                             <div class="leftSubTitle">
-                                <select>
+                                <select class="form-select" style="width: 50%">
                                     <option>선택</option>
                                 </select>
                             </div>
@@ -60,9 +77,8 @@
                     <hr>
 
 
-                    <div class="delivery">
-                        택배 선택시에만 나오는 영역
-
+                    <a href="javascript:doDisplay();"> > 택배일때만 보여야하는데요오오오</a><br/>
+                    <div id="delivery" class="delivery">
                         <div>
                             <div class="left-title">택배 수령 정보</div>
                             <div class="leftSubTitle">
@@ -71,7 +87,6 @@
                             <div>
                                 <input class="isStatusOnInput" type="text" style="width: 300px;">
                             </div>
-
 
                             <table width="80%">
                                 <tr>
@@ -118,6 +133,21 @@
 
                         </div>
                     </div>
+
+                    <script>
+                        function doDisplay(){
+                            const con = document.getElementById("delivery");
+                            if(con.style.display==='none'){
+                                con.style.display = 'block';
+                            }else{
+                                con.style.display = 'none';
+                            }
+                        }
+
+                    </script>
+
+
+
                 </div>
             </div>
 
@@ -131,13 +161,13 @@
 
                     <div class="insideTop">
                         <div class="inside-top-image">
-                            <img src="" width="50px">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}" width="180px">
                         </div>
 
                         <div class="inside-top-right">
                             <div>카테고리</div>
-                            <div>상품명</div>
-                            <div>판매자 닉네임</div>
+                            <div th:text="${product.productName}"></div>
+                            <div th:text="${product.member.nickname}"></div>
                         </div>
                     </div>
 
@@ -151,12 +181,26 @@
                         <div class="insideTitle">요금세부정보</div>
                         <div>
                             <div>
-                                <div class="insideContent">₩ (/일)</div>
-                                <div class="insidePrice">₩</div>
+                                <div class="insideContent">대여료 (/일) </div>
+                                <div class="insidePrice"> ₩ <span th:text="${product.price}"></span> </div>
                             </div>
                             <div>
                                 <div class="insideContent">대여일</div>
-                                <div class="insidePrice">일</div>
+                                <div class="insidePrice" id="countDay"></div>
+
+                                <script th:inline="javascript">
+                                    window.onload = function () {
+                                        const endDate = new Date([[${endDate}]]);
+                                        const startDate = new Date([[${startDate}]]);
+                                        const distance = endDate - startDate;
+                                        const day = Math.floor(distance / (1000 * 60 * 60 * 24) + 1);
+                                        $('#countDay').html(day + ' 일');
+                                    };
+
+                                </script>
+
+
+
                             </div>
                             <div>
                                 <div class="insideContent">택배비</div>
@@ -164,7 +208,7 @@
                             </div>
                             <div>
                                 <div class="insideContent">적립금</div>
-                                <div class="insidePrice">- ₩</div>
+                                <div class="insidePrice">-<span id="usedPoint"></span> ₩</div>
                             </div>
                             <div>
                                 <div class="insideContent">쿠폰적용</div>
@@ -193,8 +237,15 @@
                 </div>
             </div>
         </div>
-    </div>
 
+
+    </div>
 </div>
+
+
+
+
+
+
 
 </html>
