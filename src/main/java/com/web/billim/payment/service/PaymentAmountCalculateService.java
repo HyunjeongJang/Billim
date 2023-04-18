@@ -25,6 +25,6 @@ public class PaymentAmountCalculateService {
 
 	// 결제 버튼을 누르고
 	// 1. 서버에 결제정보 요청 (merchant_uid, amount)
-	// 2. iam port API 호출
+	// 2. iamport API 호출
 
 }

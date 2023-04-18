@@ -42,3 +42,5 @@ public class PaymentService {
 // 서버 API 호출(/order) 해서 결제금액 받고(merchant_uid, amount..)
 // IMP request_pay 호출
 // http://localhost:8080/order/validation
+
+

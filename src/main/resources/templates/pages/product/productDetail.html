@@ -6,7 +6,7 @@
 
 <div layout:fragment="content">
     <link th:href="@{/css/productDetail.css}" rel="stylesheet">
-
+    <script type="text/javascript" th:src="@{/js/productDetail.js}"></script>
 
     <div class="content" th:fragment="">
 
@@ -15,39 +15,44 @@
                 <div class="title">
                     <span th:text="${product.productName}"></span>
                 </div>
-                <span>
+
+                <div class="subTitle-left">
                     별점 4.5 후기 개 | <span th:text="${product.member.getGrade()}"></span> | 지역
-                </span>
-                <span>
-                    <a id="kakao-link-btn">
-                        <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
-                    </a>
+                </div>
+                <div class="subTitle-right">
+                    공유하기
                     저장
-                </span>
+                </div>
+
             </div>
 
             <div class="product-image-wrap">
                 <div class="product-image">
+
                     <div id="image-1">
                         <img class="image-main" th:src="${product.imageUrls[0]}">
                     </div>
+
                     <div class="image-top">
                         <div class="imag-2 ">
-                            <img class="image-detail" th:src="${product.imageUrls[1]}">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
                         </div>
                         <div class="imag-2 image-top">
-                            <img class="image-detail" th:src="${product.imageUrls[2]}">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
                         </div>
                     </div>
                     <div class="image-bottom">
                         <div class="imag-2">
-                            <img class="image-detail" th:src="${product.imageUrls[3]}">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
                         </div>
                         <div class="imag-2 image-bottom">
-                            <img class="image-detail" th:src="${product.imageUrls[4]}">
+                            <img class="image-detail" th:src="${product.imageUrls[0]}">
                         </div>
                     </div>
+
                 </div>
+
+
             </div>
 
             <div class="product-wrap">
@@ -56,7 +61,7 @@
                     <div class="product-info-content">
                         <div class="product-info-left">
                             <h3><span th:text="${product.member.nickname}"></span>
-                            님이 대여하는 상품
+                                님이 대여하는 상품
                             </h3>
                         </div>
                         <div class="product-info-right">
@@ -67,7 +72,7 @@
                     </div>
                     <hr>
                     <div class="product-info-content">
-<!--                        <div th:text="${product.tradeMethods}"></div>-->
+                        <!--                        <div th:text="${product.tradeMethods}"></div>-->
                         <div class="product-info-left">
                             <div class="titleFont">
                                 <img class="titleImage" src="https://cdn-icons-png.flaticon.com/512/1672/1672190.png">
@@ -98,6 +103,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="product-pay">
                     <div class="calendar-wrap">
                         <div class="calendar-middle-wrap">
@@ -166,7 +173,7 @@
                             let startDate = $('#check_in_day').text().substr(0,10);
                             let endDate = $('#check_out_day').text().substr(0,10);
                             location.href = '/order/confirm?startDate='+startDate+
-                                            '&endDate='+endDate+'&productId='+[[${product.productId}]];
+                                '&endDate='+endDate+'&productId='+[[${product.productId}]];
                         }
 
                     </script>
@@ -176,12 +183,11 @@
         </div>
     </div>
 </div>
-<th:block layout:fragment="contentJs">
-    <th:block th:replace="pages/product/productDetailScript.html :: productDetailScript"></th:block>
-</th:block>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script type="text/javascript">
-    // console.log($('#check_in_day'));
+
+<script>
+
+
+    console.log($('#check_in_day'));
 </script>
 
 </html>

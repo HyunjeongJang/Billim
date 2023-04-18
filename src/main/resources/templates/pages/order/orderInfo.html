@@ -6,6 +6,8 @@
 
 <div layout:fragment="content">
     <link th:href="@{/css/orderInfo.css}" rel="stylesheet">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" th:src="@{/js/postCode.js}"></script>
 
     <div class="content" th:fragment="">
 
@@ -41,7 +43,8 @@
                                 <span>보유적립금</span> <span>원</span>
                             </div>
                             <div>
-                                <input class="isStatusOnInput" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" value="" style="width: 150px;">
+                                <input class="isStatusOnInput" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');"
+                                       value="" style="width: 150px;">
                                 <button class="btn">사용</button>
                             </div>
 
@@ -77,25 +80,30 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  class="tableInput" colspan="2">
-                                        <input type="text" id="sample4_postcode" class="isStatusOnInput" placeholder="우편번호">
+                                    <td class="tableInput" colspan="2">
+                                        <input type="text" id="sample4_postcode" class="isStatusOnInput"
+                                               placeholder="우편번호">
                                     </td>
                                     <td>
-                                        <input type="button" onclick="sample4_execDaumPostcode()" class="btn" value="우편번호 검색">
+                                        <input type="button" onclick="sample4_execDaumPostcode()" class="btn"
+                                               value="우편번호 검색">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="tableInput" colspan="3">
-                                        <input type="text" name="address" id="sample4_roadAddress" class="isStatusOnInput" placeholder="도로명주소" style="width: 300px;">
+                                        <input type="text" name="address" id="sample4_roadAddress"
+                                               class="isStatusOnInput" placeholder="도로명주소" style="width: 300px;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><span id="guide" style="color:#999;display:none"></span></td>
                                     <td class="tableInput">
-                                        <input type="text" id="sample4_detailAddress" name="address" class="isStatusOnInput" placeholder="상세주소">
+                                        <input type="text" id="sample4_detailAddress" name="address"
+                                               class="isStatusOnInput" placeholder="상세주소">
                                     </td>
                                     <td class="tableInput">
-                                        <input type="text" id="sample4_extraAddress" name="address" class="isStatusOnInput" placeholder="참고" style="width: 100px;">
+                                        <input type="text" id="sample4_extraAddress" name="address"
+                                               class="isStatusOnInput" placeholder="참고" style="width: 100px;">
                                     </td>
                                 </tr>
                             </table>
@@ -134,10 +142,8 @@
                     </div>
 
 
-
-
                     <div class="line">
-                        <p  style="border-bottom: #adadad solid 1px;"></p>
+                        <p style="border-bottom: #adadad solid 1px;"></p>
                     </div>
 
                     <div class="insideMiddle">
@@ -145,8 +151,8 @@
                         <div class="insideTitle">요금세부정보</div>
                         <div>
                             <div>
-                                <div class="insideContent">₩  (/일)</div>
-                                <div class="insidePrice">₩ </div>
+                                <div class="insideContent">₩ (/일)</div>
+                                <div class="insidePrice">₩</div>
                             </div>
                             <div>
                                 <div class="insideContent">대여일</div>
@@ -171,7 +177,7 @@
 
 
                     <div class="line">
-                        <p  style="border-bottom: #adadad solid 1px;"></p>
+                        <p style="border-bottom: #adadad solid 1px;"></p>
                     </div>
 
 
@@ -179,7 +185,6 @@
                         <div class="insideContent">총 합계</div>
                         <div class="insidePrice">₩</div>
                     </div>
-
 
 
                     <div class="payButton">
@@ -190,13 +195,6 @@
         </div>
     </div>
 
-
-
 </div>
-
-<th:block layout:fragment="contentJs">
-    <th:block th:replace="pages/order/orderInfoScript.html :: orderInfoScript"></th:block>
-</th:block>
-
 
 </html>
