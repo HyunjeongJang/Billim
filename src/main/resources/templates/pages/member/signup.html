@@ -7,6 +7,128 @@
     <link th:href="@{/css/signup.css}" rel="stylesheet">
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" th:src="@{/js/postCode.js}"></script>
+    <script>
+
+        let timer;
+        let isRunning = false;
+        let confirmEmail = false;
+        function sendEmail(){
+            // const formData = new FormData();
+            // formData.set("email", $('#email').val());
+            const useremail = $("#email").val()
+            if(useremail == ''){
+                Swal.fire({
+                    icon: 'error',
+                    title: '이메일을 입력해주세요'
+                });
+                return;
+            }
+                $.ajax({
+                    url: '/send',
+                    method: 'GET',
+                    data : {'to' : useremail},
+                    // contentType: false,
+                    success: function (mail) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '이메일이 전송되었습니다.'
+                        })
+                        sendAuthNum();
+                    },
+                    error(){
+                        Swal.fire({
+                            icon: 'error',
+                            title: '이메일 전송에 실패하였습니다.'
+                        });
+                    }
+                });
+        }
+
+        function checkEmail(){
+            console.log(isRunning)
+            if(!isRunning){
+                Swal.fire({
+                    icon: 'error',
+                    title: '인증시간이 만료 되었습니다.'
+                });
+            }else{
+                const checkEmail = $("#AuthKey").val()
+                $.ajax({
+                    url: '/mail/checkEmail',
+                    method: 'POST',
+                    data : {'checkEmail' : checkEmail},
+                    // contentType: false,
+                    success: function (result) {
+                        if(result == false){
+                            Swal.fire({
+                                icon: 'error',
+                                title: '인증번호를 다시 입력해주세요.'
+                            })
+                        }else{
+                            Swal.fire({
+                                icon: 'success',
+                                title: '이메일 인증에 성공하셨습니다.'
+                            })
+                            clearInterval(timer);
+                            document.querySelector('#timer').textContent = "";
+                            confirmEmail = true;
+                        }
+                    },
+                    error(){
+                        Swal.fire({
+                            icon: 'error',
+                            title: '이메일 인증에 실패하였습니다.'
+                        });
+                    }
+                });
+            }
+
+        }
+
+        // 인증번호 발송 및 타이머 함수 실행
+
+        function sendAuthNum(){
+            // 남은 시간(초)
+            var leftSec = 180,
+                display = document.querySelector('#timer');
+            // 이미 타이머가 작동중이면 중지
+            if (isRunning){
+                clearInterval(timer);
+            }
+            startTimer(leftSec, display);
+            console.log(isRunning);
+        }
+
+        function startTimer(count, display) {
+            var minutes, seconds;
+            timer = setInterval(function () {
+                minutes = parseInt(count / 60, 10);
+                seconds = parseInt(count % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+                // 타이머 종료
+                if (--count < 0) {
+                    clearInterval(timer);
+                    display.textContent = "";
+                    isRunning = false;
+                }
+            }, 1000);
+            isRunning = true;
+        }
+
+        function confirmInfo(){
+            if(!confirmEmail){
+                Swal.fire({
+                    icon: 'error',
+                    title: '이메일 인증을 완료해 주시기 바랍니다.'
+                });
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
 
     <div class="content" style="text-align: center" th:fragment="testPage">
         <h1>회원가입</h1><br>
@@ -17,7 +139,7 @@
                         아이디
                     </td>
                     <td class="table_input">
-                        <input type="text" id="memberId" name="userId" class="form-control"/>
+                        <input type="text"  id="memberId" name="userId" class="form-control"/>
                     </td>
                     <td></td>
                 </tr>
@@ -96,18 +218,21 @@
                     <td  class="table_input">
                         <input type="text" id="email" name="email" class="form-control">
                     </td>
-                    <td><button id="sendEmail"  class="btn btn-light" style="width: 150px;">인증번호 발송</button></td>
+                    <td><button type="button" onclick="sendEmail()"  class="btn btn-light" style="width: 150px;">인증번호 발송</button></td>
                 </tr>
                 <tr>
                     <td class="table_text">
                     </td>
                     <td  class="table_input">
-                        <input type="text" id="" name="" class="form-control" placeholder="인증번호 입력">
+                        <input type="text" id="AuthKey"  class="form-control" placeholder="인증번호 입력">
                     </td>
-                    <td><button class="btn btn-light" style="width: 150px;">확인</button></td>
+                    <td><button type="button" onclick="checkEmail()" class="btn btn-light" style="width: 150px;">확인</button></td>
                 </tr>
-
-
+                <tr>
+                    <td colspan="4">
+                        <span id="timer"></span>
+                    </td>
+                </tr>
                 <tr>
                     <td><br></td>
                     <td colspan="2"><span class="check-text" id="emailCheck" th:text="${valid_email}"></span> </td>
@@ -145,12 +270,13 @@
             </table>
 
             <button type="reset" class="btn btn-light">취소</button>
-            <button type="submit" class="btn btn-dark" style="margin-left: 5px">회원가입</button>
+            <button type="submit"  onclick="return confirmInfo();" class="btn btn-dark" style="margin-left: 5px">회원가입</button>
         </form>
     </div>
 </div>
 
-<th:block layout:fragment="contentJs">
-    <th:block th:replace="pages/member/signupScript.html :: signupScript"></th:block>
-</th:block>
+
+<!--<th:block layout:fragment="contentJs">-->
+<!--    <th:block th:replace="pages/member/signupScript.html :: signupScript"></th:block>-->
+<!--</th:block>-->
 

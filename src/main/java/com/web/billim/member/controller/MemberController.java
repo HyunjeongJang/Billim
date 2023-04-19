@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.web.billim.member.dto.request.FindIdRequest;
@@ -56,7 +57,7 @@ public class MemberController {
     }
 
     @PostMapping("/member/signup")
-    public String memberSingUpProc(@Valid MemberSignupRequest memberSignupRequest,
+    public String memberSingUpProc(@ModelAttribute("userInfo") @Valid MemberSignupRequest memberSignupRequest,
                                    BindingResult bindingResult,
                                    Model model
     ) {
