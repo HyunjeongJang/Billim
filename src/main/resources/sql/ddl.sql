@@ -126,7 +126,6 @@ CREATE TABLE `coupon_issue`
     `member_id`       int                                                             NOT NULL COMMENT '회원번호',
     `coupon_id`       int                                                             NOT NULL COMMENT '쿠폰 번호',
     `status`          varchar(10)                                                     NOT NULL COMMENT '쿠폰상태',
-    `expired_at`      timestamp                                                       NOT NULL COMMENT '소멸일자',
     `created_at`      timestamp default current_timestamp                             NOT NULL COMMENT '생성일자',
     `updated_at`      timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '마지막 수정일자'
 );

@@ -96,5 +96,12 @@ public class ProductOrder extends JpaEntity {
         return order.build();
     }
 
+    public void cancel() {
+        this.status = ProductOrderStatus.CANCELED;
+    }
+
+    public void complete() {
+        this.status = ProductOrderStatus.DONE;
+    }
 }
 

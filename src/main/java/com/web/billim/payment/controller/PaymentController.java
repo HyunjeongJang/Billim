@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.billim.payment.service.PaymentService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,15 +17,22 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/payment")
 public class PaymentController {
 
+    private final PaymentService paymentService;
+
     @GetMapping("/complete")
     public ResponseEntity<Void> paymentComplete(
             @RequestParam("imp_uid") String impUid,
             @RequestParam("merchant_uid") String merchantUid,
             @RequestParam("imp_success") boolean impSuccess,
-            @RequestParam("error_code") String errorCode,
-            @RequestParam("error_msg") String errorMessage
+            @RequestParam(name = "error_code", required = false, defaultValue = "") String errorCode,
+            @RequestParam(name = "error_msg", required = false, defaultValue = "") String errorMessage
     ) {
         log.info(String.format("merchant_uid(%s) 건 결제 완료!, 결제결과: %s", merchantUid, impSuccess));
+        if (impSuccess) {
+            paymentService.complete(impUid, merchantUid);
+        } else {
+            paymentService.rollback(merchantUid);
+        }
         return ResponseEntity.ok().build();
     }
 

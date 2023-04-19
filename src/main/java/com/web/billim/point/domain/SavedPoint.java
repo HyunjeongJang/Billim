@@ -2,7 +2,7 @@ package com.web.billim.point.domain;
 
 import com.web.billim.common.domain.JpaEntity;
 import com.web.billim.member.domain.Member;
-import com.web.billim.point.dto.AppendPointCommand;
+import com.web.billim.point.dto.AddPointCommand;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,7 +28,7 @@ public class SavedPoint extends JpaEntity {
 	private int availableAmount;
 	private LocalDateTime expiredAt;
 
-	public static SavedPoint of(AppendPointCommand command) {
+	public static SavedPoint of(AddPointCommand command) {
 		return SavedPoint.builder()
 				.member(command.getMember())
 				.amount(command.getAmount())

@@ -55,5 +55,18 @@ public class Payment extends JpaEntity {
 				.status(PaymentStatus.IN_PROGRESS)
 				.build();
 	}
+
+	public Payment cancel() {
+		this.status = PaymentStatus.CANCELED;
+		this.getProductOrder().cancel();
+		return this;
+	}
+
+	public Payment complete() {
+		this.status = PaymentStatus.DONE;
+		this.getProductOrder().complete();
+		return this;
+	}
+
 }
 

@@ -11,6 +11,10 @@ spring:
     password: admin123
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  redis:
+    host: localhost
+    port: 6379
+
   thymeleaf:
     cache: false
     check-template-location: true
@@ -33,6 +37,7 @@ spring:
     include:
       - aws
       - email
+      - import
 
 logging:
   level:

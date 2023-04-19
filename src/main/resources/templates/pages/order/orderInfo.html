@@ -34,8 +34,6 @@
                                     th:text="${trademethod}"></option>
                         </select>
 
-
-
                     </div>
                     <hr>
                     <div>
@@ -47,22 +45,17 @@
                             <div>
                                 <input class="isStatusOnInput" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');"
                                        style="width: 150px;" id="usePoint">
-                                <button class="btn" id="useSavedPoint" onclick="usePoint">사용</button>
+                                <button class="btn" id="useSavedPoint" onclick="usePoint()">사용</button>
                             </div>
 
-
                             <script>
-
                                 function usePoint() {
-                                    const usePoint = $('#usePoint').val();
-                                    console.log(usePoint);
-                                    $('#usedPoint').innerText(usePoint);
+                                    const useSavedPoint = $('#usePoint').val();
+                                    console.log(useSavedPoint);
+                                    $('#usedPoint').innerText(useSavedPoint);
                                 }
 
-
                             </script>
-
-
 
 
                             <div class="left-title">쿠폰</div>
@@ -88,7 +81,7 @@
                                 <input class="isStatusOnInput" type="text" style="width: 300px;">
                             </div>
 
-                            <table width="80%">
+                            <table style="width: 80%">
                                 <tr>
                                     <td class="leftSubTitle" colspan="3">
                                         주소
@@ -143,10 +136,7 @@
                                 con.style.display = 'none';
                             }
                         }
-
                     </script>
-
-
 
                 </div>
             </div>
@@ -154,7 +144,6 @@
             <div class="pay-inside-left">
 
             </div>
-
 
             <div class="pay-area">
                 <div class="pay-inside">
@@ -232,7 +221,7 @@
 
 
                     <div class="payButton">
-                        <button class="btn btn-dark">확인 및 결제</button>
+                        <button class="btn btn-dark" onclick="payment()">확인 및 결제</button>
                     </div>
                 </div>
             </div>
@@ -242,9 +231,44 @@
     </div>
 </div>
 
-
-
-
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<script>
+    window.IMP.init("가맹점 식별코드"); // TODO
+    function payment() {
+        $.ajax({
+            url: '/order',
+            method: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify({
+                    "productId": 11, // TODO : FE 에서 가져와서 넣어야하는 값
+                    "startAt": [[${startDate}]], // TODO : FE 에서 가져와서 넣어야하는 값
+                    "endAt": [[${endDate}]], // TODO : FE 에서 가져와서 넣어야하는 값
+                    "couponIssueId": 1, // TODO : FE 에서 가져와서 넣어야하는 값 (쿠폰선택 안할시 0)
+                    "usedPoint": 500, // TODO : FE 에서 가져와서 넣어야하는 값
+                    "tradeMethod": "DELIVERY", // TODO : FE 에서 가져와서 넣어야하는 값
+                    "name": "박땡땡", // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
+                    "address": "백현동 123123123", // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
+                    "phone": "01041779469" // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
+                }
+            ),
+            success: function (data) {
+                IMP.request_pay({
+                    pg: "kcp.{imp71210173}", // TODO
+                    pay_method: "card", // TODO
+                    merchant_uid: data["merchantUid"],
+                    name: data["name"],
+                    amount: data["amount"],
+                    // buyer_email: "gildong@gmail.com",
+                    buyer_name: "홍길동",
+                    // buyer_tel: "010-4242-4242",
+                    // buyer_addr: "서울특별시 강남구 신사동",
+                    // buyer_postcode: "01181",
+                    m_redirect_url: "http://localhost:8080/payment/complete" // TODO : 수정 필요
+                });
+            }
+        })
+    }
+</script>
 
 
 

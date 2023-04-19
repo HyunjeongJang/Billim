@@ -16,7 +16,7 @@ import com.web.billim.member.dto.request.FindIdRequest;
 import com.web.billim.member.dto.request.MemberSignupRequest;
 import com.web.billim.member.dto.response.FindIdResponse;
 import com.web.billim.member.repository.MemberRepository;
-import com.web.billim.point.dto.AppendPointCommand;
+import com.web.billim.point.dto.AddPointCommand;
 import com.web.billim.point.service.PointService;
 
 import lombok.RequiredArgsConstructor;
@@ -52,7 +52,7 @@ public class MemberService {
                 .orElseThrow();
 
         // 포인트 주기
-        AppendPointCommand command = new AppendPointCommand(member, 1000, LocalDateTime.now().plusDays(365));
+        AddPointCommand command = new AddPointCommand(member, 1000, LocalDateTime.now().plusDays(365));
         pointService.addPoint(command);
     }
 

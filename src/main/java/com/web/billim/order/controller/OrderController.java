@@ -1,5 +1,6 @@
 package com.web.billim.order.controller;
 
+import com.web.billim.point.service.PointService;
 import com.web.billim.product.domain.Product;
 import com.web.billim.product.dto.response.ProductDetailResponse;
 import com.web.billim.product.service.ProductService;
@@ -30,6 +31,7 @@ public class OrderController {
     private final OrderService orderService;
 
     private final ProductService productService;
+    private final PointService pointService;
 
     @GetMapping ("/order/confirm")
     public String orderConfirm(String startDate, String endDate, int productId, Model model) {
@@ -48,12 +50,11 @@ public class OrderController {
     }
 
 
-
-
-
     @PostMapping("/order")
-    public ResponseEntity<PaymentInfoResponse> order(@RequestBody OrderCommand command) {
-        PaymentInfoResponse resp = orderService.order(10, command);
+    public ResponseEntity<PaymentInfoResponse> order(@RequestBody OrderCommand command,
+                                                     @AuthenticationPrincipal User user
+    ) {
+        PaymentInfoResponse resp = orderService.order(user.getMemberId(), command);
         return ResponseEntity.ok(resp);
     }
 

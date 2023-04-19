@@ -1,5 +1,5 @@
 package com.web.billim.order.type;
 
 public enum ProductOrderStatus {
-	IN_PROGRESS, CANCEL, DONE
+	IN_PROGRESS, CANCELED, DONE
 }

@@ -10,7 +10,7 @@ import com.web.billim.member.domain.Member;
 import com.web.billim.payment.domain.Payment;
 import com.web.billim.payment.domain.PointUsedHistory;
 import com.web.billim.point.domain.SavedPoint;
-import com.web.billim.point.dto.AppendPointCommand;
+import com.web.billim.point.dto.AddPointCommand;
 import com.web.billim.point.dto.PointResponse;
 import com.web.billim.payment.repository.PointUsedHistoryRepository;
 import com.web.billim.point.repository.SavedPointRepository;
@@ -29,7 +29,7 @@ public class PointService {
 
 	// 1. 특정 사용자에게 적립금 부여 (C)
 	@Transactional
-	public void addPoint(AppendPointCommand command) {
+	public void addPoint(AddPointCommand command) {
 		savedPointRepository.save(SavedPoint.of(command));
 	}
 

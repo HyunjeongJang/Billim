@@ -1,6 +1,7 @@
 package com.web.billim.payment.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.web.billim.product.type.TradeMethod;
 import com.web.billim.coupon.domain.CouponIssue;
@@ -10,12 +11,13 @@ import com.web.billim.payment.dto.PaymentInfoDto;
 @Service
 public class PaymentAmountCalculateService {
 
+	@Transactional
 	public PaymentInfoDto calculateAmount(ProductOrder order, CouponIssue coupon, int usedPoint) {
 		int basePrice = order.getPrice();
 
 		int salePrice = 0;
 		if (coupon != null) {
-			salePrice = basePrice * (coupon.getCoupon().getRate() / 100);
+			salePrice = (int) (basePrice * (coupon.getCoupon().getRate() / 100.0));
 		}
 		int deliveryPrice = order.getTradeMethod().equals(TradeMethod.DELIVERY) ? 3000 : 0;
 
