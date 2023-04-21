@@ -52,9 +52,8 @@
                                 function usePoint() {
                                     const useSavedPoint = $('#usePoint').val();
                                     console.log(useSavedPoint);
-                                    $('#usedPoint').innerText(useSavedPoint);
+                                    $('#usedPoint').html(useSavedPoint);
                                 }
-
                             </script>
 
 
@@ -184,7 +183,11 @@
                                         const distance = endDate - startDate;
                                         const day = Math.floor(distance / (1000 * 60 * 60 * 24) + 1);
                                         $('#countDay').html(day + ' 일');
+
                                     };
+
+
+
 
                                 </script>
 
@@ -220,6 +223,7 @@
                     </div>
 
 
+
                     <div class="payButton">
                         <button class="btn btn-dark" onclick="payment()">확인 및 결제</button>
                     </div>
@@ -240,7 +244,7 @@
             method: 'POST',
             contentType: "application/json",
             data: JSON.stringify({
-                    "productId": 11, // TODO : FE 에서 가져와서 넣어야하는 값
+                    "productId": [[${product.productId}]], // TODO : FE 에서 가져와서 넣어야하는 값
                     "startAt": [[${startDate}]], // TODO : FE 에서 가져와서 넣어야하는 값
                     "endAt": [[${endDate}]], // TODO : FE 에서 가져와서 넣어야하는 값
                     "couponIssueId": 1, // TODO : FE 에서 가져와서 넣어야하는 값 (쿠폰선택 안할시 0)

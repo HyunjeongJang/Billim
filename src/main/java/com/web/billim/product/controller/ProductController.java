@@ -44,18 +44,6 @@ public class ProductController {
     }
 
 
-//    @GetMapping("/product/list")
-//    public String productList(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
-//                              Model model
-//    ) {
-//        Page<Product> productList = productService.findAllProduct(page);
-//        model.addAttribute("productList", productList);
-//        model.addAttribute("totalPage", productList.getTotalPages());
-//        return "pages/product/productList";
-//    }
-
-
-
     @GetMapping("/product/detail/{productId}")
     public String productDetail(@PathVariable("productId") int productId, Model model) {
         Product product = productService.retrieve(productId);
@@ -74,7 +62,6 @@ public class ProductController {
         List<LocalDate> dates = orderService.reservationDate(product);
         return ResponseEntity.ok(dates);
     }
-
 
 
 
