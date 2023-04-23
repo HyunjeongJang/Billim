@@ -68,5 +68,8 @@ public class Payment extends JpaEntity {
 		return this;
 	}
 
+	public void setImpUid(String impUid) {
+		this.impUid = impUid;
+	}
 }
 

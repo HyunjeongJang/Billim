@@ -12,7 +12,7 @@ class IamPortClientTest {
 
 	@Test
 	public void getAccessToken_테스트() {
-		iamPortClient.getAccessToken();
+		System.out.println(iamPortClient.getAccessToken());
 	}
 
 }

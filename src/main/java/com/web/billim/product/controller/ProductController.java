@@ -64,7 +64,6 @@ public class ProductController {
     }
 
 
-
     @GetMapping("/myPage/purchase")
     public String myPage() {
         return "pages/myPage/myPurchaseList";
@@ -95,7 +94,6 @@ public class ProductController {
         req.setRegisterMember(user.getMemberId());
         return ResponseEntity.ok(productService.register(req));
     }
-
 
 
 }

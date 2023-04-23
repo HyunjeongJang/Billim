@@ -19,8 +19,8 @@ public class AddPointCommand {
 
     public static AddPointCommand from(Payment payment) {
         Member buyer = payment.getMember();
-        int price = payment.getProductOrder().getPrice();
-        int amount = price * (int) (buyer.getGrade().getSavedPointRate() / 100.0);
+        int price = payment.getTotalAmount();
+        int amount = (int) (price * buyer.getGrade().getSavedPointRate() / 100.0);
         return new AddPointCommand(buyer, amount, LocalDateTime.now().plusYears(1));
     }
 

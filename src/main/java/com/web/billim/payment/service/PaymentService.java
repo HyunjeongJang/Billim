@@ -44,11 +44,13 @@ public class PaymentService {
         return PaymentInfoResponse.from(payment);
     }
 
+    @Transactional
     public void complete(String impUid, String merchantUid) {
         // IamPort 결제내역 조회
         IamPortPaymentData paymentData = iamPortClientService.retrievePayment(impUid);
         // Payment Entity 조회
         Payment payment = paymentRepository.findByMerchantUid(merchantUid).orElseThrow();
+        payment.setImpUid(impUid);
         // 데이터 검증
         if (payment.getTotalAmount() != paymentData.getAmount() || !paymentData.getStatus().equals("paid")) {
             // TODO : IamPort 쪽에 결제 취소 API 호출

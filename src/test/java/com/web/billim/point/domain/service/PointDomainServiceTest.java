@@ -27,6 +27,12 @@ class PointDomainServiceTest {
 	@InjectMocks
 	private PointDomainService pointDomainService;
 
+	// Repository <- Service <- Controller
+	//  Service 에서 Repository 객체를 모킹해서 단위테스트를 짜려면
+	//  모킹되는 Repository 객체도 테스트가 작성되어 있어야 한다.
+	// 테스트 코드의 우선순위 : Domain 로직 -> Service 로직 -> Repository/Controller
+	// 테스트 커버리지 -> 100% 지향
+	//  BDD TDD
 	@Test
 	public void use_SavedPoint_빈_리스트_반환하면_에러나는지_확인() {
 		// given

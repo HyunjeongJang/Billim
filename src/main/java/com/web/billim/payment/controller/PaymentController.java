@@ -22,17 +22,17 @@ public class PaymentController {
     @GetMapping("/complete")
     public ResponseEntity<Void> paymentComplete(
             @RequestParam("imp_uid") String impUid,
-            @RequestParam("merchant_uid") String merchantUid,
-            @RequestParam("imp_success") boolean impSuccess,
-            @RequestParam(name = "error_code", required = false, defaultValue = "") String errorCode,
-            @RequestParam(name = "error_msg", required = false, defaultValue = "") String errorMessage
+            @RequestParam("merchant_uid") String merchantUid
     ) {
-        log.info(String.format("merchant_uid(%s) 건 결제 완료!, 결제결과: %s", merchantUid, impSuccess));
-        if (impSuccess) {
-            paymentService.complete(impUid, merchantUid);
-        } else {
-            paymentService.rollback(merchantUid);
-        }
+        paymentService.complete(impUid, merchantUid);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/failure")
+    public ResponseEntity<Void> paymentFailure(
+            @RequestParam("merchant_uid") String merchantUid
+    ) {
+        paymentService.rollback(merchantUid);
         return ResponseEntity.ok().build();
     }
 
