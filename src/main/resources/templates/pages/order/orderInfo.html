@@ -6,9 +6,150 @@
 
 <div layout:fragment="content">
     <link th:href="@{/css/orderInfo.css}" rel="stylesheet">
-    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" th:src="@{/js/postCode.js}"></script>
+
+    <style>
+
+        .content-wrap {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .title-area {
+            display: inline-block;
+            width: 100%;
+            padding-left: 100px;
+            padding-bottom: 20px;
+        }
+        .title {
+            float: left;
+            font-size: xx-large;
+        }
+
+        .confirm-area {
+            float: left;
+            padding-left: 50px;
+            width: 50%;
+        }
+
+        .confirm-left {
+            text-align: left;
+            padding-left: 60px;
+
+        }
+
+        .confirm-title {
+            font-size: xx-large;
+        }
+
+        .left-top {
+            font-size: x-large;
+        }
+
+        .left-title {
+            font-size: x-large;
+            padding-top: 20px;
+        }
+
+        .leftSubTitle {
+            padding-top: 10px;
+        }
+
+        .tableInput {
+            padding-top: 10px;
+            padding-bottom: 20px;
+        }
+
+
+
+
+
+        .pay-area {
+            float: right;
+            width: 50%;
+            padding-inline: 5%;
+        }
+
+
+        .pay-inside {
+            border-radius: 10px;
+            border: solid 1px #adadad;
+            /*background-color: #e5e5e5;*/
+        }
+
+        hr {
+            width: 90%;
+        }
+
+        .line {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+
+        .insideTop {
+            width: 100%;
+            height: 220px;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        .inside-top-image {
+            display: inline-block;
+            width: 40%;
+            height: 100%;
+            float: left;
+        }
+
+        .inside-top-right {
+            display: inline-block;
+            width: 60%;
+            float: right;
+        }
+
+        .insideTitle {
+            font-size: x-large;
+            text-align: left;
+            padding-left: 8%;
+            padding-bottom: 10px;
+        }
+
+        .insideContent {
+            display: inline-block;
+            text-align: left;
+            width: 49%;
+            padding-left: 8%;
+            padding-bottom: 10px;
+        }
+
+        .insidePrice {
+            display: inline-block;
+            text-align: right;
+            width: 49%;
+            padding-right: 8%;
+        }
+
+        .payButton {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+
+
+
+
+
+        *,*:focus,*:hover{outline:none;}
+
+        .isStatusOnInput {
+            border-left-width: 0;
+            border-right-width: 0;
+            border-top-width: 0;
+            border-bottom-width: 1px;
+            border-color: #bdbdbd;
+        }
+    </style>
 
     <div class="content" th:fragment="">
         <div class="content-wrap">
@@ -184,7 +325,12 @@
                                         const distance = endDate - startDate;
                                         const day = Math.floor(distance / (1000 * 60 * 60 * 24) + 1);
                                         $('#countDay').html(day + ' 일');
+
                                     };
+
+
+
+
                                 </script>
 
 
@@ -218,6 +364,8 @@
                         <div class="insidePrice">₩</div>
                     </div>
 
+
+
                     <div class="payButton">
                         <button class="btn btn-dark" onclick="payment()">확인 및 결제</button>
                     </div>
@@ -226,65 +374,92 @@
         </div>
 
 
-        <script>
-            window.IMP.init("imp44552446"); // TODO
-            // window.IMP.init("imp71210173");
-            function payment() {
-                $.ajax({
-                    url: '/order',
-                    method: 'POST',
-                    contentType: "application/json",
-                    data: JSON.stringify({
-                            "productId": 11, // TODO : FE 에서 가져와서 넣어야하는 값
-                            "startAt": "2023-04-25", // TODO : FE 에서 가져와서 넣어야하는 값
-                            "endAt": "2023-04-29", // TODO : FE 에서 가져와서 넣어야하는 값
-                            "couponIssueId": 1, // TODO : FE 에서 가져와서 넣어야하는 값 (쿠폰선택 안할시 0)
-                            "usedPoint": 500, // TODO : FE 에서 가져와서 넣어야하는 값
-                            "tradeMethod": "DELIVERY", // TODO : FE 에서 가져와서 넣어야하는 값
-                            "name": "박땡땡", // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
-                            "address": "백현동 123123123", // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
-                            "phone": "01041779469" // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
-                        }
-                    ),
-                    success: function (data) {
-                        IMP.request_pay({
-                            pg: "kcp",
-                            pay_method: "card",
-                            merchant_uid: data["merchantUid"],
-                            name: data["name"],
-                            amount: data["amount"],
-                            // buyer_email: "gildong@gmail.com",
-                            buyer_name: "홍길동",
-                            // buyer_tel: "010-4242-4242",
-                            // buyer_addr: "서울특별시 강남구 신사동",
-                            // buyer_postcode: "01181",
-                        }, resp => {
-                            if (resp.success) {
-                                $.ajax({
-                                    url: '/payment/complete?imp_uid=' + resp.imp_uid + "&merchant_uid=" + resp.merchant_uid,
-                                    method: 'GET',
-                                    success: function (data) {
-                                        // 결제가 성공했습니다 짜잔
-                                    },
-                                    fail: function (data) {
-                                        // 결제가 실패했습니다 짜잔
-                                    }
-                                })
-                            } else {
-                                $.ajax({
-                                    url: '/payment/failure?merchant_uid=' + data["merchantUid"],
-                                    method: 'GET',
-                                })
-                                // 결제가 실패했습니다 짜잔
-                            }
-                        });
-                    }
-                })
-            }
-        </script>
-
     </div>
 </div>
+
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<script>
+    window.IMP.init("가맹점 식별코드"); // TODO
+    function payment() {
+        $.ajax({
+            url: '/order',
+            method: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify({
+                    "productId": [[${product.productId}]], // TODO : FE 에서 가져와서 넣어야하는 값
+                    "startAt": [[${startDate}]], // TODO : FE 에서 가져와서 넣어야하는 값
+                    "endAt": [[${endDate}]], // TODO : FE 에서 가져와서 넣어야하는 값
+                    "couponIssueId": 1, // TODO : FE 에서 가져와서 넣어야하는 값 (쿠폰선택 안할시 0)
+                    "usedPoint": 500, // TODO : FE 에서 가져와서 넣어야하는 값
+                    "tradeMethod": "DELIVERY", // TODO : FE 에서 가져와서 넣어야하는 값
+                    "name": "박땡땡", // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
+                    "address": "백현동 123123123", // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
+                    "phone": "01041779469" // TODO : FE 에서 가져와서 넣어야하는 값 (택배시만)
+                }
+            ),
+            success: function (data) {
+                IMP.request_pay({
+                    pg: "kcp.{imp71210173}", // TODO
+                    pay_method: "card", // TODO
+                    merchant_uid: data["merchantUid"],
+                    name: data["name"],
+                    amount: data["amount"],
+                    // buyer_email: "gildong@gmail.com",
+                    buyer_name: "홍길동",
+                    // buyer_tel: "010-4242-4242",
+                    // buyer_addr: "서울특별시 강남구 신사동",
+                    // buyer_postcode: "01181",
+                    m_redirect_url: "http://localhost:8080/payment/complete" // TODO : 수정 필요
+                });
+            }
+        })
+    }
+</script>
+<script>
+    // Calculate total price
+    function calculateTotalPrice() {
+        const rentPrice = Number($("span[th\\:text='${product.price}']").text());
+        const deliveryPrice = $("#tradeMethods").val() === 'DELIVERY' ? 3000 : 0;
+        const usedPoint = Number($('#usedPoint').text());
+        const days = Number($('#countDay').text().split(' ')[0]);
+        const couponPercentage = Number($('#couponSelect').val()) / 100;
+
+        const couponDiscount = rentPrice * days * couponPercentage;
+        const totalPrice = (rentPrice * days + deliveryPrice) - usedPoint - couponDiscount;
+
+        $('.insidePrice').last().text('₩ ' + totalPrice);
+    }
+
+    // Trade methods event
+    $('#tradeMethods').on('change', function () {
+        if (this.value === 'DELIVERY') {
+            $('#delivery').show();
+        } else {
+            $('#delivery').hide();
+        }
+
+        calculateTotalPrice();
+    });
+
+    // Use point event
+    function usePoint() {
+        const useSavedPoint = $('#usePoint').val();
+        $('#usedPoint').html(useSavedPoint);
+
+        calculateTotalPrice();
+    }
+
+    // Coupon select event
+    $('#couponSelect').on('change', function () {
+        calculateTotalPrice();
+    });
+
+    // Initialize
+    $(document).ready(function () {
+        calculateTotalPrice();
+    });
+</script>
+
 
 
 </html>
