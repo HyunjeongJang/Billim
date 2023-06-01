@@ -216,10 +216,10 @@ CREATE TABLE `image_chat`
     `updated_at`    timestamp default current_timestamp on update current_timestamp NOT NULL COMMENT '업데이트일자'
 );
 
-DROP TABLE IF EXISTS `saved_point_rate`;
-
-CREATE TABLE `saved_point_rate`
-(
-    `grade` varchar(10) NOT NULL COMMENT '회원등급',
-    `rate`  int         NOT NULL COMMENT '적립률'
-);
+# DROP TABLE IF EXISTS `saved_point_rate`;
+#
+# CREATE TABLE `saved_point_rate`
+# (
+#     `grade` varchar(10) NOT NULL COMMENT '회원등급',
+#     `rate`  int         NOT NULL COMMENT '적립률'
+# );
